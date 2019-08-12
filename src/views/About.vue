@@ -1,24 +1,38 @@
 <template lang="en">
   <div id="app">
   <h1>Users</h1>
-  <button v-on:click="fetchUsersName">GET</button>
-  <p>{{users}}</p>
 </div>
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
+// import api from '@/shared/services/api.services'
 
 export default {
-  data() {
+  /* data() {
     return {
       users: [],
     };
   },
+
+
+
+  ////////////////////////////////
+  mounted: function (){
+    api.get('/users').then((res) => {
+      this.users = res.data.results;
+    })
+  },
+/////////////////////////////////////
+
+
+
+
   methods: {
     fetchUsersName() {
       const baseURI = 'http://localhost:3000/users';
-      axios.get(baseURI)
+      axios
+        .get(baseURI)
         .then((result) => {
           this.users = result.data;
           console.log(result.data);
@@ -27,6 +41,6 @@ export default {
           console.log(error);
         });
     },
-  },
+  }, */
 };
 </script>
