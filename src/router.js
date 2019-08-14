@@ -16,9 +16,9 @@ export default new Router({
     {
       path: '/signin',
       name: 'SignIn',
-      component: SignIn,
+      component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
       beforeEnter(to, from, next) {
-        if (localStorage.getItem('user') && to.fullPath === '/login') {
+        if (localStorage.getItem('user')) {
           next();
         } else {
           next({
@@ -28,8 +28,8 @@ export default new Router({
       },
     },
     {
-      path: '/registration',
-      name: 'registration',
+      path: '/signup',
+      name: 'signup',
       component: RegistrationComponent,
     },
     {

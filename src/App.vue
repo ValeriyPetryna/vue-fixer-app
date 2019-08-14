@@ -2,17 +2,17 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link>|
-      <router-link to="/about">About</router-link>
-      <router-link to="/signup">Signup</router-link>|
-      <router-link to="/login">Login</router-link>
-      <router-link to="/registration">reg</router-link>
-      <router-link to="/signin">SIgnin</router-link>
+      <router-link to="/about"> About </router-link>
+      <router-link to="/signup"> Signup </router-link>|
+      <router-link to="/login"> Login </router-link>
+      <router-link to="/signin"> Closed link </router-link>
     </div>
     <router-view />
   </div>
 </template>
 <script>
-import api from "./shared/services/api.services";
+import api from './shared/services/api.services';
+
 export default {
   // mounted: function () {
   //   api.init('https')

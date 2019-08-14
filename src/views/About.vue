@@ -16,7 +16,6 @@ export default {
   },
 
 
-
   ////////////////////////////////
   mounted: function (){
     api.get('/users').then((res) => {
@@ -24,8 +23,6 @@ export default {
     })
   },
 /////////////////////////////////////
-
-
 
 
   methods: {
