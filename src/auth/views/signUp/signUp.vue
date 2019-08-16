@@ -1,26 +1,30 @@
 <template>
   <div>
-    <form @submit.prevent="login">
+    <form @submit.prevent="login" method="get">
       <main class="wrapper">
         <nav class="navbar">
           <div class="logo-container">
-            <img class="logo-container__image" src="images/myfixerlogo.svg" />
+            <img class="logo-container__image" src="../../../assets/myfixerlogo.svg" />
           </div>
           <div class="auth">
-            <p class="auth__text">Do not have an account?</p>
-            <a class="auth__link"><router-link to="/signup">Sign up</router-link></a>
+            <p class="auth__text">Already have an account?</p>
+            <a class="auth__link">
+              <router-link to="/login">Log In</router-link>
+            </a>
           </div>
         </nav>
         <div class="container">
-          <div class="login-form">
-            <h1 class="login-form__title">Sign in</h1>
-            <input v-validate="'required'" v-model= "user.login" class="login-form__input" type="text" placeholder="Login" />
-            <span>{{ errors.first('myinput') }}</span>
-            <input v-validate="'required'" v-model= "user.password" class="login-form__input" type="password" placeholder="Password" />
-            <span>{{ errors.first('myinput') }}</span>
-            <a class="login-form__link">Forgot password?</a>
-            <button class="login-form__submit" type="submit">Sign in</button>
-          </div>
+          <form class="login-form">
+            <h1 class="login-form__title">Sign up</h1>
+            <div class="fullname">
+              <input class="login-form__input" type="text" placeholder="First name" />
+              <input class="login-form__input right" type="text" placeholder="Last name" />
+            </div>
+
+            <input class="login-form__input" type="text" placeholder="Username" />
+            <input class="login-form__input" type="text" placeholder="E-mail" />
+            <button class="login-form__submit" type="submit">Get started</button>
+          </form>
         </div>
       </main>
     </form>
@@ -28,40 +32,41 @@
 </template>
 
 <script>
-import api from '@/shared/services/api.services';
+import api from "@/shared/services/api.services";
 
 export default {
   data() {
     return {
       user: {
-        login: '',
-        password: '',
-      },
+        email: "",
+        password: ""
+      }
     };
   },
   methods: {
     login() {
       setTimeout(() => {
         this.saveUser({
-          token: 'asdaskmdoisamdiua78dya78sd',
+          token: "asdaskmdoisamdiua78dya78sd",
           user: {
-            firstName: this.user.login,
-            lastName: this.user.password,
-            photo: '',
-          },
+            firstName: "Vasya",
+            lastName: "Pupkin",
+            photo: ""
+          }
         });
-      }, 1000);
+      }, 2000);
     },
     saveUser(user) {
-      localStorage.setItem('user', JSON.stringify(user));
-      api.init('https://swapi.co/api');
+      localStorage.setItem("user", JSON.stringify(user));
+      api.init("https://swapi.co/api");
       api.setHeader();
-    },
-  },
+      this.$router.push("/signin");
+    }
+  }
 };
 </script>
 
-<style lang="css">
+<style>
 body {
   padding: 0;
   margin: 0;
@@ -157,4 +162,30 @@ body {
   display: block;
   margin-bottom: 15px;
 }
+
+.right {
+  margin-left: 25px;
+}
+
+.login-form__input {
+  width: 99.5%;
+  margin-bottom: 25px;
+  padding: 12px 14px;
+  border: 2px solid #f2f2f2;
+  border-radius: 2px;
+  transition: 0.2s;
+  box-sizing: border-box;
+  outline: none;
+}
+.fullname {
+  display: flex;
+}
+.login-form__input--name:hover {
+  border-left: 2px solid #2a74db;
+}
+.login-form__input:hover {
+  border-left: 2px solid #2a74db;
+}
+
+
 </style>
