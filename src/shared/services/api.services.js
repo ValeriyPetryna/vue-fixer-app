@@ -8,12 +8,12 @@ const ApiService = {
   },
 
   setHeader() {
-    axios.defaults.headers.common["Authorization"] = `Bearer ${this.getToken()}`;
+    axios.defaults.headers.common.Authorization = `JWT ${this.getToken()}`;
   },
 
   getToken() {
-    let user = JSON.parse(localStorage.getItem('user'));
-    return user.token
+    const user = JSON.parse(localStorage.getItem('user'));
+    return user.token;
   },
 
   get(resource) {

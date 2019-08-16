@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import Axios from 'axios';
+import VeeValidate from 'vee-validate';
 import App from './App.vue';
 import router from './router';
 import store from './store';
-import VeeValidate from 'vee-validate';
 
 Vue.config.productionTip = false;
 Vue.prototype.$http = Axios;
