@@ -26,14 +26,14 @@
 
 export default {
   name: 'SignIn',
-  components: {},
+  components: {}
 };
 </script>
-<style lang="css">
+<style scoped lang="css">
 body {
   padding: 0;
   margin: 0;
-  font-family: "Roboto";
+  font-family: 'Roboto';
 }
 
 .wrapper {

@@ -52,32 +52,31 @@ import api from '../../../shared/services/api.services';
 
 export default {
   name: 'app',
-  components: {
-  },
+  components: {},
   data() {
     return {
       user: {
         email: '',
-        password: '',
-      },
+        password: ''
+      }
     };
   },
   methods: {
     login() {
-      this.$validator.validate().then((valid) => {
+      this.$validator.validate().then(valid => {
         if (valid) {
           api
             .post('http://localhost:3000/api/auth/sign-in', this.user)
-            .then((res) => {
+            .then(res => {
               if (!res.data.error) {
                 const { data } = res;
                 this.saveUser({
                   token: data.token,
-                  user: data.user,
+                  user: data.user
                 });
               }
             })
-            .catch((err) => {
+            .catch(err => {
               alert(`Form not submitted + ${err}`);
             });
         } else {
@@ -90,16 +89,16 @@ export default {
       localStorage.setItem('user', JSON.stringify(user));
       api.setHeader();
       this.$router.push('/signin');
-    },
-  },
+    }
+  }
 };
 </script>
 
-<style lang="css">
+<style scoped lang="css">
 body {
   padding: 0;
   margin: 0;
-  font-family: "Roboto";
+  font-family: 'Roboto';
 }
 
 .wrapper {

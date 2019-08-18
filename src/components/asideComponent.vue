@@ -1,30 +1,35 @@
 <template>
-  <section class="sidebar">
+  <div class="sidebar">
     <aside class="sidebar-logo">
       <div>
         <img class="image" src="../assets/Logo.svg" />
       </div>
     </aside>
     <aside class="sidebar-tools">
-      <a class="sidebar-tools__item active">
+      <a class="sidebar-tools__item" v-bind:class="{ 'active': active.search }">
         <img src="../assets/find.svg" />
       </a>
-      <a class="sidebar-tools__item">
+      <a class="sidebar-tools__item" v-bind:class="{ 'active': active.user }">
         <img src="../assets/user.svg" />
       </a>
-      <a class="sidebar-tools__item">
+      <a class="sidebar-tools__item" v-bind:class="{ 'active': active.messenger }">
         <img src="../assets/messages.svg" />
       </a>
-      <a class="sidebar-tools__item">
+      <a class="sidebar-tools__item" v-bind:class="{ 'active': active.calendar }">
         <img src="../assets/icon-3.svg" />
       </a>
     </aside>
-  </section>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'asideComponent'
+  name: 'asideComponent',
+  props: {
+    active: Object
+  },
+  computed: {},
+  methods: {}
 };
 </script>
 

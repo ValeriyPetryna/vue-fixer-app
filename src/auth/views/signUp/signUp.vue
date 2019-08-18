@@ -32,14 +32,14 @@
 </template>
 
 <script>
-import api from "@/shared/services/api.services";
+import api from '@/shared/services/api.services';
 
 export default {
   data() {
     return {
       user: {
-        email: "",
-        password: ""
+        email: '',
+        password: ''
       }
     };
   },
@@ -47,30 +47,30 @@ export default {
     login() {
       setTimeout(() => {
         this.saveUser({
-          token: "asdaskmdoisamdiua78dya78sd",
+          token: 'asdaskmdoisamdiua78dya78sd',
           user: {
-            firstName: "Vasya",
-            lastName: "Pupkin",
-            photo: ""
+            firstName: 'Vasya',
+            lastName: 'Pupkin',
+            photo: ''
           }
         });
       }, 2000);
     },
     saveUser(user) {
-      localStorage.setItem("user", JSON.stringify(user));
-      api.init("https://swapi.co/api");
+      localStorage.setItem('user', JSON.stringify(user));
+      api.init('https://swapi.co/api');
       api.setHeader();
-      this.$router.push("/signin");
+      this.$router.push('/signin');
     }
   }
 };
 </script>
 
-<style>
+<style scoped>
 body {
   padding: 0;
   margin: 0;
-  font-family: "Roboto";
+  font-family: 'Roboto';
 }
 
 .wrapper {
@@ -186,6 +186,4 @@ body {
 .login-form__input:hover {
   border-left: 2px solid #2a74db;
 }
-
-
 </style>
