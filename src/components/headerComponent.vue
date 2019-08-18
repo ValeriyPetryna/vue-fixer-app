@@ -1,15 +1,7 @@
 <template>
   <section class="navbar">
     <section class="navbar-menu">
-      <div class="navbar-menu__item">Home</div>
-      <div class="navbar-menu__item">
-        <img src="../assets/vector.svg" />
-      </div>
-      <div class="navbar-menu__item">My profile</div>
-      <div class="navbar-menu__item">
-        <img src="../assets/vector.svg" />
-      </div>
-      <div class="navbar-menu__item">Result</div>
+      <breadcrumbs class="navbar-menu__item" />
     </section>
     <section class="navbar-user">
       <div class="navbar-user__name">Faruh Bernandez</div>
@@ -21,8 +13,10 @@
 </template>
 
 <script>
+import breadcrumbs from './breadcrumbs';
 export default {
   name: 'headerComponent',
+  components: { breadcrumbs },
   props: {}
 };
 </script>

@@ -12,7 +12,14 @@ export default new Router({
     {
       path: '/about',
       name: 'about',
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
+      meta: {
+        breadcrumb: [
+          {
+            name: 'About'
+          }
+        ]
+      }
     },
     {
       path: '/aside',
@@ -46,7 +53,50 @@ export default new Router({
     {
       path: '/search',
       name: 'search',
-      component: SearchComponent
+      component: SearchComponent,
+      meta: {
+        breadcrumb: [
+          {
+            name: 'search'
+          }
+        ]
+      }
+    },
+    {
+      path: '/search1',
+      name: 'search1',
+      component: SearchComponent,
+      meta: {
+        breadcrumb: [
+          {
+            name: 'search',
+            link: 'search'
+          },
+          {
+            name: 'search1'
+          }
+        ]
+      }
+    },
+    {
+      path: '/search2',
+      name: 'search2',
+      component: SearchComponent,
+      meta: {
+        breadcrumb: [
+          {
+            name: 'search',
+            link: 'search'
+          },
+          {
+            name: 'search1',
+            link: 'search1'
+          },
+          {
+            name: 'search2'
+          }
+        ]
+      }
     }
   ]
 });
