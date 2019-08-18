@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import RegistrationComponent from './auth/views/signUp/signUp.vue';
 import LoginComponent from './auth/views/signIn/Login.vue';
+import SearchComponent from './search/views/searchPage.vue';
 
 Vue.use(Router);
 
@@ -11,12 +12,12 @@ export default new Router({
     {
       path: '/about',
       name: 'about',
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
+      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
     {
       path: '/aside',
       name: 'aside',
-      component: () => import(/* webpackChunkName: "about" */ './components/aside.vue'),
+      component: () => import(/* webpackChunkName: "about" */ './components/aside.vue')
     },
     {
       path: '/signin',
@@ -27,20 +28,25 @@ export default new Router({
           next();
         } else {
           next({
-            path: '/login',
+            path: '/login'
           });
         }
-      },
+      }
     },
     {
       path: '/signup',
       name: 'signup',
-      component: RegistrationComponent,
+      component: RegistrationComponent
     },
     {
       path: '/login',
       name: 'login',
-      component: LoginComponent,
+      component: LoginComponent
     },
-  ],
+    {
+      path: '/search',
+      name: 'search',
+      component: SearchComponent
+    }
+  ]
 });
