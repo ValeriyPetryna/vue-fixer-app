@@ -3,10 +3,15 @@
     <main class="wrapper">
       <nav class="navbar">
         <div class="logo-container">
-          <img class="logo-container__image" src="../../../assets/myfixerlogo.svg" />
+          <img
+            class="logo-container__image"
+            src="../../../assets/myfixerlogo.svg"
+          >
         </div>
         <div class="auth">
-          <p class="auth__text">Do not have an account?</p>
+          <p class="auth__text">
+            Do not have an account?
+          </p>
           <a class="auth__link">
             <router-link to="/signup">Sign up</router-link>
           </a>
@@ -14,32 +19,39 @@
       </nav>
       <div class="container">
         <div class="login-form">
-          <h1 class="login-form__title">Sign in</h1>
+          <h1 class="login-form__title">
+            Sign in
+          </h1>
           <form @submit.prevent="login">
             <div class="login-form__email">
               <input
-                v-validate.continues="'required|email'"
                 v-model="user.email"
+                v-validate.continues="'required|email'"
                 name="email"
                 class="login-form__input"
                 type="text"
                 placeholder="Login"
-              />
+              >
             </div>
             <span class="validation">{{ errors.first('email') }}</span>
             <div class="login-form__password">
               <input
-                v-validate="'required|min:6'"
                 v-model="user.password"
+                v-validate="'required|min:6'"
                 class="login-form__input"
                 type="password"
                 name="password"
                 placeholder="Password"
-              />
+              >
             </div>
             <span class="validation">{{ errors.first('password') }}</span>
             <a class="login-form__link">Forgot password?</a>
-            <button class="login-form__submit" type="submit">Sign in</button>
+            <button
+              class="login-form__submit"
+              type="submit"
+            >
+              Sign in
+            </button>
           </form>
         </div>
       </div>
@@ -51,32 +63,32 @@
 import api from '../../../shared/services/api.services';
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {},
   data() {
     return {
       user: {
         email: '',
-        password: ''
-      }
+        password: '',
+      },
     };
   },
   methods: {
     login() {
-      this.$validator.validate().then(valid => {
+      this.$validator.validate().then((valid) => {
         if (valid) {
           api
             .post('http://localhost:3000/api/auth/sign-in', this.user)
-            .then(res => {
+            .then((res) => {
               if (!res.data.error) {
                 const { data } = res;
                 this.saveUser({
                   token: data.token,
-                  user: data.user
+                  user: data.user,
                 });
               }
             })
-            .catch(err => {
+            .catch((err) => {
               alert(`Form not submitted + ${err}`);
             });
         } else {
@@ -89,8 +101,8 @@ export default {
       localStorage.setItem('user', JSON.stringify(user));
       api.setHeader();
       this.$router.push('/signin');
-    }
-  }
+    },
+  },
 };
 </script>
 

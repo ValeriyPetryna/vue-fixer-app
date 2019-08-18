@@ -1,13 +1,21 @@
 <template>
   <div>
-    <form @submit.prevent="login" method="get">
+    <form
+      method="get"
+      @submit.prevent="login"
+    >
       <main class="wrapper">
         <nav class="navbar">
           <div class="logo-container">
-            <img class="logo-container__image" src="../../../assets/myfixerlogo.svg" />
+            <img
+              class="logo-container__image"
+              src="../../../assets/myfixerlogo.svg"
+            >
           </div>
           <div class="auth">
-            <p class="auth__text">Already have an account?</p>
+            <p class="auth__text">
+              Already have an account?
+            </p>
             <a class="auth__link">
               <router-link to="/login">Log In</router-link>
             </a>
@@ -15,15 +23,38 @@
         </nav>
         <div class="container">
           <form class="login-form">
-            <h1 class="login-form__title">Sign up</h1>
+            <h1 class="login-form__title">
+              Sign up
+            </h1>
             <div class="fullname">
-              <input class="login-form__input" type="text" placeholder="First name" />
-              <input class="login-form__input right" type="text" placeholder="Last name" />
+              <input
+                class="login-form__input"
+                type="text"
+                placeholder="First name"
+              >
+              <input
+                class="login-form__input right"
+                type="text"
+                placeholder="Last name"
+              >
             </div>
 
-            <input class="login-form__input" type="text" placeholder="Username" />
-            <input class="login-form__input" type="text" placeholder="E-mail" />
-            <button class="login-form__submit" type="submit">Get started</button>
+            <input
+              class="login-form__input"
+              type="text"
+              placeholder="Username"
+            >
+            <input
+              class="login-form__input"
+              type="text"
+              placeholder="E-mail"
+            >
+            <button
+              class="login-form__submit"
+              type="submit"
+            >
+              Get started
+            </button>
           </form>
         </div>
       </main>
@@ -39,8 +70,8 @@ export default {
     return {
       user: {
         email: '',
-        password: ''
-      }
+        password: '',
+      },
     };
   },
   methods: {
@@ -51,8 +82,8 @@ export default {
           user: {
             firstName: 'Vasya',
             lastName: 'Pupkin',
-            photo: ''
-          }
+            photo: '',
+          },
         });
       }, 2000);
     },
@@ -61,8 +92,8 @@ export default {
       api.init('https://swapi.co/api');
       api.setHeader();
       this.$router.push('/signin');
-    }
-  }
+    },
+  },
 };
 </script>
 

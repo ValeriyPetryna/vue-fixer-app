@@ -2,20 +2,46 @@
   <main class="wrapper">
     <nav class="navbar">
       <div class="logo-container">
-        <img class="logo-container__image" src="images/myfixerlogo.svg" />
+        <img
+          class="logo-container__image"
+          src="images/myfixerlogo.svg"
+        >
       </div>
       <div class="auth">
-        <p class="auth__text">Do not have an account?</p>
-        <a class="auth__link" href="signup1.html">Sign up</a>
+        <p class="auth__text">
+          Do not have an account?
+        </p>
+        <a
+          class="auth__link"
+          href="signup1.html"
+        >Sign up</a>
       </div>
     </nav>
     <div class="container">
       <form class="login-form">
-        <h1 class="login-form__title">Sign in</h1>
-        <input class="login-form__input" type="text" placeholder="Login" />
-        <input class="login-form__input" type="password" placeholder="Password" />
-        <a class="login-form__link" href="passwordrecovery.html">Forgot password?</a>
-        <button class="login-form__submit" type="submit">Sign in</button>
+        <h1 class="login-form__title">
+          Sign in
+        </h1>
+        <input
+          class="login-form__input"
+          type="text"
+          placeholder="Login"
+        >
+        <input
+          class="login-form__input"
+          type="password"
+          placeholder="Password"
+        >
+        <a
+          class="login-form__link"
+          href="passwordrecovery.html"
+        >Forgot password?</a>
+        <button
+          class="login-form__submit"
+          type="submit"
+        >
+          Sign in
+        </button>
       </form>
     </div>
   </main>
@@ -26,7 +52,7 @@
 
 export default {
   name: 'SignIn',
-  components: {}
+  components: {},
 };
 </script>
 <style scoped lang="css">

@@ -1,7 +1,16 @@
 {
-  "extends": ["airbnb", "prettier"],
-  "plugins": ["prettier"],
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "parserOptions": {
+    "parser": "babel-eslint"
+  },
+  "extends": ["airbnb-base", "plugin:vue/recommended"],
   "rules": {
-    "prettier/prettier": ["error"]
+    "import/no-unresolved": "off",
+    "no-unused-vars": "off",
+    "no-alert": "off"
   }
 }

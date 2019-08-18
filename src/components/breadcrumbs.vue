@@ -4,9 +4,11 @@
       <li
         v-for="(breadcrumb, idx) in breadcrumbList"
         :key="idx"
-        @click="routeTo(idx)"
         :class="{'linked': !!breadcrumb.link}"
-      >{{ breadcrumb.name }}</li>
+        @click="routeTo(idx)"
+      >
+        {{ breadcrumb.name }}
+      </li>
     </ul>
   </div>
 </template>
@@ -16,16 +18,16 @@ export default {
   name: 'Breadcrumb',
   data() {
     return {
-      breadcrumbList: []
+      breadcrumbList: [],
     };
-  },
-  mounted() {
-    this.updateList();
   },
   watch: {
     $route() {
       this.updateList();
-    }
+    },
+  },
+  mounted() {
+    this.updateList();
   },
   methods: {
     routeTo(pRouteTo) {
@@ -33,8 +35,8 @@ export default {
     },
     updateList() {
       this.breadcrumbList = this.$route.meta.breadcrumb;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -51,16 +53,19 @@ ul > li {
   float: left;
   height: 10px;
   width: auto;
-  font-weight: bold;
-  font-size: 0.8em;
   cursor: default;
   align-items: center;
+  line-height: 62px;
+  font-size: 16px;
+  letter-spacing: 0.685714px;
+  text-decoration: none;
+  color: #252f48;
 }
 ul > li:not(:last-child)::after {
-  content: '/';
+  content: url('../assets/Chevron-right.svg');
   float: right;
-  font-size: 0.8em;
-  margin: 0 0.5em;
+  font-size: 1em;
+  margin: 0 0.6em;
   cursor: default;
 }
 .linked {

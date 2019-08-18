@@ -1,320 +1,536 @@
 <template>
   <div class="search-page">
-    <aside-component v-bind:active="active"></aside-component>
+    <aside-component :active="active" />
     <section class="content">
-      <header-component></header-component>
+      <header-component />
       <main>
         <div class="page">
           <form class="search">
             <div class="search-filters">
-              <p class="search-filters__text">Location</p>
-              <img class="search-filters__location" src="../../assets/Location.svg" />
+              <p class="search-filters__text">
+                Location
+              </p>
+              <img
+                class="search-filters__location"
+                src="../../assets/Location.svg"
+              >
               <select class="search-filters__dropdown">
-                <option></option>
+                <option />
               </select>
             </div>
             <div class="search-filters">
-              <p class="search-filters__text">SEARCH</p>
-              <input class="search-filters__dropdown" type="text" placeholder="Type..." />
+              <p class="search-filters__text">
+                SEARCH
+              </p>
+              <input
+                class="search-filters__dropdown"
+                type="text"
+                placeholder="Type..."
+              >
             </div>
             <div class="search-filters">
-              <p class="search-filters__text">CATEGORY</p>
+              <p class="search-filters__text">
+                CATEGORY
+              </p>
               <select class="search-filters__dropdown">
                 <option>Subcategory</option>
               </select>
             </div>
             <div class="search-filters">
-              <p class="search-filters__text">SERVICE</p>
+              <p class="search-filters__text">
+                SERVICE
+              </p>
               <select class="search-filters__dropdown">
                 <option>3 services</option>
               </select>
             </div>
             <div class="search-filters">
-              <p class="search-filters__text">PERIOD</p>
-              <input class="search-filters__dropdown" placeholder="11/01/19 - 14/01/19" />
+              <p class="search-filters__text">
+                PERIOD
+              </p>
+              <input
+                class="search-filters__dropdown"
+                placeholder="11/01/19 - 14/01/19"
+              >
             </div>
-            <button class="search-filters__button">SEARCH</button>
+            <button class="search-filters__button">
+              SEARCH
+            </button>
           </form>
           <div class="results">
             <div class="category">
-              <p class="category__text">show map</p>
+              <p class="category__text">
+                show map
+              </p>
               <div class="category__button">
-                <input id="price" type="radio" name="category" value="by price" />
+                <input
+                  id="price"
+                  type="radio"
+                  name="category"
+                  value="by price"
+                >
                 <label for="price">by price</label>
-                <input id="rating" type="radio" name="category" value="by rating" />
+                <input
+                  id="rating"
+                  type="radio"
+                  name="category"
+                  value="by rating"
+                >
                 <label for="rating">by rating</label>
               </div>
             </div>
             <div class="workers">
               <article class="worker">
-                <img class="worker__avatar" src="../../assets/barry.svg" alt />
+                <img
+                  class="worker__avatar"
+                  src="../../assets/barry.svg"
+                  alt
+                >
                 <div class="info">
                   <span class="info__name">
                     Richard Thompson
-                    <img class="img__star" src="../../assets/gold.svg" />
+                    <img
+                      class="img__star"
+                      src="../../assets/gold.svg"
+                    >
                   </span>
                   <div class="info__location">
-                    <img src="../../assets/Location.svg" alt />
+                    <img
+                      src="../../assets/Location.svg"
+                      alt
+                    >
                     <p>Vancouver, Canada</p>
                   </div>
                   <div class="info__stack">
-                    <p class="inf">Stack:</p>
+                    <p class="inf">
+                      Stack:
+                    </p>
                     <p>Python, Django, Sketch</p>
                   </div>
                   <div class="info__price">
-                    <p class="inf">Base Daily Rate:</p>
+                    <p class="inf">
+                      Base Daily Rate:
+                    </p>
                     <p>$ 1,200 USD</p>
                   </div>
                 </div>
               </article>
               <article class="worker">
-                <img class="worker__avatar" src="../../assets/barry.svg" alt />
+                <img
+                  class="worker__avatar"
+                  src="../../assets/barry.svg"
+                  alt
+                >
                 <div class="info">
                   <span class="info__name">
                     Richard Thompson
-                    <img class="img__star" src="../../assets/bronze.svg" />
+                    <img
+                      class="img__star"
+                      src="../../assets/bronze.svg"
+                    >
                   </span>
                   <div class="info__location">
-                    <img src="../../assets/Location.svg" alt />
+                    <img
+                      src="../../assets/Location.svg"
+                      alt
+                    >
                     <p>Vancouver, Canada</p>
                   </div>
                   <div class="info__stack">
-                    <p class="inf">Stack:</p>
+                    <p class="inf">
+                      Stack:
+                    </p>
                     <p>Python, Django, Sketch</p>
                   </div>
                   <div class="info__price">
-                    <p class="inf">Base Daily Rate:</p>
+                    <p class="inf">
+                      Base Daily Rate:
+                    </p>
                     <p>$ 1,200 USD</p>
                   </div>
                 </div>
               </article>
               <article class="worker">
-                <img class="worker__avatar" src="../../assets/barry.svg" alt />
+                <img
+                  class="worker__avatar"
+                  src="../../assets/barry.svg"
+                  alt
+                >
                 <div class="info">
                   <span class="info__name">
                     Richard Thompson
-                    <img class="img__star" src="../../assets/silver.svg" />
+                    <img
+                      class="img__star"
+                      src="../../assets/silver.svg"
+                    >
                   </span>
                   <div class="info__location">
-                    <img src="../../assets/Location.svg" alt />
+                    <img
+                      src="../../assets/Location.svg"
+                      alt
+                    >
                     <p>Vancouver, Canada</p>
                   </div>
                   <div class="info__stack">
-                    <p class="inf">Stack:</p>
+                    <p class="inf">
+                      Stack:
+                    </p>
                     <p>Python, Django, Sketch</p>
                   </div>
                   <div class="info__price">
-                    <p class="inf">Base Daily Rate:</p>
+                    <p class="inf">
+                      Base Daily Rate:
+                    </p>
                     <p>$ 1,200 USD</p>
                   </div>
                 </div>
               </article>
               <article class="worker">
-                <img class="worker__avatar" src="../../assets/barry.svg" alt />
+                <img
+                  class="worker__avatar"
+                  src="../../assets/barry.svg"
+                  alt
+                >
                 <div class="info">
                   <span class="info__name">
                     Richard Thompson
-                    <img class="img__star" src="../../assets/gold.svg" />
+                    <img
+                      class="img__star"
+                      src="../../assets/gold.svg"
+                    >
                   </span>
                   <div class="info__location">
-                    <img src="../../assets/Location.svg" alt />
+                    <img
+                      src="../../assets/Location.svg"
+                      alt
+                    >
                     <p>Vancouver, Canada</p>
                   </div>
                   <div class="info__stack">
-                    <p class="inf">Stack:</p>
+                    <p class="inf">
+                      Stack:
+                    </p>
                     <p>Python, Django, Sketch</p>
                   </div>
                   <div class="info__price">
-                    <p class="inf">Base Daily Rate:</p>
+                    <p class="inf">
+                      Base Daily Rate:
+                    </p>
                     <p>$ 1,200 USD</p>
                   </div>
                 </div>
               </article>
               <article class="worker">
-                <img class="worker__avatar" src="../../assets/barry.svg" alt />
+                <img
+                  class="worker__avatar"
+                  src="../../assets/barry.svg"
+                  alt
+                >
                 <div class="info">
                   <span class="info__name">
                     Richard Thompson
-                    <img class="img__star" src="../../assets/gold.svg" />
+                    <img
+                      class="img__star"
+                      src="../../assets/gold.svg"
+                    >
                   </span>
                   <div class="info__location">
-                    <img src="../../assets/Location.svg" alt />
+                    <img
+                      src="../../assets/Location.svg"
+                      alt
+                    >
                     <p>Vancouver, Canada</p>
                   </div>
                   <div class="info__stack">
-                    <p class="inf">Stack:</p>
+                    <p class="inf">
+                      Stack:
+                    </p>
                     <p>Python, Django, Sketch</p>
                   </div>
                   <div class="info__price">
-                    <p class="inf">Base Daily Rate:</p>
+                    <p class="inf">
+                      Base Daily Rate:
+                    </p>
                     <p>$ 1,200 USD</p>
                   </div>
                 </div>
               </article>
               <article class="worker">
-                <img class="worker__avatar" src="../../assets/barry.svg" alt />
+                <img
+                  class="worker__avatar"
+                  src="../../assets/barry.svg"
+                  alt
+                >
                 <div class="info">
                   <span class="info__name">
                     Richard Thompson
-                    <img class="img__star" src="../../assets/gold.svg" />
+                    <img
+                      class="img__star"
+                      src="../../assets/gold.svg"
+                    >
                   </span>
                   <div class="info__location">
-                    <img src="../../assets/Location.svg" alt />
+                    <img
+                      src="../../assets/Location.svg"
+                      alt
+                    >
                     <p>Vancouver, Canada</p>
                   </div>
                   <div class="info__stack">
-                    <p class="inf">Stack:</p>
+                    <p class="inf">
+                      Stack:
+                    </p>
                     <p>Python, Django, Sketch</p>
                   </div>
                   <div class="info__price">
-                    <p class="inf">Base Daily Rate:</p>
+                    <p class="inf">
+                      Base Daily Rate:
+                    </p>
                     <p>$ 1,200 USD</p>
                   </div>
                 </div>
               </article>
               <article class="worker">
-                <img class="worker__avatar" src="../../assets/barry.svg" alt />
+                <img
+                  class="worker__avatar"
+                  src="../../assets/barry.svg"
+                  alt
+                >
                 <div class="info">
                   <span class="info__name">
                     Richard Thompson
-                    <img class="img__star" src="../../assets/silver.svg" />
+                    <img
+                      class="img__star"
+                      src="../../assets/silver.svg"
+                    >
                   </span>
                   <div class="info__location">
-                    <img src="../../assets/Location.svg" alt />
+                    <img
+                      src="../../assets/Location.svg"
+                      alt
+                    >
                     <p>Vancouver, Canada</p>
                   </div>
                   <div class="info__stack">
-                    <p class="inf">Stack:</p>
+                    <p class="inf">
+                      Stack:
+                    </p>
                     <p>Python, Django, Sketch</p>
                   </div>
                   <div class="info__price">
-                    <p class="inf">Base Daily Rate:</p>
+                    <p class="inf">
+                      Base Daily Rate:
+                    </p>
                     <p>$ 1,200 USD</p>
                   </div>
                 </div>
               </article>
               <article class="worker">
-                <img class="worker__avatar" src="../../assets/barry.svg" alt />
+                <img
+                  class="worker__avatar"
+                  src="../../assets/barry.svg"
+                  alt
+                >
                 <div class="info">
                   <span class="info__name">
                     Richard Thompson
-                    <img class="img__star" src="../../assets/gold.svg" />
+                    <img
+                      class="img__star"
+                      src="../../assets/gold.svg"
+                    >
                   </span>
                   <div class="info__location">
-                    <img src="../../assets/Location.svg" alt />
+                    <img
+                      src="../../assets/Location.svg"
+                      alt
+                    >
                     <p>Vancouver, Canada</p>
                   </div>
                   <div class="info__stack">
-                    <p class="inf">Stack:</p>
+                    <p class="inf">
+                      Stack:
+                    </p>
                     <p>Python, Django, Sketch</p>
                   </div>
                   <div class="info__price">
-                    <p class="inf">Base Daily Rate:</p>
+                    <p class="inf">
+                      Base Daily Rate:
+                    </p>
                     <p>$ 1,200 USD</p>
                   </div>
                 </div>
               </article>
               <article class="worker">
-                <img class="worker__avatar" src="../../assets/barry.svg" alt />
+                <img
+                  class="worker__avatar"
+                  src="../../assets/barry.svg"
+                  alt
+                >
                 <div class="info">
                   <span class="info__name">
                     Richard Thompson
-                    <img class="img__star" src="../../assets/gold.svg" />
+                    <img
+                      class="img__star"
+                      src="../../assets/gold.svg"
+                    >
                   </span>
                   <div class="info__location">
-                    <img src="../../assets/Location.svg" alt />
+                    <img
+                      src="../../assets/Location.svg"
+                      alt
+                    >
                     <p>Vancouver, Canada</p>
                   </div>
                   <div class="info__stack">
-                    <p class="inf">Stack:</p>
+                    <p class="inf">
+                      Stack:
+                    </p>
                     <p>Python, Django, Sketch</p>
                   </div>
                   <div class="info__price">
-                    <p class="inf">Base Daily Rate:</p>
+                    <p class="inf">
+                      Base Daily Rate:
+                    </p>
                     <p>$ 1,200 USD</p>
                   </div>
                 </div>
               </article>
               <article class="worker">
-                <img class="worker__avatar" src="../../assets/barry.svg" alt />
+                <img
+                  class="worker__avatar"
+                  src="../../assets/barry.svg"
+                  alt
+                >
                 <div class="info">
                   <span class="info__name">
                     Richard Thompson
-                    <img class="img__star" src="../../assets/gold.svg" />
+                    <img
+                      class="img__star"
+                      src="../../assets/gold.svg"
+                    >
                   </span>
                   <div class="info__location">
-                    <img src="../../assets/Location.svg" alt />
+                    <img
+                      src="../../assets/Location.svg"
+                      alt
+                    >
                     <p>Vancouver, Canada</p>
                   </div>
                   <div class="info__stack">
-                    <p class="inf">Stack:</p>
+                    <p class="inf">
+                      Stack:
+                    </p>
                     <p>Python, Django, Sketch</p>
                   </div>
                   <div class="info__price">
-                    <p class="inf">Base Daily Rate:</p>
+                    <p class="inf">
+                      Base Daily Rate:
+                    </p>
                     <p>$ 1,200 USD</p>
                   </div>
                 </div>
               </article>
               <article class="worker">
-                <img class="worker__avatar" src="../../assets/barry.svg" alt />
+                <img
+                  class="worker__avatar"
+                  src="../../assets/barry.svg"
+                  alt
+                >
                 <div class="info">
                   <span class="info__name">
                     Richard Thompson
-                    <img class="img__star" src="../../assets/gold.svg" />
+                    <img
+                      class="img__star"
+                      src="../../assets/gold.svg"
+                    >
                   </span>
                   <div class="info__location">
-                    <img src="../../assets/Location.svg" alt />
+                    <img
+                      src="../../assets/Location.svg"
+                      alt
+                    >
                     <p>Vancouver, Canada</p>
                   </div>
                   <div class="info__stack">
-                    <p class="inf">Stack:</p>
+                    <p class="inf">
+                      Stack:
+                    </p>
                     <p>Python, Django, Sketch</p>
                   </div>
                   <div class="info__price">
-                    <p class="inf">Base Daily Rate:</p>
+                    <p class="inf">
+                      Base Daily Rate:
+                    </p>
                     <p>$ 1,200 USD</p>
                   </div>
                 </div>
               </article>
               <article class="worker">
-                <img class="worker__avatar" src="../../assets/barry.svg" alt />
+                <img
+                  class="worker__avatar"
+                  src="../../assets/barry.svg"
+                  alt
+                >
                 <div class="info">
                   <span class="info__name">
                     Richard Thompson
-                    <img class="img__star" src="../../assets/gold.svg" />
+                    <img
+                      class="img__star"
+                      src="../../assets/gold.svg"
+                    >
                   </span>
                   <div class="info__location">
-                    <img src="../../assets/Location.svg" alt />
+                    <img
+                      src="../../assets/Location.svg"
+                      alt
+                    >
                     <p>Vancouver, Canada</p>
                   </div>
                   <div class="info__stack">
-                    <p class="inf">Stack:</p>
+                    <p class="inf">
+                      Stack:
+                    </p>
                     <p>Python, Django, Sketch</p>
                   </div>
                   <div class="info__price">
-                    <p class="inf">Base Daily Rate:</p>
+                    <p class="inf">
+                      Base Daily Rate:
+                    </p>
                     <p>$ 1,200 USD</p>
                   </div>
                 </div>
               </article>
               <article class="worker">
-                <img class="worker__avatar" src="../../assets/barry.svg" alt />
+                <img
+                  class="worker__avatar"
+                  src="../../assets/barry.svg"
+                  alt
+                >
                 <div class="info">
                   <span class="info__name">
                     Richard Thompson
-                    <img class="img__star" src="../../assets/gold.svg" />
+                    <img
+                      class="img__star"
+                      src="../../assets/gold.svg"
+                    >
                   </span>
                   <div class="info__location">
-                    <img src="../../assets/Location.svg" alt />
+                    <img
+                      src="../../assets/Location.svg"
+                      alt
+                    >
                     <p>Vancouver, Canada</p>
                   </div>
                   <div class="info__stack">
-                    <p class="inf">Stack:</p>
+                    <p class="inf">
+                      Stack:
+                    </p>
                     <p>Python, Django, Sketch</p>
                   </div>
                   <div class="info__price">
-                    <p class="inf">Base Daily Rate:</p>
+                    <p class="inf">
+                      Base Daily Rate:
+                    </p>
                     <p>$ 1,200 USD</p>
                   </div>
                 </div>
@@ -332,16 +548,16 @@ import asideComponent from '../../components/asideComponent';
 import headerComponent from '../../components/headerComponent';
 
 export default {
-  name: 'search',
+  name: 'Search',
   components: { asideComponent, headerComponent },
   data() {
     return {
       active: {
-        search: true
-      }
+        search: true,
+      },
     };
   },
-  methods: {}
+  methods: {},
 };
 </script>
 

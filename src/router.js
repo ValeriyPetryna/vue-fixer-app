@@ -10,45 +10,14 @@ export default new Router({
   mode: 'history',
   routes: [
     {
-      path: '/about',
-      name: 'about',
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
-      meta: {
-        breadcrumb: [
-          {
-            name: 'About'
-          }
-        ]
-      }
-    },
-    {
-      path: '/aside',
-      name: 'aside',
-      component: () => import(/* webpackChunkName: "about" */ './components/aside.vue')
-    },
-    {
-      path: '/signin',
-      name: 'SignIn',
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
-      beforeEnter(to, from, next) {
-        if (localStorage.getItem('user')) {
-          next();
-        } else {
-          next({
-            path: '/login'
-          });
-        }
-      }
-    },
-    {
       path: '/signup',
       name: 'signup',
-      component: RegistrationComponent
+      component: RegistrationComponent,
     },
     {
       path: '/login',
       name: 'login',
-      component: LoginComponent
+      component: LoginComponent,
     },
     {
       path: '/search',
@@ -57,10 +26,16 @@ export default new Router({
       meta: {
         breadcrumb: [
           {
-            name: 'search'
-          }
-        ]
-      }
+            name: 'Home',
+          },
+          {
+            name: 'Search',
+          },
+          {
+            name: 'Results',
+          },
+        ],
+      },
     },
     {
       path: '/search1',
@@ -70,13 +45,13 @@ export default new Router({
         breadcrumb: [
           {
             name: 'search',
-            link: 'search'
+            link: 'search',
           },
           {
-            name: 'search1'
-          }
-        ]
-      }
+            name: 'search1',
+          },
+        ],
+      },
     },
     {
       path: '/search2',
@@ -86,17 +61,17 @@ export default new Router({
         breadcrumb: [
           {
             name: 'search',
-            link: 'search'
+            link: 'search',
           },
           {
             name: 'search1',
-            link: 'search1'
+            link: 'search1',
           },
           {
-            name: 'search2'
-          }
-        ]
-      }
-    }
-  ]
+            name: 'search2',
+          },
+        ],
+      },
+    },
+  ],
 });

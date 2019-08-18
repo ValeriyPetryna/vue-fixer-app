@@ -1,12 +1,14 @@
 <template>
   <section class="navbar">
     <section class="navbar-menu">
-      <breadcrumbs class="navbar-menu__item" />
+      <breadcrumbs class="navbar-menu" />
     </section>
     <section class="navbar-user">
-      <div class="navbar-user__name">Faruh Bernandez</div>
+      <div class="navbar-user__name">
+        Faruh Bernandez
+      </div>
       <span class="navbar-user__avatar">
-        <img src="../assets/shape.svg" />
+        <img src="../assets/shape.svg">
       </span>
     </section>
   </section>
@@ -14,10 +16,11 @@
 
 <script>
 import breadcrumbs from './breadcrumbs';
+
 export default {
-  name: 'headerComponent',
+  name: 'HeaderComponent',
   components: { breadcrumbs },
-  props: {}
+  props: {},
 };
 </script>
 
@@ -51,14 +54,7 @@ body {
   align-items: center;
   padding-left: 40px;
 }
-.navbar-menu__item {
-  font-size: 16px;
-  padding: 10px;
-  line-height: 62px;
-  letter-spacing: 0.685714px;
-  text-decoration: none;
-  color: #252f48;
-}
+
 .navbar-user {
   display: flex;
   margin-left: auto;

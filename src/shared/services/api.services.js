@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 const ApiService = {
-
   init(baseURL) {
     axios.defaults.baseURL = baseURL;
     this.setHeader();
@@ -20,6 +19,5 @@ const ApiService = {
     return axios.get(resource);
   },
 };
-
 
 export default ApiService;
