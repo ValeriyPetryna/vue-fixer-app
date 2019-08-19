@@ -6,26 +6,29 @@
       </div>
     </aside>
     <aside class="sidebar-tools">
-      <a class="sidebar-tools__item" :class="{ 'active': active.search }">
-        <router-link to="/search">
-          <img src="../assets/find.svg" />
-        </router-link>
-      </a>
-      <a class="sidebar-tools__item" :class="{ 'active': active.user }">
-        <router-link to="/profile/personal">
-          <img src="../assets/user.svg" />
-        </router-link>
-      </a>
-      <a class="sidebar-tools__item" :class="{ 'active': active.messenger }">
-        <router-link to="/messenger">
-          <img src="../assets/messages.svg" />
-        </router-link>
-      </a>
-      <a class="sidebar-tools__item" :class="{ 'active': active.calendar }">
-        <router-link to="/calendar">
-          <img src="../assets/icon-3.svg" />
-        </router-link>
-      </a>
+      <router-link class="sidebar-tools__item" :class="{ active: active.search }" to="/search">
+        <img src="../assets/find.svg" />
+      </router-link>
+
+      <router-link
+        class="sidebar-tools__item"
+        :class="{ active: active.user }"
+        to="/profile/personal"
+      >
+        <img src="../assets/user.svg" />
+      </router-link>
+
+      <router-link
+        class="sidebar-tools__item"
+        :class="{ active: active.messenger }"
+        to="/messenger"
+      >
+        <img src="../assets/messages.svg" />
+      </router-link>
+
+      <router-link class="sidebar-tools__item" :class="{ active: active.calendar }" to="/calendar">
+        <img src="../assets/icon-3.svg" />
+      </router-link>
     </aside>
   </div>
 </template>
@@ -42,7 +45,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped lang="css">
 @import url(https://fonts.googleapis.com/css?family=Roboto&display=swap);
 .sidebar {
   height: 100vh;
@@ -67,11 +70,11 @@ export default {
   position: relative;
   left: 35%;
   top: 28%;
+  height: 20px;
 }
 .sidebar-tools__item.active {
   display: flex;
   border-left: 4px solid #0ad69c;
-  height: 65px;
 }
 .sidebar-tools__item.active img {
   position: relative;
