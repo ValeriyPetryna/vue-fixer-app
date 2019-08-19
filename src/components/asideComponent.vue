@@ -2,36 +2,29 @@
   <div class="sidebar">
     <aside class="sidebar-logo">
       <div>
-        <img
-          class="image"
-          src="../assets/Logo.svg"
-        >
+        <img class="image" src="../assets/Logo.svg" />
       </div>
     </aside>
     <aside class="sidebar-tools">
-      <a
-        class="sidebar-tools__item"
-        :class="{ 'active': active.search }"
-      >
-        <img src="../assets/find.svg">
+      <a class="sidebar-tools__item" :class="{ 'active': active.search }">
+        <router-link to="/search">
+          <img src="../assets/find.svg" />
+        </router-link>
       </a>
-      <a
-        class="sidebar-tools__item"
-        :class="{ 'active': active.user }"
-      >
-        <img src="../assets/user.svg">
+      <a class="sidebar-tools__item" :class="{ 'active': active.user }">
+        <router-link to="/profile/personal">
+          <img src="../assets/user.svg" />
+        </router-link>
       </a>
-      <a
-        class="sidebar-tools__item"
-        :class="{ 'active': active.messenger }"
-      >
-        <img src="../assets/messages.svg">
+      <a class="sidebar-tools__item" :class="{ 'active': active.messenger }">
+        <router-link to="/messenger">
+          <img src="../assets/messages.svg" />
+        </router-link>
       </a>
-      <a
-        class="sidebar-tools__item"
-        :class="{ 'active': active.calendar }"
-      >
-        <img src="../assets/icon-3.svg">
+      <a class="sidebar-tools__item" :class="{ 'active': active.calendar }">
+        <router-link to="/calendar">
+          <img src="../assets/icon-3.svg" />
+        </router-link>
       </a>
     </aside>
   </div>
@@ -41,15 +34,15 @@
 export default {
   name: 'AsideComponent',
   props: {
-    active: Object,
+    active: Object
   },
   computed: {},
-  methods: {},
+  methods: {}
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="css">
+<style>
 @import url(https://fonts.googleapis.com/css?family=Roboto&display=swap);
 .sidebar {
   height: 100vh;

@@ -19,5 +19,8 @@ export default {
   // }
 };
 </script>
-<style lang="sass">
+<style lang="scss">
+div {
+  width: 100%;
+}
 </style>

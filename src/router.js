@@ -3,6 +3,8 @@ import Router from 'vue-router';
 import RegistrationComponent from './auth/views/signUp/signUp.vue';
 import LoginComponent from './auth/views/signIn/Login.vue';
 import SearchComponent from './search/views/searchPage.vue';
+import AccountInfoComponent from './profile/views/accountInfo.vue';
+import PersonalInfoComponent from './profile/views/personalInfo.vue';
 
 Vue.use(Router);
 
@@ -38,17 +40,31 @@ export default new Router({
       },
     },
     {
-      path: '/search1',
-      name: 'search1',
-      component: SearchComponent,
+      path: '/profile/account',
+      name: 'account',
+      component: AccountInfoComponent,
       meta: {
         breadcrumb: [
           {
-            name: 'search',
-            link: 'search',
+            name: 'Home',
           },
           {
-            name: 'search1',
+            name: 'My profile',
+          },
+        ],
+      },
+    },
+    {
+      path: '/profile/personal',
+      name: 'personal',
+      component: PersonalInfoComponent,
+      meta: {
+        breadcrumb: [
+          {
+            name: 'Home',
+          },
+          {
+            name: 'My profile',
           },
         ],
       },
