@@ -12,15 +12,15 @@ export default {
     logout() {
       localStorage.removeItem('user');
       this.$router.push('/login');
-    },
-  },
+    }
+  }
   // mounted: function () {
   //   api.init('https')
   // }
 };
 </script>
 <style lang="scss">
-div {
-  width: 100%;
+#app {
+  width: 100% !important;
 }
 </style>

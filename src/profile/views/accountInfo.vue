@@ -6,16 +6,22 @@
       <main class="page">
         <section class="infopage">
           <article class="information">
-            <router-link to="/profile/personal">PERSONAL INFORMATION</router-link>
+            <router-link to="/profile/personal">
+              PERSONAL INFORMATION
+            </router-link>
           </article>
           <article class="information active">
-            <router-link to="/profile/account">ACCOUNT INFORMATION</router-link>
+            <router-link to="/profile/account">
+              ACCOUNT INFORMATION
+            </router-link>
           </article>
         </section>
         <section class="account">
           <article class="infoblock">
             <div class="item">
-              <p class="title">Username</p>
+              <p class="title">
+                Username
+              </p>
               <form action>
                 <input class="holder" type="text" placeholder="sarahbarnez" />
               </form>
@@ -23,7 +29,9 @@
           </article>
           <article class="infoblock">
             <div class="item-left">
-              <p class="title">E-mail</p>
+              <p class="title">
+                E-mail
+              </p>
               <form action>
                 <input class="holder" type="text" placeholder="sarah228@gmail.com" />
               </form>
@@ -61,9 +69,6 @@ export default {
 </script>
 
 <style scoped lang="css">
-div {
-  width: 100%;
-}
 .profile-page {
   display: flex;
   width: 100%;
@@ -74,7 +79,7 @@ div {
   flex-direction: column;
   height: 400px;
   width: calc(100% - 400px);
-  padding: 40px 40px;
+  padding: 40px;
   background-color: #fff;
   border-radius: 4px;
   box-shadow: 0 0 30px rgba(153, 163, 174, 0.06);
@@ -94,7 +99,6 @@ div {
   height: 50px;
   box-shadow: inset 0 -2px 0 0 #e9e9e9;
   font-size: 16px;
-  font-style: normal;
   font-weight: 700;
   line-height: 19px;
   text-decoration: none;

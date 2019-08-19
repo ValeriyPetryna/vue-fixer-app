@@ -59,9 +59,7 @@
           </form>
           <div class="results">
             <div class="category">
-              <p class="category__text">
-                show map
-              </p>
+               <router-link class="category__text" to="/search-map">show map</router-link>
               <div class="category__button">
                 <input
                   id="price"
@@ -563,8 +561,8 @@ export default {
 
 <style lang="css">
 .search-page {
-  margin: 0;
   display: flex;
+  margin: 0;
 }
 
 body {

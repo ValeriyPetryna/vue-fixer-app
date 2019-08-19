@@ -3,8 +3,10 @@ import Router from 'vue-router';
 import RegistrationComponent from './auth/views/signUp/signUp.vue';
 import LoginComponent from './auth/views/signIn/Login.vue';
 import SearchComponent from './search/views/searchPage.vue';
+import SearchMapComponent from './search/views/results-map.vue';
 import AccountInfoComponent from './profile/views/accountInfo.vue';
 import PersonalInfoComponent from './profile/views/personalInfo.vue';
+import ManageUsersComponent from './admin/views/manageUsers.vue';
 
 Vue.use(Router);
 
@@ -14,12 +16,27 @@ export default new Router({
     {
       path: '/signup',
       name: 'signup',
-      component: RegistrationComponent,
+      component: RegistrationComponent
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: ManageUsersComponent,
+      meta: {
+        breadcrumb: [
+          {
+            name: 'Home'
+          },
+          {
+            name: 'Manage users'
+          }
+        ]
+      }
     },
     {
       path: '/login',
       name: 'login',
-      component: LoginComponent,
+      component: LoginComponent
     },
     {
       path: '/search',
@@ -28,16 +45,34 @@ export default new Router({
       meta: {
         breadcrumb: [
           {
-            name: 'Home',
+            name: 'Home'
           },
           {
-            name: 'Search',
+            name: 'Search'
           },
           {
-            name: 'Results',
+            name: 'Results'
+          }
+        ]
+      }
+    },
+    {
+      path: '/search-map',
+      name: 'search-map',
+      component: SearchMapComponent,
+      meta: {
+        breadcrumb: [
+          {
+            name: 'Home'
           },
-        ],
-      },
+          {
+            name: 'Search'
+          },
+          {
+            name: 'Results'
+          }
+        ]
+      }
     },
     {
       path: '/profile/account',
@@ -46,13 +81,13 @@ export default new Router({
       meta: {
         breadcrumb: [
           {
-            name: 'Home',
+            name: 'Home'
           },
           {
-            name: 'My profile',
-          },
-        ],
-      },
+            name: 'My profile'
+          }
+        ]
+      }
     },
     {
       path: '/profile/personal',
@@ -61,13 +96,13 @@ export default new Router({
       meta: {
         breadcrumb: [
           {
-            name: 'Home',
+            name: 'Home'
           },
           {
-            name: 'My profile',
-          },
-        ],
-      },
+            name: 'My profile'
+          }
+        ]
+      }
     },
     {
       path: '/search2',
@@ -77,17 +112,17 @@ export default new Router({
         breadcrumb: [
           {
             name: 'search',
-            link: 'search',
+            link: 'search'
           },
           {
             name: 'search1',
-            link: 'search1',
+            link: 'search1'
           },
           {
-            name: 'search2',
-          },
-        ],
-      },
-    },
-  ],
+            name: 'search2'
+          }
+        ]
+      }
+    }
+  ]
 });

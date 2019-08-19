@@ -18,12 +18,9 @@
         </section>
         <section class="account">
           <article class="avatar">
-            <img
-              class="photo"
-              src="../../assets/faruh.svg"
-            >
+            <img class="photo" src="../../assets/faruh.svg" />
             <div class="changephoto">
-              <img src="../../assets/Pen.svg">
+              <img src="../../assets/Pen.svg" />
               <a>Change photo</a>
             </div>
           </article>
@@ -33,27 +30,15 @@
                 First Name
               </p>
               <form action>
-                <input
-                  class="holder"
-                  type="text"
-                  placeholder="Faruh"
-                >
+                <input class="holder" type="text" placeholder="Faruh" />
               </form>
             </div>
             <div class="item">
               <p class="title">
                 Title
               </p>
-              <form
-                action="select"
-                method="POST"
-              >
-                <input
-                  class="holder"
-                  type="text"
-                  list="title"
-                  placeholder="Boss"
-                >
+              <form action="select" method="POST">
+                <input class="holder" type="text" list="title" placeholder="Boss" />
                 <datalist id="title">
                   <option>Mr</option>
                   <option>Mrs</option>
@@ -65,16 +50,8 @@
               <p class="title">
                 Country
               </p>
-              <form
-                action="select"
-                method="POST"
-              >
-                <input
-                  class="holderchoose"
-                  type="text"
-                  list="country"
-                  placeholder="USA"
-                >
+              <form action="select" method="POST">
+                <input class="holder holderchoose" type="text" list="country" placeholder="USA" />
                 <datalist id="country">
                   <option>Ukraine</option>
                   <option>France</option>
@@ -89,11 +66,7 @@
                 Last Name
               </p>
               <form action>
-                <input
-                  class="holder"
-                  type="text"
-                  placeholder="Bernandez"
-                >
+                <input class="holder" type="text" placeholder="Bernandez" />
               </form>
             </div>
             <div class="item">
@@ -102,20 +75,11 @@
               </p>
               <div class="mobile-prefix">
                 <div class="country">
-                  <img src="../../assets/Flag.svg">
-                  <img src="../../assets/shape.svg">
+                  <img src="../../assets/Flag.svg" />
+                  <img src="../../assets/shape.svg" />
                 </div>
-                <form
-                  action="select"
-                  method="POST"
-                >
-                  <input
-                    id="right"
-                    class="holder"
-                    type="text"
-                    list="mobile"
-                    placeholder="+65"
-                  >
+                <form action="select" method="POST">
+                  <input id="right" class="holder" type="text" list="mobile" placeholder="+65" />
                   <datalist id="mobile">
                     <option>+65</option>
                     <option>+380</option>
@@ -128,16 +92,8 @@
               <p class="title">
                 Company
               </p>
-              <form
-                action="select"
-                method="POST"
-              >
-                <input
-                  class="holder"
-                  type="text"
-                  list="company"
-                  placeholder="Amazon"
-                >
+              <form action="select" method="POST">
+                <input class="holder" type="text" list="company" placeholder="Amazon" />
                 <datalist id="company">
                   <option>Amazon</option>
                   <option>Google</option>
@@ -162,11 +118,11 @@ export default {
   data() {
     return {
       active: {
-        user: true,
-      },
+        user: true
+      }
     };
   },
-  methods: {},
+  methods: {}
 };
 </script>
 
@@ -185,6 +141,7 @@ export default {
   background-color: #fff;
   border-radius: 4px;
   box-shadow: 0 0 30px rgba(153, 163, 174, 0.06);
+  box-sizing: content-box;
 }
 
 .infopage {
@@ -201,11 +158,8 @@ export default {
   height: 50px;
   box-shadow: inset 0 -2px 0 0 #e9e9e9;
   font-size: 16px;
-  font-style: normal;
   font-weight: 700;
   line-height: 19px;
-  text-decoration: none;
-  letter-spacing: 0.6px;
   text-transform: uppercase;
 }
 .information.active {
@@ -225,14 +179,12 @@ export default {
   margin-top: 50px;
   justify-content: space-between;
   width: 90%;
-  height: 70%;
 }
 
 .infoblock {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 280px;
 }
 
 .avatar {
@@ -263,10 +215,8 @@ export default {
 
 .title {
   font-size: 12px;
-  font-style: normal;
   font-weight: 700;
   line-height: 14px;
-  letter-spacing: 1px;
   text-transform: uppercase;
   color: #546087;
   margin-bottom: 0;
@@ -312,13 +262,13 @@ export default {
 }
 
 .holderchoose {
-  background-image: url('/images/Location.svg');
+  background-image: url('../../assets/Location.svg');
   background-position: 10px 10px;
   background-position: 10px 10px;
   background-repeat: no-repeat;
   padding: 40px;
   margin-top: 4px;
-  width: 280px;
+
   line-height: 40px;
   padding: 0 13px;
   border: 2px solid #f2f2f2;
@@ -327,7 +277,7 @@ export default {
 }
 
 #right {
-  width: 90%;
+  width: 77%;
   margin-left: 20px;
 }
 
