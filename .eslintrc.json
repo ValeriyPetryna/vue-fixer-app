@@ -7,7 +7,7 @@
   "parserOptions": {
     "parser": "babel-eslint"
   },
-  "extends": ["airbnb-base", "plugin:vue/recommended"],
+  "extends": ["airbnb-base", "prettier", "prettier/standard", "plugin:vue/recommended"],
   "rules": {
     "import/no-unresolved": "off",
     "no-unused-vars": "off",
