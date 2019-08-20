@@ -48,4 +48,7 @@ body {
 #app {
   width: 100% !important;
 }
+.views {
+  display: flex;
+}
 </style>

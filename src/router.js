@@ -7,6 +7,7 @@ import SearchMapComponent from './search/views/results-map.vue';
 import AccountInfoComponent from './profile/views/accountInfo.vue';
 import PersonalInfoComponent from './profile/views/personalInfo.vue';
 import ManageUsersComponent from './admin/views/manageUsers.vue';
+import MessengerComponent from './messenger/views/messenger.vue';
 
 Vue.use(Router);
 
@@ -105,21 +106,17 @@ export default new Router({
       }
     },
     {
-      path: '/search2',
-      name: 'search2',
-      component: SearchComponent,
+      path: '/messenger',
+      name: 'messenger',
+      component: MessengerComponent,
       meta: {
         breadcrumb: [
           {
-            name: 'search',
+            name: 'Home',
             link: 'search'
           },
           {
-            name: 'search1',
-            link: 'search1'
-          },
-          {
-            name: 'search2'
+            name: 'Network'
           }
         ]
       }
