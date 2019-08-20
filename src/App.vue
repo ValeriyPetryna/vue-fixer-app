@@ -28,7 +28,6 @@ body {
   width: 100%;
   display: flex;
 }
-
 .page {
   display: flex;
   background: #ffffff;
@@ -39,12 +38,10 @@ body {
   padding: 41px 61px 0px 44px;
   box-sizing: content-box;
 }
-
 .content {
   width: 100%;
   background: #f8f9fb;
 }
-
 #app {
   width: 100% !important;
 }

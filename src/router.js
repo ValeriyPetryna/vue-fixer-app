@@ -103,26 +103,6 @@ export default new Router({
           }
         ]
       }
-    },
-    {
-      path: '/search2',
-      name: 'search2',
-      component: SearchComponent,
-      meta: {
-        breadcrumb: [
-          {
-            name: 'search',
-            link: 'search'
-          },
-          {
-            name: 'search1',
-            link: 'search1'
-          },
-          {
-            name: 'search2'
-          }
-        ]
-      }
     }
   ]
 });
