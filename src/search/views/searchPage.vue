@@ -1,5 +1,5 @@
 <template>
-  <div class="search-page">
+  <div class="views">
     <aside-component :active="active" />
     <section class="content">
       <header-component />
@@ -59,7 +59,12 @@
           </form>
           <div class="results">
             <div class="category">
-               <router-link class="category__text" to="/search-map">show map</router-link>
+              <router-link
+                class="category__text"
+                to="/search-map"
+              >
+                show map
+              </router-link>
               <div class="category__button">
                 <input
                   id="price"
@@ -559,22 +564,10 @@ export default {
 };
 </script>
 
-<style lang="css">
-.search-page {
+<style scoped lang="scss">
+.views {
   display: flex;
   margin: 0;
-}
-
-body {
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
-  width: 100%;
-  display: flex;
-}
-
-.content {
-  width: 100%;
-  background: #f8f9fb;
 }
 
 .page {
@@ -585,17 +578,17 @@ body {
   margin: 62px 124px 0px 142px;
   height: 72vh;
   padding: 41px 61px 0px 44px;
-}
-.page::-webkit-scrollbar {
-  width: 6px;
-  background: #f5f7fa;
-  mix-blend-mode: normal;
-  border-radius: 4px;
-  margin: 6px;
-}
-.page::-webkit-scrollbar-thumb {
-  background-color: #e0e6f0;
-  border-radius: 4px;
+  &::-webkit-scrollbar {
+    width: 6px;
+    background: #f5f7fa;
+    mix-blend-mode: normal;
+    border-radius: 4px;
+    margin: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #e0e6f0;
+    border-radius: 4px;
+  }
 }
 
 .search {
@@ -604,9 +597,11 @@ body {
   margin-right: 3.5%;
   width: 21%;
 }
+
 .search-filters {
   width: 100%;
 }
+
 .search-filters__text {
   margin-bottom: 5px;
   font-family: 'Roboto', sans-serif;
@@ -618,11 +613,13 @@ body {
   text-transform: uppercase;
   color: #546087;
 }
+
 .search-filters__location {
   position: absolute;
   margin-top: 11px;
   margin-left: 5px;
 }
+
 .search-filters__dropdown {
   background: #fcfcfc;
   border: 2px solid #f2f2f2;
@@ -635,11 +632,12 @@ body {
   outline: none;
   width: 100%;
   box-sizing: border-box;
+  &:focus {
+    background-color: #fff;
+    border-left: 2px solid #2a74db;
+  }
 }
-.search-filters__dropdown:focus {
-  background-color: #fff;
-  border-left: 2px solid #2a74db;
-}
+
 .search-filters__button {
   width: 100%;
   height: 42px;
@@ -657,9 +655,6 @@ body {
   flex-direction: column;
   width: 74%;
   margin-left: 3.5%;
-}
-
-.results {
   height: 100%;
   margin: 0 5%;
 }
@@ -670,6 +665,7 @@ body {
   height: 28px;
   justify-content: space-between;
 }
+
 .category__text {
   color: #01134e;
   font-size: 12px;
@@ -679,20 +675,21 @@ body {
   line-height: 14px;
   text-transform: uppercase;
 }
+
 .category__button {
   align-items: center;
   display: flex;
   justify-content: space-around;
   width: 200px;
-}
-.category__button label {
-  color: #000;
-  font-family: Roboto;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 300;
-  letter-spacing: -0.046704px;
-  line-height: 28px;
+  label {
+    color: #000;
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    letter-spacing: -0.046704px;
+    line-height: 28px;
+  }
 }
 
 .workers {
@@ -715,6 +712,7 @@ body {
   margin: 18px 18px 18px 0;
   width: 330px;
 }
+
 .worker__avatar {
   height: 76px;
   width: 76px;
@@ -723,26 +721,27 @@ body {
 
 .info {
   width: 57%;
+  p {
+    color: #000;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 300;
+    letter-spacing: -0.046704px;
+    line-height: 12px;
+  }
 }
-.info p {
-  color: #000;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 300;
-  letter-spacing: -0.046704px;
-  line-height: 12px;
-}
+
 .info__location {
   display: flex;
   align-items: center;
+  img {
+    width: 14px;
+    height: 21px;
+    margin-right: 5px;
+  }
 }
-.info__location img {
-  width: 10px;
-  height: 21px;
-  margin-right: 5px;
-}
-.info__stack,
-.info__price {
+
+.info__stack, .info__price {
   display: flex;
 }
 
@@ -766,10 +765,9 @@ body {
   -webkit-border-radius: 0;
   background-color: #dadada;
   border-radius: 0;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: #dadada;
+  &:hover {
+    background-color: #dadada;
+  }
 }
 
 ::-webkit-resizer {
@@ -783,55 +781,54 @@ body {
   width: 4px;
 }
 
-.category__button input[type='radio']:checked,
-.category__button input[type='radio']:not(:checked) {
-  position: absolute;
-  visibility: hidden;
-}
-.category__button input[type='radio']:checked + label,
-.category__button input[type='radio']:not(:checked) + label {
-  cursor: pointer;
-  display: inline-block;
-  line-height: 20px;
-  padding-left: 1.725rem;
-  position: relative;
-}
-.category__button input[type='radio']:checked + label:before,
-.category__button input[type='radio']:not(:checked) + label:before {
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 100%;
-  content: '';
-  height: 18px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 18px;
-}
-.category__button input[type='radio']:checked + label:after,
-.category__button input[type='radio']:not(:checked) + label:after {
-  -webkit-transition: all 0.2s ease;
-  background: #0ad69c;
-  border-radius: 100%;
-  content: '';
-  height: 12px;
-  left: 4px;
-  position: absolute;
-  top: 4px;
-  transition: all 0.2s ease;
-  width: 12px;
+.category__button input[type='radio'] {
+  &:checked, &:not(:checked) {
+    position: absolute;
+    visibility: hidden;
+  }
+  &:checked + label, &:not(:checked) + label {
+    cursor: pointer;
+    display: inline-block;
+    line-height: 20px;
+    padding-left: 1.725rem;
+    position: relative;
+  }
+  &:checked + label:before, &:not(:checked) + label:before {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 100%;
+    content: '';
+    height: 18px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 18px;
+  }
+  &:checked + label:after, &:not(:checked) + label:after {
+    -webkit-transition: all 0.2s ease;
+    background: #0ad69c;
+    border-radius: 100%;
+    content: '';
+    height: 12px;
+    left: 4px;
+    position: absolute;
+    top: 4px;
+    transition: all 0.2s ease;
+    width: 12px;
+  }
 }
 
-input[type='radio']:not(:checked) + label:after {
-  -webkit-transform: scale(0);
-  opacity: 0;
-  transform: scale(0);
-}
-
-input[type='radio']:checked + label:after {
-  -webkit-transform: scale(1);
-  opacity: 1;
-  transform: scale(1);
+input[type='radio'] {
+  &:not(:checked) + label:after {
+    -webkit-transform: scale(0);
+    opacity: 0;
+    transform: scale(0);
+  }
+  &:checked + label:after {
+    -webkit-transform: scale(1);
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .img-date {

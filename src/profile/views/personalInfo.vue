@@ -18,9 +18,12 @@
         </section>
         <section class="account">
           <article class="avatar">
-            <img class="photo" src="../../assets/faruh.svg" />
+            <img
+              class="photo"
+              src="../../assets/faruh.svg"
+            >
             <div class="changephoto">
-              <img src="../../assets/Pen.svg" />
+              <img src="../../assets/Pen.svg">
               <a>Change photo</a>
             </div>
           </article>
@@ -30,15 +33,27 @@
                 First Name
               </p>
               <form action>
-                <input class="holder" type="text" placeholder="Faruh" />
+                <input
+                  class="holder"
+                  type="text"
+                  placeholder="Faruh"
+                >
               </form>
             </div>
             <div class="item">
               <p class="title">
                 Title
               </p>
-              <form action="select" method="POST">
-                <input class="holder" type="text" list="title" placeholder="Boss" />
+              <form
+                action="select"
+                method="POST"
+              >
+                <input
+                  class="holder"
+                  type="text"
+                  list="title"
+                  placeholder="Boss"
+                >
                 <datalist id="title">
                   <option>Mr</option>
                   <option>Mrs</option>
@@ -50,8 +65,16 @@
               <p class="title">
                 Country
               </p>
-              <form action="select" method="POST">
-                <input class="holder holderchoose" type="text" list="country" placeholder="USA" />
+              <form
+                action="select"
+                method="POST"
+              >
+                <input
+                  class="holder holderchoose"
+                  type="text"
+                  list="country"
+                  placeholder="USA"
+                >
                 <datalist id="country">
                   <option>Ukraine</option>
                   <option>France</option>
@@ -66,7 +89,11 @@
                 Last Name
               </p>
               <form action>
-                <input class="holder" type="text" placeholder="Bernandez" />
+                <input
+                  class="holder"
+                  type="text"
+                  placeholder="Bernandez"
+                >
               </form>
             </div>
             <div class="item">
@@ -75,11 +102,20 @@
               </p>
               <div class="mobile-prefix">
                 <div class="country">
-                  <img src="../../assets/Flag.svg" />
-                  <img src="../../assets/shape.svg" />
+                  <img src="../../assets/Flag.svg">
+                  <img src="../../assets/shape.svg">
                 </div>
-                <form action="select" method="POST">
-                  <input id="right" class="holder" type="text" list="mobile" placeholder="+65" />
+                <form
+                  action="select"
+                  method="POST"
+                >
+                  <input
+                    id="right"
+                    class="holder"
+                    type="text"
+                    list="mobile"
+                    placeholder="+65"
+                  >
                   <datalist id="mobile">
                     <option>+65</option>
                     <option>+380</option>
@@ -92,8 +128,16 @@
               <p class="title">
                 Company
               </p>
-              <form action="select" method="POST">
-                <input class="holder" type="text" list="company" placeholder="Amazon" />
+              <form
+                action="select"
+                method="POST"
+              >
+                <input
+                  class="holder"
+                  type="text"
+                  list="company"
+                  placeholder="Amazon"
+                >
                 <datalist id="company">
                   <option>Amazon</option>
                   <option>Google</option>
@@ -126,16 +170,14 @@ export default {
 };
 </script>
 
-<style scoped lang="css">
+<style scoped lang="scss">
 .profile-page {
   display: flex;
   width: 100%;
 }
+
 .page {
-  display: flex;
-  margin: 80px;
   flex-direction: column;
-  height: 400px;
   width: calc(100% - 400px);
   padding: 40px 40px;
   background-color: #fff;
@@ -161,17 +203,17 @@ export default {
   font-weight: 700;
   line-height: 19px;
   text-transform: uppercase;
-}
-.information.active {
-  box-shadow: inset 0 -2px 0 0 #2a74db;
-}
-.information.active a {
-  color: #01134e;
-  text-decoration: none;
-}
-.information a {
-  color: #ccd0dc;
-  text-decoration: none;
+  &.active {
+    box-shadow: inset 0 -2px 0 0 #2a74db;
+    a {
+      color: #01134e;
+      text-decoration: none;
+    }
+  }
+  a {
+    color: #ccd0dc;
+    text-decoration: none;
+  }
 }
 
 .account {
@@ -203,6 +245,7 @@ export default {
   flex-direction: column;
   justify-content: flex-start;
 }
+
 .item-left {
   margin-left: 80px;
 }
@@ -240,15 +283,15 @@ export default {
   background-color: #fcfcfc;
   padding: 0 13px;
   margin-top: 4px;
-}
-.country input {
-  display: flex;
-  align-items: center;
-  width: 180px;
-  padding: 0 13px;
-  border: 2px solid #f2f2f2;
-  border-radius: 4px;
-  background-color: #fcfcfc;
+  input {
+    display: flex;
+    align-items: center;
+    width: 180px;
+    padding: 0 13px;
+    border: 2px solid #f2f2f2;
+    border-radius: 4px;
+    background-color: #fcfcfc;
+  }
 }
 
 .holder {
@@ -268,7 +311,6 @@ export default {
   background-repeat: no-repeat;
   padding: 40px;
   margin-top: 4px;
-
   line-height: 40px;
   padding: 0 13px;
   border: 2px solid #f2f2f2;

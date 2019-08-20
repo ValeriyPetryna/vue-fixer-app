@@ -1,12 +1,12 @@
 <template>
-  <div class="search-page">
+  <div class="views">
     <aside-component :active="active" />
     <section class="content">
       <header-component />
       <main class="page">
         <div class="page-table">
-          <div class="page-table__search"></div>
-          <div class="page-table"></div>
+          <div class="page-table__search" />
+          <div class="page-table" />
         </div>
       </main>
     </section>
@@ -30,21 +30,9 @@ export default {
 </script>
 
 <style scoped lang="css">
-.search-page {
+.views {
   margin: 0;
   display: flex;
-}
-
-body {
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
-  width: 100%;
-  display: flex;
-}
-
-.content {
-  width: 100%;
-  background: #f8f9fb;
 }
 
 .page {

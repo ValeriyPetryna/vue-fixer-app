@@ -3,76 +3,79 @@
     <aside-component :active="active" />
     <section class="content">
       <header-component />
-      <main>
-        <div class="page">
-          <form class="search">
-            <div class="search-filters">
-              <p class="search-filters__text">
-                Location
-              </p>
-              <img class="search-filters__location" src="../../assets/Location.svg" />
-              <select class="search-filters__dropdown">
-                <option />
-              </select>
-            </div>
-            <div class="search-filters">
-              <p class="search-filters__text">
-                SEARCH
-              </p>
-              <input class="search-filters__dropdown" type="text" placeholder="Type..." />
-            </div>
-            <div class="search-filters">
-              <p class="search-filters__text">
-                CATEGORY
-              </p>
-              <select class="search-filters__dropdown">
-                <option>Subcategory</option>
-              </select>
-            </div>
-            <div class="search-filters">
-              <p class="search-filters__text">
-                SERVICE
-              </p>
-              <select class="search-filters__dropdown">
-                <option>3 services</option>
-              </select>
-            </div>
-            <div class="search-filters">
-              <p class="search-filters__text">
-                PERIOD
-              </p>
-              <input class="search-filters__dropdown" placeholder="11/01/19 - 14/01/19" />
-            </div>
-            <button class="search-filters__button">
-              SEARCH
-            </button>
-          </form>
-          <div class="results">
-            <div class="category">
-              <p class="category__text">
-                show map
-              </p>
-              <div class="category__button">
-                <input id="price" type="radio" name="category" value="by price" />
-                <label for="price">by price</label>
-                <input id="rating" type="radio" name="category" value="by rating" />
-                <label for="rating">by rating</label>
-              </div>
-            </div>
+      <div class="page">
+        <form class="search">
+          <div class="search-filters">
+            <p class="search-filters__text">
+              Location
+            </p>
+            <img
+              class="search-filters__location"
+              src="../../assets/Location.svg"
+            >
+            <select class="search-filters__dropdown">
+              <option />
+            </select>
           </div>
+          <div class="search-filters">
+            <p class="search-filters__text">
+              SEARCH
+            </p>
+            <input
+              class="search-filters__dropdown"
+              type="text"
+              placeholder="Type..."
+            >
+          </div>
+          <div class="search-filters">
+            <p class="search-filters__text">
+              CATEGORY
+            </p>
+            <select class="search-filters__dropdown">
+              <option>Subcategory</option>
+            </select>
+          </div>
+          <div class="search-filters">
+            <p class="search-filters__text">
+              SERVICE
+            </p>
+            <select class="search-filters__dropdown">
+              <option>3 services</option>
+            </select>
+          </div>
+          <div class="search-filters">
+            <p class="search-filters__text">
+              PERIOD
+            </p>
+            <input
+              class="search-filters__dropdown"
+              placeholder="11/01/19 - 14/01/19"
+            >
+          </div>
+          <button class="search-filters__button">
+            SEARCH
+          </button>
+        </form>
+        <div class="results">
+          <google-map />
         </div>
-      </main>
+      </div>
     </section>
   </div>
 </template>
 
 <script>
+import GoogleMap from '../components/map';
 import asideComponent from '../../components/asideComponent';
 import headerComponent from '../../components/headerComponent';
 
 export default {
-  name: 'Search',
-  components: { asideComponent, headerComponent },
+  name: 'GoogleMaps',
+  components: {
+    asideComponent,
+    headerComponent,
+    GoogleMap
+  },
   data() {
     return {
       active: {
@@ -84,22 +87,10 @@ export default {
 };
 </script>
 
-<style lang="css">
+<style scoped lang="scss">
 .search-page {
-  margin: 0;
   display: flex;
-}
-
-body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
-  width: 100%;
-  display: flex;
-}
-
-.content {
-  width: 100%;
-  background: #f8f9fb;
 }
 
 .page {
@@ -110,17 +101,17 @@ body {
   margin: 62px 124px 0px 142px;
   height: 72vh;
   padding: 41px 61px 0px 44px;
-}
-.page::-webkit-scrollbar {
-  width: 6px;
-  background: #f5f7fa;
-  mix-blend-mode: normal;
-  border-radius: 4px;
-  margin: 6px;
-}
-.page::-webkit-scrollbar-thumb {
-  background-color: #e0e6f0;
-  border-radius: 4px;
+  &::-webkit-scrollbar {
+    width: 6px;
+    background: #f5f7fa;
+    mix-blend-mode: normal;
+    border-radius: 4px;
+    margin: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #e0e6f0;
+    border-radius: 4px;
+  }
 }
 
 .search {
@@ -129,9 +120,11 @@ body {
   margin-right: 3.5%;
   width: 21%;
 }
+
 .search-filters {
   width: 100%;
 }
+
 .search-filters__text {
   margin-bottom: 5px;
   font-family: 'Roboto', sans-serif;
@@ -143,11 +136,13 @@ body {
   text-transform: uppercase;
   color: #546087;
 }
+
 .search-filters__location {
   position: absolute;
   margin-top: 11px;
   margin-left: 5px;
 }
+
 .search-filters__dropdown {
   background: #fcfcfc;
   border: 2px solid #f2f2f2;
@@ -160,11 +155,12 @@ body {
   outline: none;
   width: 100%;
   box-sizing: border-box;
+  &:focus {
+    background-color: #fff;
+    border-left: 2px solid #2a74db;
+  }
 }
-.search-filters__dropdown:focus {
-  background-color: #fff;
-  border-left: 2px solid #2a74db;
-}
+
 .search-filters__button {
   width: 100%;
   height: 42px;
@@ -182,98 +178,8 @@ body {
   flex-direction: column;
   width: 74%;
   margin-left: 3.5%;
-}
-
-.results {
   height: 100%;
   margin: 0 5%;
-}
-
-.category {
-  align-items: center;
-  display: flex;
-  height: 28px;
-  justify-content: space-between;
-}
-.category__text {
-  color: #01134e;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  letter-spacing: 0.28px;
-  line-height: 14px;
-  text-transform: uppercase;
-}
-.category__button {
-  align-items: center;
-  display: flex;
-  justify-content: space-around;
-  width: 200px;
-}
-.category__button label {
-  color: #000;
-  font-family: Roboto;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 300;
-  letter-spacing: -0.046704px;
-  line-height: 28px;
-}
-
-.workers {
-  display: flex;
-  flex-wrap: wrap;
-  height: 90%;
-  justify-content: space-between;
-  min-width: 750px;
-  overflow: auto;
-}
-
-.worker {
-  border: 1px solid rgba(237, 237, 237, 0.2);
-  border-radius: 2px;
-  box-shadow: 10px 9px 30px rgba(23, 31, 76, 0.06);
-  box-sizing: border-box;
-  display: flex;
-  height: 150px;
-  justify-content: space-around;
-  margin: 18px 18px 18px 0;
-  width: 330px;
-}
-.worker__avatar {
-  height: 76px;
-  width: 76px;
-  margin-top: 33px;
-}
-
-.info {
-  width: 57%;
-}
-.info p {
-  color: #000;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 300;
-  letter-spacing: -0.046704px;
-  line-height: 12px;
-}
-.info__location {
-  display: flex;
-  align-items: center;
-}
-.info__location img {
-  width: 10px;
-  height: 21px;
-  margin-right: 5px;
-}
-.info__stack,
-.info__price {
-  display: flex;
-}
-
-.inf {
-  color: #01134e;
-  font-weight: normal;
 }
 
 ::-webkit-scrollbar-button {
@@ -291,10 +197,9 @@ body {
   -webkit-border-radius: 0;
   background-color: #dadada;
   border-radius: 0;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: #dadada;
+  &:hover {
+    background-color: #dadada;
+  }
 }
 
 ::-webkit-resizer {
@@ -306,62 +211,5 @@ body {
 
 ::-webkit-scrollbar {
   width: 4px;
-}
-
-.category__button input[type='radio']:checked,
-.category__button input[type='radio']:not(:checked) {
-  position: absolute;
-  visibility: hidden;
-}
-.category__button input[type='radio']:checked + label,
-.category__button input[type='radio']:not(:checked) + label {
-  cursor: pointer;
-  display: inline-block;
-  line-height: 20px;
-  padding-left: 1.725rem;
-  position: relative;
-}
-.category__button input[type='radio']:checked + label:before,
-.category__button input[type='radio']:not(:checked) + label:before {
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 100%;
-  content: '';
-  height: 18px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 18px;
-}
-.category__button input[type='radio']:checked + label:after,
-.category__button input[type='radio']:not(:checked) + label:after {
-  -webkit-transition: all 0.2s ease;
-  background: #0ad69c;
-  border-radius: 100%;
-  content: '';
-  height: 12px;
-  left: 4px;
-  position: absolute;
-  top: 4px;
-  transition: all 0.2s ease;
-  width: 12px;
-}
-
-input[type='radio']:not(:checked) + label:after {
-  -webkit-transform: scale(0);
-  opacity: 0;
-  transform: scale(0);
-}
-
-input[type='radio']:checked + label:after {
-  -webkit-transform: scale(1);
-  opacity: 1;
-  transform: scale(1);
-}
-
-.img-date {
-  left: 19px;
-  position: absolute;
-  top: 27px;
 }
 </style>

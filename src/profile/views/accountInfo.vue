@@ -23,7 +23,11 @@
                 Username
               </p>
               <form action>
-                <input class="holder" type="text" placeholder="sarahbarnez" />
+                <input
+                  class="holder"
+                  type="text"
+                  placeholder="sarahbarnez"
+                >
               </form>
             </div>
           </article>
@@ -33,7 +37,11 @@
                 E-mail
               </p>
               <form action>
-                <input class="holder" type="text" placeholder="sarah228@gmail.com" />
+                <input
+                  class="holder"
+                  type="text"
+                  placeholder="sarah228@gmail.com"
+                >
               </form>
             </div>
             <div class="item-left">
@@ -68,21 +76,20 @@ export default {
 };
 </script>
 
-<style scoped lang="css">
+<style scoped lang="scss">
 .profile-page {
   display: flex;
   width: 100%;
 }
+
 .page {
-  display: flex;
-  margin: 80px;
   flex-direction: column;
-  height: 400px;
   width: calc(100% - 400px);
-  padding: 40px;
+  padding: 40px 40px;
   background-color: #fff;
   border-radius: 4px;
   box-shadow: 0 0 30px rgba(153, 163, 174, 0.06);
+  box-sizing: content-box;
 }
 
 .infopage {
@@ -104,17 +111,17 @@ export default {
   text-decoration: none;
   letter-spacing: 0.6px;
   text-transform: uppercase;
-}
-.information.active {
-  box-shadow: inset 0 -2px 0 0 #2a74db;
-}
-.information.active a {
-  color: #01134e;
-  text-decoration: none;
-}
-.information a {
-  color: #ccd0dc;
-  text-decoration: none;
+  &.active {
+    box-shadow: inset 0 -2px 0 0 #2a74db;
+    a {
+      color: #01134e;
+      text-decoration: none;
+    }
+  }
+  a {
+    color: #ccd0dc;
+    text-decoration: none;
+  }
 }
 
 .account {
@@ -134,6 +141,7 @@ export default {
   flex-direction: column;
   justify-content: flex-start;
 }
+
 .item-left {
   margin-left: 80px;
   width: 100%;
@@ -144,6 +152,7 @@ export default {
   justify-content: flex-end;
   margin-top: 50px;
 }
+
 .change-password a {
   color: #01134e;
   text-decoration: none;
@@ -173,17 +182,5 @@ export default {
 #right {
   width: 90%;
   margin-left: 20px;
-}
-
-body {
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
-  width: 100%;
-  display: flex;
-}
-
-.content {
-  width: 100%;
-  background: #f8f9fb;
 }
 </style>

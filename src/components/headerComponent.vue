@@ -20,35 +20,19 @@ import breadcrumbs from './breadcrumbs';
 export default {
   name: 'HeaderComponent',
   components: { breadcrumbs },
-  props: {},
+  props: {}
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="css">
-.search-page {
-  margin: 0;
-  display: flex;
-}
-
-body {
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
-  width: 100%;
-  display: flex;
-}
-
-.content {
-  width: 100%;
-  background: #f8f9fb;
-}
-
+<style scoped lang="scss">
 .navbar {
   display: flex;
   width: 100%;
   height: 60.94px;
   border-bottom: 1px solid #dae4f2;
 }
+
 .navbar-menu {
   display: inline-flex;
   align-items: center;
@@ -62,10 +46,12 @@ body {
   margin-right: 100px;
   align-items: center;
 }
+
 .navbar-user__avatar {
   display: flex;
   padding: 10px;
 }
+
 .navbar-user__name {
   padding-right: 15px;
 }
