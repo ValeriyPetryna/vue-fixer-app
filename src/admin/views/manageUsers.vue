@@ -15,10 +15,7 @@
                 hide-action
                 item-key="fistName"
               >
-                <template
-                  slot="items"
-                  slot-scope="props"
-                >
+                <template slot="items" slot-scope="props">
                   <tr>
                     <td>{{ props.item.firstName }}</td>
                     <td>{{ format(props.item.lastName) }}</td>
