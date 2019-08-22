@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import RegistrationComponent from './auth/views/signUp/signUp.vue';
+import SignUp2Component from './auth/views/signUp/signUp2.vue';
+import SignUp3Component from './auth/views/signUp/signUp3.vue';
 import LoginComponent from './auth/views/signIn/Login.vue';
 import SearchComponent from './search/views/searchPage.vue';
 import SearchMapComponent from './search/views/results-map.vue';
@@ -18,6 +20,16 @@ export default new Router({
       path: '/signup',
       name: 'signup',
       component: RegistrationComponent
+    },
+    {
+      path: '/signup2',
+      name: 'signup2',
+      component: SignUp2Component
+    },
+    {
+      path: '/signup3',
+      name: 'signup3',
+      component: SignUp3Component
     },
     {
       path: '/admin',

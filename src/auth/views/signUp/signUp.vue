@@ -1,9 +1,6 @@
 <template>
   <div>
-    <form
-      method="get"
-      @submit.prevent="login"
-    >
+    <form>
       <main class="wrapper">
         <nav class="navbar">
           <div class="logo-container">
@@ -22,33 +19,55 @@
           </div>
         </nav>
         <div class="container">
-          <form class="login-form">
+          <form
+            class="login-form"
+            @submit.prevent="FirstStage"
+          >
             <h1 class="login-form__title">
               Sign up
             </h1>
             <div class="fullname">
               <input
+                v-model="user.name"
+                v-validate="'required'"
                 class="login-form__input"
                 type="text"
                 placeholder="First name"
+                name="name"
               >
+              <span class="validation">{{ errors.first('name') }}</span>
               <input
+                v-model="user.surname"
+                v-validate="'required'"
                 class="login-form__input right"
                 type="text"
                 placeholder="Last name"
+                name="surname"
               >
+              <span class="validation">{{ errors.first('surname') }}</span>
             </div>
 
             <input
+              v-model="user.username"
+              v-validate="'required'"
               class="login-form__input"
               type="text"
               placeholder="Username"
+              name="username"
             >
+            <span class="validation">{{ errors.first('username') }}</span>
             <input
+              v-model="user.email"
+              v-validate="{
+                required: true,
+                regex: /^(\S+)@([a-z0-9-]+)(\.)([a-z]{2,4})(\.?)([a-z]{0,4})+$/
+              }"
               class="login-form__input"
               type="text"
               placeholder="E-mail"
+              name="email"
             >
+            <span class="validation">{{ errors.first('email') }}</span>
             <button
               class="login-form__submit"
               type="submit"
@@ -69,31 +88,39 @@ export default {
   data() {
     return {
       user: {
-        email: '',
-        password: '',
-      },
+        name: '',
+        surname: '',
+        username: '',
+        email: ''
+      }
     };
   },
-  methods: {
-    login() {
-      setTimeout(() => {
-        this.saveUser({
-          token: 'asdaskmdoisamdiua78dya78sd',
-          user: {
-            firstName: 'Vasya',
-            lastName: 'Pupkin',
-            photo: '',
-          },
-        });
-      }, 2000);
-    },
-    saveUser(user) {
-      localStorage.setItem('user', JSON.stringify(user));
-      api.init('https://swapi.co/api');
-      api.setHeader();
-      this.$router.push('/signin');
-    },
+  mounted() {
+    api.init('http://localhost:3000/');
   },
+  methods: {
+    FirstStage() {
+      this.$validator.validate().then(valid => {
+        if (!valid) {
+          console.log('not valid');
+        } else {
+          api
+            .post('/accounts/check-email', this.user)
+            .then(res => {
+              if (res.data.people.length === 0) {
+                localStorage.setItem('registration', JSON.stringify(this.user));
+                this.$router.push('/signup2');
+              } else {
+                alert('This mail is busy');
+              }
+            })
+            .catch(err => {
+              alert(err);
+            });
+        }
+      });
+    }
+  }
 };
 </script>
 
