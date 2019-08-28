@@ -8,6 +8,7 @@ import SearchComponent from './search/views/searchPage.vue';
 import SearchMapComponent from './search/views/results-map.vue';
 import AccountInfoComponent from './profile/views/accountInfo.vue';
 import PersonalInfoComponent from './profile/views/personalInfo.vue';
+import ProfileComponent from './profile/views/profile.vue';
 import ManageUsersComponent from './admin/views/manageUsers.vue';
 import MessengerComponent from './messenger/views/messenger.vue';
 
@@ -106,6 +107,21 @@ export default new Router({
       path: '/profile/personal',
       name: 'personal',
       component: PersonalInfoComponent,
+      meta: {
+        breadcrumb: [
+          {
+            name: 'Home'
+          },
+          {
+            name: 'My profile'
+          }
+        ]
+      }
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: ProfileComponent,
       meta: {
         breadcrumb: [
           {
