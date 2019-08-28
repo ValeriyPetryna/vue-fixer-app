@@ -69,40 +69,42 @@ export default {
     return {
       user: {
         email: '',
-        password: '',
-      },
+        password: ''
+      }
     };
+  },
+  mounted() {
+    api.init('http://localhost:3000');
   },
   methods: {
     login() {
-      this.$validator.validate().then((valid) => {
+      this.$validator.validate().then(valid => {
         if (valid) {
           api
-            .post('http://localhost:3000/api/auth/sign-in', this.user)
-            .then((res) => {
+            .post('http://localhost:3000/accounts/sign-in', this.user)
+            .then(res => {
               if (!res.data.error) {
                 const { data } = res;
                 this.saveUser({
                   token: data.token,
-                  user: data.user,
+                  user: data.user
                 });
               }
             })
-            .catch((err) => {
-              alert(`Form not submitted + ${err}`);
+            .catch(err => {
+              alert(`Form is not submitted + ${err}`);
             });
         } else {
-          this.$refs.emailInput.focus();
-          this.valide.show = true;
+          console.log('err');
         }
       });
     },
     saveUser(user) {
       localStorage.setItem('user', JSON.stringify(user));
       api.setHeader();
-      this.$router.push('/signin');
-    },
-  },
+      this.$router.push('/search');
+    }
+  }
 };
 </script>
 

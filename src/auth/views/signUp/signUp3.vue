@@ -2,17 +2,31 @@
   <main class="wrapper">
     <nav class="navbar">
       <div class="logo-container">
-        <img class="logo-container__image" src="images/myfixerlogo.svg" />
+        <img
+          class="logo-container__image"
+          src="@/assets/myfixerlogo.svg"
+        >
       </div>
       <div class="auth">
-        <p class="auth__text">Already have an account?</p>
-        <a class="auth__link" href="signin1.html">Log in</a>
+        <p class="auth__text">
+          Already have an account?
+        </p>
+        <a class="auth__link"><router-link to="/login">Log In</router-link></a>
       </div>
     </nav>
-    <div class="container-circle"><img class="container-circle" src="images/Group.svg" /></div>
+    <div class="container-circle">
+      <img
+        class="container-circle"
+        src="@/assets/Group.svg"
+      >
+    </div>
     <div class="container-circle__text">
-      <p class="container-circle__text--title">You are almost ready to go!</p>
-      <p class="auth__text">Please check your email to activate your account</p>
+      <p class="container-circle__text--title">
+        You are almost ready to go!
+      </p>
+      <p class="auth__text">
+        Please check your email to activate your account
+      </p>
     </div>
   </main>
 </template>
@@ -21,6 +35,7 @@
 import api from '@/shared/services/api.services';
 
 export default {
+  name: 'SIgnUp3',
   data() {
     return {
       user: {
@@ -31,32 +46,8 @@ export default {
       }
     };
   },
-  mounted() {
-    api.init('http://localhost:3000/');
-  },
-  methods: {
-    FirstStage() {
-      this.$validator.validate().then(valid => {
-        if (!valid) {
-          console.log('not valid');
-        } else {
-          api
-            .post('/accounts/check-email', this.user)
-            .then(res => {
-              if (res.data.people.length === 0) {
-                localStorage.setItem('registration', JSON.stringify(this.user));
-                this.$router.push('/signup2');
-              } else {
-                alert('This mail is busy');
-              }
-            })
-            .catch(err => {
-              alert(err);
-            });
-        }
-      });
-    }
-  }
+  mounted() {},
+  methods: {}
 };
 </script>
 
