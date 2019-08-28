@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar">
     <aside class="sidebar-logo">
-      <div>
+      <div @click="logout">
         <img
           class="image"
           src="../assets/Logo.svg"
@@ -51,7 +51,12 @@ export default {
     active: Object
   },
   computed: {},
-  methods: {}
+  methods: {
+    logout() {
+      localStorage.removeItem('user');
+      this.$router.push('/login');
+    }
+  }
 };
 </script>
 
