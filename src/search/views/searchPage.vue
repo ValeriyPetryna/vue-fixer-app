@@ -60,7 +60,7 @@ export default {
   mounted() {
     api.init('http://localhost:3000/');
     api.get(`/search/people`).then(res => {
-      this.workers = res.data.allPeople;
+      this.workers = res.data.allUsers;
     });
   },
   methods: {
