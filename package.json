@@ -12,9 +12,11 @@
     "core-js": "^2.6.5",
     "vee-validate": "^2.2.15",
     "vue": "^2.6.10",
+    "vue-password-strength-meter": "^1.5.0",
     "vue-router": "^3.0.3",
     "vue2-google-maps": "^0.10.7",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.10.0",

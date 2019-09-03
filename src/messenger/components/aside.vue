@@ -2,37 +2,24 @@
   <div class="sidebar">
     <aside class="sidebar-logo">
       <div>
-        <img
-          class="image"
-          src="@/assets/logo.svg"
-        >
+        <img class="image" src="@/assets/logo.svg" />
       </div>
     </aside>
     <aside class="sidebar-tools">
-      <router-link
-        class="sidebar-tools__item"
-        to="/calendar"
-      >
-        <img
-          src="@/assets/Vector.svg"
-        >
+      <router-link class="sidebar-tools__item" to="/calendar">
+        <img src="@/assets/Vector.svg" />
       </router-link>
-      <router-link
-        class="sidebar-tools__item"
-        to="/profile/account"
-      >
-        <img
-          src="@/assets/myprofile.svg"
-        >
+      <router-link class="sidebar-tools__item" to="/profile">
+        <img src="@/assets/myprofile.svg" />
       </router-link>
       <a class="sidebar-tools__item">
-        <img src="@/assets/handyman-tools.svg">
+        <img src="@/assets/handyman-tools.svg" />
       </a>
       <a class="sidebar-tools__item">
-        <img src="@/assets/team-2.svg">
+        <img src="@/assets/team-2.svg" />
       </a>
       <a class="sidebar-tools__item active">
-        <img src="@/assets/messages.svg">
+        <img src="@/assets/messages.svg" />
       </a>
     </aside>
   </div>

@@ -86,7 +86,8 @@ export default new Router({
       meta: {
         breadcrumb: [
           {
-            name: 'Home'
+            name: 'Home',
+            link: '/search'
           },
           {
             name: 'My profile'

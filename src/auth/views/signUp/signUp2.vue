@@ -26,15 +26,18 @@
               v-validate="'required'"
               class="login-form__input"
               type="password"
+              ref="password"
               placeholder="Create a password"
               name="password"
             />
+            <password v-model="password" :strength-meter-only="true" />
             <span class="validation">{{ errors.first('password') }}</span>
             <input
               class="login-form__input"
               type="password"
               placeholder="Confirm password"
               name="confirmPassword"
+              v-validate="'required|confirmed:password'"
             />
             <span class="validation">{{ errors.first('confirmPassword') }}</span>
             <label class="checkbox">
@@ -42,15 +45,20 @@
                 <p class="auth__text">I agree to the myFixer.com</p>
                 <a class="auth__link">Terms of Service </a>
               </div>
-              <input type="checkbox" checked="checked" /><span class="checkmark" />
+              <input type="checkbox" checked="checked" id="checkTerms" ref="checkTerms" /><span
+                class="checkmark"
+              />
             </label>
             <label class="checkbox">
               <div class="checkbox-text">
                 <p class="auth__text">I agree to the myFixer.com</p>
                 <a class="auth__link">Privacy Policy</a>
               </div>
-              <input type="checkbox" checked="" /><span class="checkmark" /> </label
-            ><img class="recaptcha" src="@/assets/recaptcha.svg" />
+              <input type="checkbox" checked="" id="checkPolicy" ref="checkPolicy" /><span
+                class="checkmark"
+              />
+            </label>
+            <img class="recaptcha" src="@/assets/recaptcha.svg" />
             <button class="login-form__submit" type="submit">
               Done!
             </button>
@@ -63,9 +71,11 @@
 
 <script>
 import api from '@/shared/services/api.services';
+import Password from 'vue-password-strength-meter';
 
 export default {
   name: 'SignUp2',
+  components: { Password },
   data() {
     return {
       password: ''
@@ -77,7 +87,7 @@ export default {
   methods: {
     Second() {
       this.$validator.validate().then(valid => {
-        if (valid) {
+        if (valid && this.$refs.checkTerms.checked && this.$refs.checkPolicy.checked) {
           const user = JSON.parse(localStorage.getItem('registration'));
 
           user.password = this.password;
@@ -99,7 +109,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 body {
   padding: 0;
   margin: 0;
@@ -120,6 +130,11 @@ body {
 .logo-container__image {
   width: 138px;
   margin-left: 140px;
+}
+
+.validation {
+  color: red;
+  margin: 5px;
 }
 
 .auth {
@@ -336,5 +351,8 @@ body {
   text-align: center;
   letter-spacing: 0.4px;
   color: #2a74db;
+}
+.Password__strength-meter {
+  height: 30px;
 }
 </style>
