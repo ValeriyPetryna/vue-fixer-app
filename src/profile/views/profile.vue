@@ -5,12 +5,18 @@
       <header-component class="navbar" />
       <main class="page">
         <section class="infopage">
-          <article class="information" v-bind:class="{ active: active.personal }">
+          <article
+            class="information"
+            :class="{ active: active.personal }"
+          >
             <p @click="switchComponent">
               PERSONAL INFORMATION
             </p>
           </article>
-          <article class="information" v-bind:class="{ active: active.account }">
+          <article
+            class="information"
+            :class="{ active: active.account }"
+          >
             <p @click="switchComponent">
               ACCOUNT INFORMATION
             </p>
@@ -30,7 +36,7 @@ import accountComponent from '../components/accountComponent';
 import personalComponent from '../components/personalComponent';
 
 export default {
-  name: 'profile',
+  name: 'Profile',
   components: { asideComponent, headerComponent, accountComponent, personalComponent },
   data() {
     return {

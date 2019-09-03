@@ -1,47 +1,52 @@
 <template>
-  <div class="results">
-    <div class="workers">
-      <article class="worker">
-        <img class="worker__avatar" src="../../assets/barry.svg" alt />
-        <div class="info">
-          <span class="info__name">
-            Richard Thompson
-            <img class="img__star" src="../../assets/gold.svg" />
-          </span>
-          <div class="info__location">
-            <img src="../../assets/Location.svg" alt />
-            <p>Vancouver, Canada</p>
-          </div>
-          <div class="info__stack">
-            <p class="inf">
-              Stack:
-            </p>
-            <p>Python, Django, Sketch</p>
-          </div>
-          <div class="info__price">
-            <p class="inf">
-              Base Daily Rate:
-            </p>
-            <p>$ 1,200 USD</p>
-          </div>
-        </div>
-      </article>
+  <div class="worker">
+    <img :src="worker.photo" class="worker__avatar" />
+    <div class="info">
+      <span class="info__name">
+        {{ worker.name + ' ' + worker.surname }}
+        <img class="img__star" src="../../assets/gold.svg" />
+        <!-- raiting -->
+      </span>
+      <div class="info__location">
+        <svg
+          width="12"
+          height="15"
+          viewBox="0 0 7 10"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M3.49985 0C1.57013 0 3.63724e-08 1.57013 3.63724e-08 3.50005C3.63724e-08 4.00345 0.103034 4.48408 0.306086 4.92871C1.18115 6.84355 2.85888 8.86522 3.35236 9.43916C3.38933 9.48207 3.44323 9.50678 3.49995 9.50678C3.55667 9.50678 3.61057 9.48207 3.64755 9.43916C4.14083 8.86532 5.81856 6.84375 6.69391 4.92871C6.89706 4.48408 7 4.00345 7 3.50005C6.99981 1.57013 5.42968 0 3.49985 0ZM3.49985 5.31799C2.49744 5.31799 1.68182 4.50237 1.68182 3.49995C1.68182 2.49744 2.49744 1.68182 3.49985 1.68182C4.50227 1.68182 5.31789 2.49744 5.31789 3.49995C5.31798 4.50237 4.50237 5.31799 3.49985 5.31799Z"
+            fill="#2A74DB"
+          />
+        </svg>
+        <p>{{ worker.country }}</p>
+      </div>
+      <div class="info__stack">
+        <p class="inf">
+          Stack:
+        </p>
+        <p>{{ worker.stack }}</p>
+        <router-link :to="'profile/' + worker._id">
+          More
+        </router-link>
+      </div>
+      <div class="info__price">
+        <p class="inf">
+          Base Daily Rate:
+        </p>
+        <p>{{ worker.dailyRate }}</p>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'SearchComponent',
-  data() {
-    return {
-      active: {
-        search: true
-      }
-    };
-  },
-
-  mounted() {}
+  props: {
+    inp: String,
+    worker: Object
+  }
 };
 </script>
 
@@ -238,3 +243,4 @@ input[type='radio'] {
   top: 27px;
 }
 </style>
+

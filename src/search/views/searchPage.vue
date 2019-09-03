@@ -10,7 +10,9 @@
             <p @click="switchComponent">
               {{ showContent }}
             </p>
-            <search-component v-if="!active.map" />
+            <div class="workers">
+              <worker-component v-for="worker in workers" :key="worker._id" :worker="worker" />
+            </div>
             <google-map v-if="active.map" />
           </div>
         </div>
@@ -25,12 +27,22 @@ import headerComponent from '../../components/headerComponent';
 import formComponent from '../components/formComponent';
 import searchComponent from '../components/searchComponent';
 import GoogleMap from '../components/map';
+import workerComponent from '../components/workerComponent';
+import api from '../../shared/services/api.services';
 
 export default {
   name: 'Search',
-  components: { asideComponent, headerComponent, formComponent, searchComponent, GoogleMap },
+  components: {
+    asideComponent,
+    headerComponent,
+    formComponent,
+    searchComponent,
+    GoogleMap,
+    workerComponent
+  },
   data() {
     return {
+      workers: undefined,
       active: {
         search: true,
         map: false
@@ -41,10 +53,15 @@ export default {
     showContent() {
       if (!this.active.map) {
         return 'SHOW MAP';
-      } 
-        return 'SHOW RESULTS';
-      
+      }
+      return 'SHOW RESULTS';
     }
+  },
+  mounted() {
+    api.init('http://localhost:3000/');
+    api.get(`/search/people`).then(res => {
+      this.workers = res.data.allPeople;
+    });
   },
   methods: {
     switchComponent() {
@@ -86,5 +103,13 @@ export default {
     background-color: #e0e6f0;
     border-radius: 4px;
   }
+}
+.workers {
+  display: flex;
+  flex-wrap: wrap;
+  height: 90%;
+  justify-content: space-between;
+  min-width: 750px;
+  overflow: auto;
 }
 </style>
