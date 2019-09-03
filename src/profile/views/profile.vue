@@ -5,18 +5,12 @@
       <header-component class="navbar" />
       <main class="page">
         <section class="infopage">
-          <article
-            class="information"
-            :class="{ active: active.personal }"
-          >
+          <article class="information" :class="{ active: active.personal }">
             <p @click="switchComponent">
               PERSONAL INFORMATION
             </p>
           </article>
-          <article
-            class="information"
-            :class="{ active: active.account }"
-          >
+          <article class="information" :class="{ active: active.account }">
             <p @click="switchComponent">
               ACCOUNT INFORMATION
             </p>
@@ -44,7 +38,8 @@ export default {
         user: true,
         account: false,
         personal: true
-      }
+      },
+      user: JSON.parse(localStorage.getItem('user'))
     };
   },
   methods: {

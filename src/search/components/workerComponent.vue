@@ -45,7 +45,8 @@
 export default {
   props: {
     inp: String,
-    worker: Object
+    worker: Object,
+    searchHero: ''
   }
 };
 </script>

@@ -10,10 +10,10 @@
             <p @click="switchComponent">
               {{ showContent }}
             </p>
-            <div class="workers">
+            <div v-if="active.map"><google-map /></div>
+            <div v-if="!active.map" class="workers">
               <worker-component v-for="worker in workers" :key="worker._id" :worker="worker" />
             </div>
-            <google-map v-if="active.map" />
           </div>
         </div>
       </main>
