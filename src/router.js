@@ -68,54 +68,15 @@ export default new Router({
             name: 'Results'
           }
         ]
-      }
-    },
-    {
-      path: '/search-map',
-      name: 'search-map',
-      component: SearchMapComponent,
-      meta: {
-        breadcrumb: [
-          {
-            name: 'Home'
-          },
-          {
-            name: 'Search'
-          },
-          {
-            name: 'Results'
-          }
-        ]
-      }
-    },
-    {
-      path: '/profile/account',
-      name: 'account',
-      component: AccountInfoComponent,
-      meta: {
-        breadcrumb: [
-          {
-            name: 'Home'
-          },
-          {
-            name: 'My profile'
-          }
-        ]
-      }
-    },
-    {
-      path: '/profile/personal',
-      name: 'personal',
-      component: PersonalInfoComponent,
-      meta: {
-        breadcrumb: [
-          {
-            name: 'Home'
-          },
-          {
-            name: 'My profile'
-          }
-        ]
+      },
+      beforeEnter(to, from, next) {
+        if (localStorage.getItem('user')) {
+          next();
+        } else {
+          next({
+            path: '/login'
+          });
+        }
       }
     },
     {
@@ -131,6 +92,15 @@ export default new Router({
             name: 'My profile'
           }
         ]
+      },
+      beforeEnter(to, from, next) {
+        if (localStorage.getItem('user')) {
+          next();
+        } else {
+          next({
+            path: '/login'
+          });
+        }
       }
     },
     {
@@ -141,7 +111,7 @@ export default new Router({
         breadcrumb: [
           {
             name: 'Home',
-            link: 'search'
+            link: 'Search'
           },
           {
             name: 'Network'
