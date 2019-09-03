@@ -2,27 +2,16 @@
   <div class="sidebar">
     <aside class="sidebar-logo">
       <div @click="logout">
-        <img
-          class="image"
-          src="../assets/Logo.svg"
-        >
+        <img class="image" src="../assets/Logo.svg" />
       </div>
     </aside>
     <aside class="sidebar-tools">
-      <router-link
-        class="sidebar-tools__item"
-        :class="{ active: active.search }"
-        to="/search"
-      >
-        <img src="../assets/find.svg">
+      <router-link class="sidebar-tools__item" :class="{ active: active.search }" to="/search">
+        <img src="../assets/find.svg" />
       </router-link>
 
-      <router-link
-        class="sidebar-tools__item"
-        :class="{ active: active.user }"
-        to="/profile/personal"
-      >
-        <img src="../assets/user.svg">
+      <router-link class="sidebar-tools__item" :class="{ active: active.user }" to="/profile">
+        <img src="../assets/user.svg" />
       </router-link>
 
       <router-link
@@ -30,15 +19,11 @@
         :class="{ active: active.messenger }"
         to="/messenger"
       >
-        <img src="../assets/messages.svg">
+        <img src="../assets/messages.svg" />
       </router-link>
 
-      <router-link
-        class="sidebar-tools__item"
-        :class="{ active: active.calendar }"
-        to="/calendar"
-      >
-        <img src="../assets/icon-3.svg">
+      <router-link class="sidebar-tools__item" :class="{ active: active.calendar }" to="/calendar">
+        <img src="../assets/icon-3.svg" />
       </router-link>
     </aside>
   </div>

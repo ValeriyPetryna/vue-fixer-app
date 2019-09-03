@@ -5,10 +5,13 @@
     </section>
     <section class="navbar-user">
       <div class="navbar-user__name">
-        Faruh Bernandez
+        <router-link to="/profile">
+          {{ user.user.name + ' ' + user.user.surname }}
+        </router-link>
       </div>
+
       <span class="navbar-user__avatar">
-        <img src="../assets/shape.svg">
+        <img src="../assets/shape.svg" />
       </span>
     </section>
   </section>
@@ -19,6 +22,11 @@ import breadcrumbs from './breadcrumbs';
 
 export default {
   name: 'HeaderComponent',
+  data() {
+    return {
+      user: JSON.parse(localStorage.getItem('user'))
+    };
+  },
   components: { breadcrumbs },
   props: {}
 };
