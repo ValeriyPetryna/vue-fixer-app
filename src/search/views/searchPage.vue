@@ -10,9 +10,18 @@
             <p @click="switchComponent">
               {{ showContent }}
             </p>
-            <div v-if="active.map"><google-map /></div>
-            <div v-if="!active.map" class="workers">
-              <worker-component v-for="worker in workers" :key="worker._id" :worker="worker" />
+            <div v-if="active.map">
+              <google-map />
+            </div>
+            <div
+              v-if="!active.map"
+              class="workers"
+            >
+              <worker-component
+                v-for="worker in workers"
+                :key="worker._id"
+                :worker="worker"
+              />
             </div>
           </div>
         </div>
@@ -25,7 +34,6 @@
 import asideComponent from '../../components/asideComponent';
 import headerComponent from '../../components/headerComponent';
 import formComponent from '../components/formComponent';
-import searchComponent from '../components/searchComponent';
 import GoogleMap from '../components/map';
 import workerComponent from '../components/workerComponent';
 import api from '../../shared/services/api.services';
@@ -36,7 +44,6 @@ export default {
     asideComponent,
     headerComponent,
     formComponent,
-    searchComponent,
     GoogleMap,
     workerComponent
   },

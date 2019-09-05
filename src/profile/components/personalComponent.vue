@@ -1,11 +1,18 @@
 <template>
-  <main class="page">
+  <main class="personal-page">
     <section class="account">
       <article class="avatar">
-        <img class="photo" src="../../assets/faruh.svg" />
+        <img class="photo" :src="userData.photo" />
         <div class="changephoto">
           <img src="../../assets/Pen.svg" />
-          <span @click="console">Change photo</span>
+          <label for="file" href="#">Change photo</label>
+          <input
+            id="file"
+            ref="file"
+            type="file"
+            class="form__input--file"
+            @change="updatePhoto($event)"
+          />
         </div>
       </article>
       <article class="infoblock">
@@ -13,68 +20,69 @@
           <p class="title">
             First name
           </p>
-          <form action>
-            <input class="holder" type="text" :placeholder="user.user.name" />
-          </form>
+          <input
+            id="name"
+            v-model="userData.name"
+            type="text"
+            class="holder"
+            @change="updateData($event)"
+          />
         </div>
         <div class="item">
           <p class="title">
             Title
           </p>
-          <form action="select" method="POST">
-            <input class="holder" type="text" list="title" placeholder="Boss" />
-            <datalist id="title">
-              <option>Mr</option>
-              <option>Mrs</option>
-              <option>Boss</option>
-            </datalist>
-          </form>
+          <div class="holder">
+            <select v-model="userData.gender" class="holder input" @change="updateData">
+              <option :selected="userData.gender == 'Mr'">
+                Mr
+              </option>
+              <option :selected="userData.gender == 'Ms'">
+                Ms
+              </option>
+            </select>
+          </div>
         </div>
         <div class="item">
           <p class="title">
             Country
           </p>
-          <form action="select" method="POST">
-            <input
-              class="holder holderchoose"
-              type="text"
-              list="country"
-              :placeholder="user.user.country"
-            />
-            <datalist id="country">
-              <option>Ukraine</option>
-              <option>France</option>
-              <option>USA</option>
-            </datalist>
-          </form>
+          <input
+            id="country"
+            v-model="userData.country"
+            type="text"
+            class="holder"
+            @change="updateData($event)"
+          />
         </div>
       </article>
       <article class="infoblock">
         <div class="item">
           <p class="title">
-            Last Name
+            Last name
           </p>
           <form action>
-            <input class="holder" type="text" :placeholder="user.user.surname" />
+            <input
+              id="surname"
+              v-model="userData.surname"
+              type="text"
+              class="holder"
+              @change="updateData($event)"
+            />
           </form>
         </div>
         <div class="item">
           <p class="title">
             Mobile Phone
           </p>
-          <div class="mobile-prefix">
-            <div class="country">
-              <img src="../../assets/Flag.svg" />
-              <img src="../../assets/shape.svg" />
-            </div>
-            <form action="select" method="POST">
-              <input id="right" class="holder" type="text" list="mobile" placeholder="+65" />
-              <datalist id="mobile">
-                <option>+65</option>
-                <option>+380</option>
-                <option>+980</option>
-              </datalist>
-            </form>
+
+          <div class="number">
+            <VuePhoneNumberInput
+              id="mobile"
+              type="text"
+              @change="onUpdate($event)"
+              v-model="userData.mobile"
+            />
           </div>
         </div>
 
@@ -82,14 +90,13 @@
           <p class="title">
             Company
           </p>
-          <form action="select" method="POST">
-            <input class="holder" type="text" list="company" placeholder="Amazon" />
-            <datalist id="company">
-              <option>Amazon</option>
-              <option>Google</option>
-              <option>FB</option>
-            </datalist>
-          </form>
+          <input
+            id="company"
+            v-model="userData.company"
+            type="text"
+            class="holder"
+            @change="updateData($event)"
+          />
         </div>
       </article>
     </section>
@@ -97,28 +104,59 @@
 </template>
 
 <script>
+import api from '../../shared/services/api.services';
+import VuePhoneNumberInput from 'vue-phone-number-input';
+
 export default {
   name: 'PersonalComponent',
-
+  components: { VuePhoneNumberInput },
   data() {
     return {
       active: {
         user: true
       },
+      mobile: '',
+      userData: {},
       user: JSON.parse(localStorage.getItem('user'))
     };
   },
-  methods: {}
+  mounted() {
+    api.init('http://localhost:3000/');
+    api.setHeader();
+    api.get('/accounts/profile').then(res => {
+      this.userData = res.data.user;
+    });
+  },
+  methods: {
+    updatePhoto(event) {
+      console.log(this.person);
+      const file = event.target.files[0];
+      const formData = new FormData();
+      formData.set('photo', file);
+      api.put('/accounts/photo', formData).then(res => {
+        alert(`You changed the photo to ${res.data.photo}`);
+        this.profile.photo = res.data.photo;
+      });
+    },
+    updateData(event) {
+      const timer = setTimeout(() => {
+        api.put('/accounts/profile', this.userData).catch(err => {
+          alert(err);
+        });
+      }, 1000);
+    }
+  }
 };
 </script>
 
 <style scoped lang="scss">
+@import './vue-phone-number-input.css';
 .profile-page {
   display: flex;
   width: 100%;
 }
 
-.page {
+.personal-page {
   flex-direction: column;
   width: calc(100% - 400px);
   padding: 40px 40px;
@@ -126,6 +164,36 @@ export default {
   border-radius: 4px;
   box-shadow: 0 0 30px rgba(153, 163, 174, 0.06);
   box-sizing: content-box;
+}
+
+.infopage {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.information {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  height: 50px;
+  box-shadow: inset 0 -2px 0 0 #e9e9e9;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19px;
+  text-transform: uppercase;
+  &.active {
+    box-shadow: inset 0 -2px 0 0 #2a74db;
+    a {
+      color: #01134e;
+      text-decoration: none;
+    }
+  }
+  a {
+    color: #ccd0dc;
+    text-decoration: none;
+  }
 }
 
 .account {
@@ -144,12 +212,14 @@ export default {
 .avatar {
   display: flex;
   flex-direction: column;
-  width: 130px;
+  margin: 30px;
+  align-items: center;
 }
 
 .photo {
-  height: 130px;
-  width: 130px;
+  height: 136px;
+  width: 136px;
+  border-radius: 50%;
 }
 
 .item {
@@ -246,8 +316,7 @@ body {
   width: 100%;
   background: #f8f9fb;
 }
-.btn {
-  width: 100px;
-  height: 100px;
+.form__input--file {
+  display: none;
 }
 </style>

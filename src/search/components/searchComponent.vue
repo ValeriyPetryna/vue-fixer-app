@@ -2,14 +2,24 @@
   <div class="results">
     <div class="workers">
       <article class="worker">
-        <img class="worker__avatar" src="../../assets/barry.svg" alt />
+        <img
+          class="worker__avatar"
+          src="../../assets/barry.svg"
+          alt
+        >
         <div class="info">
           <span class="info__name">
             Richard Thompson
-            <img class="img__star" src="../../assets/gold.svg" />
+            <img
+              class="img__star"
+              src="../../assets/gold.svg"
+            >
           </span>
           <div class="info__location">
-            <img src="../../assets/Location.svg" alt />
+            <img
+              src="../../assets/Location.svg"
+              alt
+            >
             <p>Vancouver, Canada</p>
           </div>
           <div class="info__stack">

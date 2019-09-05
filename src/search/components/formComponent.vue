@@ -5,7 +5,10 @@
         <p class="search-filters__text">
           Location
         </p>
-        <img class="search-filters__location" src="../../assets/Location.svg" />
+        <img
+          class="search-filters__location"
+          src="../../assets/Location.svg"
+        >
         <select class="search-filters__dropdown">
           <option />
         </select>
@@ -15,11 +18,11 @@
           SEARCH
         </p>
         <input
+          v-model="searchHero"
           class="search-filters__dropdown"
           type="text"
-          v-model="searchHero"
           placeholder="Type..."
-        />
+        >
       </div>
       <div class="search-filters">
         <p class="search-filters__text">
@@ -41,7 +44,10 @@
         <p class="search-filters__text">
           PERIOD
         </p>
-        <input class="search-filters__dropdown" placeholder="11/01/19 - 14/01/19" />
+        <input
+          class="search-filters__dropdown"
+          placeholder="11/01/19 - 14/01/19"
+        >
       </div>
       <button class="search-filters__button">
         SEARCH

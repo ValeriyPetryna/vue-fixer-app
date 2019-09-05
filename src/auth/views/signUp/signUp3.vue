@@ -2,7 +2,10 @@
   <main class="wrapper">
     <nav class="navbar">
       <div class="logo-container">
-        <img class="logo-container__image" src="@/assets/myfixerlogo.svg" />
+        <img
+          class="logo-container__image"
+          src="@/assets/myfixerlogo.svg"
+        >
       </div>
       <div class="auth">
         <p class="auth__text">
@@ -12,7 +15,10 @@
       </div>
     </nav>
     <div class="container-circle">
-      <img class="container-circle" src="@/assets/Group.svg" />
+      <img
+        class="container-circle"
+        src="@/assets/Group.svg"
+      >
     </div>
     <div class="container-circle__text">
       <p class="container-circle__text--title">

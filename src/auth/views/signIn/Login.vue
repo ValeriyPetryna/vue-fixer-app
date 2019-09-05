@@ -3,7 +3,10 @@
     <main class="wrapper">
       <nav class="navbar">
         <div class="logo-container">
-          <img class="logo-container__image" src="../../../assets/myfixerlogo.svg" />
+          <img
+            class="logo-container__image"
+            src="../../../assets/myfixerlogo.svg"
+          >
         </div>
         <div class="auth">
           <p class="auth__text">
@@ -28,7 +31,7 @@
                 class="login-form__input"
                 type="text"
                 placeholder="Login"
-              />
+              >
             </div>
             <span class="validation">{{ errors.first('email') }}</span>
             <div class="login-form__password">
@@ -39,11 +42,14 @@
                 type="password"
                 name="password"
                 placeholder="Password"
-              />
+              >
             </div>
             <span class="validation">{{ errors.first('password') }}</span>
             <a class="login-form__link">Forgot password?</a>
-            <button class="login-form__submit" type="submit">
+            <button
+              class="login-form__submit"
+              type="submit"
+            >
               Sign in
             </button>
           </form>
@@ -86,7 +92,7 @@ export default {
               }
             })
             .catch(err => {
-              alert(`Form is not submitted + ${err}`);
+              alert(`Login error + ${err}`);
             });
         } else {
           console.log('err');

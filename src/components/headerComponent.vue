@@ -11,7 +11,7 @@
       </div>
 
       <span class="navbar-user__avatar">
-        <img src="../assets/shape.svg" />
+        <img src="../assets/shape.svg">
       </span>
     </section>
   </section>
@@ -22,13 +22,13 @@ import breadcrumbs from './breadcrumbs';
 
 export default {
   name: 'HeaderComponent',
+  components: { breadcrumbs },
+  props: {},
   data() {
     return {
       user: JSON.parse(localStorage.getItem('user'))
     };
-  },
-  components: { breadcrumbs },
-  props: {}
+  }
 };
 </script>
 

@@ -28,6 +28,7 @@ import asideComponent from '../../components/asideComponent';
 import headerComponent from '../../components/headerComponent';
 import accountComponent from '../components/accountComponent';
 import personalComponent from '../components/personalComponent';
+import api from '../../shared/services/api.services';
 
 export default {
   name: 'Profile',
@@ -41,6 +42,10 @@ export default {
       },
       user: JSON.parse(localStorage.getItem('user'))
     };
+  },
+  mounted() {
+    // api.init()
+    // api.setHeader();
   },
   methods: {
     switchComponent() {
@@ -95,13 +100,6 @@ export default {
     color: #ccd0dc;
     text-decoration: none;
   }
-}
-
-.account {
-  display: flex;
-  margin-top: 50px;
-  justify-content: space-between;
-  width: 90%;
 }
 
 .infoblock {

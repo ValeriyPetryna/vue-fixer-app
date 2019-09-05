@@ -1,10 +1,16 @@
 <template>
   <div class="worker">
-    <img :src="worker.photo" class="worker__avatar" />
+    <img
+      :src="worker.photo"
+      class="worker__avatar"
+    >
     <div class="info">
       <span class="info__name">
         {{ worker.name + ' ' + worker.surname }}
-        <img class="img__star" src="../../assets/gold.svg" />
+        <img
+          class="img__star"
+          src="../../assets/gold.svg"
+        >
         <!-- raiting -->
       </span>
       <div class="info__location">
@@ -45,8 +51,7 @@
 export default {
   props: {
     inp: String,
-    worker: Object,
-    searchHero: ''
+    worker: Object
   }
 };
 </script>

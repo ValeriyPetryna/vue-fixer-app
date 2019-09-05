@@ -4,7 +4,10 @@
       <main class="wrapper">
         <nav class="navbar">
           <div class="logo-container">
-            <img class="logo-container__image" src="../../../assets/myfixerlogo.svg" />
+            <img
+              class="logo-container__image"
+              src="../../../assets/myfixerlogo.svg"
+            >
           </div>
           <div class="auth">
             <p class="auth__text">
@@ -16,36 +19,47 @@
           </div>
         </nav>
         <div class="container">
-          <form class="login-form" @submit.prevent="Second">
+          <form
+            class="login-form"
+            @submit.prevent="Second"
+          >
             <h1 class="login-form__title">
               Complete your account
             </h1>
             <input
+              ref="password"
               v-model="password"
               v-validate.continues="{ min: 6, regex: /[0-9]/ }"
               v-validate="'required'"
               class="login-form__input"
               type="password"
-              ref="password"
               placeholder="Create a password"
               name="password"
+            >
+            <password
+              v-model="password"
+              :strength-meter-only="true"
             />
-            <password v-model="password" :strength-meter-only="true" />
             <span class="validation">{{ errors.first('password') }}</span>
             <input
+              v-validate="'required|confirmed:password'"
               class="login-form__input"
               type="password"
               placeholder="Confirm password"
               name="confirmPassword"
-              v-validate="'required|confirmed:password'"
-            />
+            >
             <span class="validation">{{ errors.first('confirmPassword') }}</span>
             <label class="checkbox">
               <div class="checkbox-text">
                 <p class="auth__text">I agree to the myFixer.com</p>
                 <a class="auth__link">Terms of Service </a>
               </div>
-              <input type="checkbox" checked="checked" id="checkTerms" ref="checkTerms" /><span
+              <input
+                id="checkTerms"
+                ref="checkTerms"
+                type="checkbox"
+                checked="checked"
+              ><span
                 class="checkmark"
               />
             </label>
@@ -54,12 +68,23 @@
                 <p class="auth__text">I agree to the myFixer.com</p>
                 <a class="auth__link">Privacy Policy</a>
               </div>
-              <input type="checkbox" checked="" id="checkPolicy" ref="checkPolicy" /><span
+              <input
+                id="checkPolicy"
+                ref="checkPolicy"
+                type="checkbox"
+                checked=""
+              ><span
                 class="checkmark"
               />
             </label>
-            <img class="recaptcha" src="@/assets/recaptcha.svg" />
-            <button class="login-form__submit" type="submit">
+            <img
+              class="recaptcha"
+              src="@/assets/recaptcha.svg"
+            >
+            <button
+              class="login-form__submit"
+              type="submit"
+            >
               Done!
             </button>
           </form>
@@ -70,8 +95,8 @@
 </template>
 
 <script>
-import api from '@/shared/services/api.services';
 import Password from 'vue-password-strength-meter';
+import api from '@/shared/services/api.services';
 
 export default {
   name: 'SignUp2',
