@@ -66,6 +66,7 @@ export default {
   height: 100vh;
   background: #01134e;
   width: 80px;
+  position: absolute;
 }
 
 .sidebar-logo {
