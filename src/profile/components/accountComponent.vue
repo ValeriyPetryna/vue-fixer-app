@@ -11,7 +11,7 @@
           type="text"
           class="holder"
           @change="updateData($event)"
-        />
+        >
       </div>
     </article>
     <article class="infoblock">
@@ -25,7 +25,7 @@
           type="text"
           class="holder"
           @change="updateData($event)"
-        />
+        >
       </div>
       <div class="item-left">
         <article class="change">
@@ -74,6 +74,7 @@ export default {
 <style scoped lang="scss">
 .account {
   display: flex;
+  flex-wrap: wrap;
   margin-top: 50px;
 }
 
@@ -129,5 +130,22 @@ export default {
 #right {
   width: 90%;
   margin-left: 20px;
+}
+@media (max-width: 1024px) {
+  .account {
+    margin-left: 20px;
+  }
+  .infoblock {
+    width: 100%;
+  }
+  .item-left {
+    margin-left: 0;
+  }
+  .change {
+    justify-content: start;
+  }
+  .infopage {
+    overflow-x: auto;
+  }
 }
 </style>

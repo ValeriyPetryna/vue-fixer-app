@@ -33,7 +33,10 @@
           Stack:
         </p>
         <p>{{ worker.stack }}</p>
-        <router-link :to="'profile/' + worker._id">
+        <router-link
+          :to="'/search/profile/' + worker._id"
+          class="more-link"
+        >
           More
         </router-link>
       </div>
@@ -50,7 +53,6 @@
 <script>
 export default {
   props: {
-    inp: String,
     worker: Object
   }
 };
@@ -124,6 +126,8 @@ export default {
   height: 76px;
   width: 76px;
   margin-top: 33px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .info {
@@ -155,7 +159,7 @@ export default {
 
 .inf {
   color: #01134e;
-  font-weight: normal;
+  font-weight: 400 !important;
 }
 
 ::-webkit-scrollbar-button {
@@ -247,6 +251,25 @@ input[type='radio'] {
   left: 19px;
   position: absolute;
   top: 27px;
+}
+.more-link {
+  color: #2a74db;
+  font-size: inherit;
+  text-decoration: none;
+  margin-right: 0;
+  margin-left: auto;
+  cursor: pointer;
+}
+.img__star {
+  vertical-align: middle;
+}
+@media (max-width: 1024px) {
+  .workers,
+  .results,
+  .worker {
+    width: 100%;
+    min-width: 100% !important;
+  }
 }
 </style>
 

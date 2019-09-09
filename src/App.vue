@@ -46,9 +46,22 @@ body {
 }
 
 #app {
-  width: 100% !important;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+@media (max-width: 1024px) {
+  .page {
+    width: 100% !important;
+    margin: 20px 0 0 20px !important;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+    height: 100% !important;
+    padding: 0 0 0 60px !important;
+  }
 }
 .views {
   display: flex;
+  overflow: hidden !important;
 }
 </style>

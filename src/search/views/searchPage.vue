@@ -5,7 +5,10 @@
       <header-component />
       <main>
         <div class="page">
-          <form-component />
+          <form-component
+            :workers="workers"
+            @filteredArray="filteredArray"
+          />
           <div class="results">
             <p @click="switchComponent">
               {{ showContent }}
@@ -49,11 +52,14 @@ export default {
   },
   data() {
     return {
-      workers: undefined,
       active: {
         search: true,
         map: false
-      }
+      },
+      search: '',
+      filteredAr: undefined,
+      workers: undefined,
+      sortParam: undefined
     };
   },
   computed: {
@@ -61,18 +67,41 @@ export default {
       if (!this.active.map) {
         return 'SHOW MAP';
       }
+      // console.log(test);
       return 'SHOW RESULTS';
-    }
+    },
+    filteredList() {
+      return this.workers.filter(worker => {
+        return worker.name.toLowerCase().includes(this.search.toLowerCase());
+      });
+    },
+    // reverseArray() {
+    //   return this.workers.sort(function(a, b) {
+    //     if (a.dailyRate < b.dailyRate) {
+    //       return 1;
+    //     }
+    //     if (a.dailyRate > b.dailyRate) {
+    //       return -1;
+    //     }
+    //     return 0;
+    //   });
+    // }
   },
-  mounted() {
+  created() {
     api.init('http://localhost:3000/');
-    api.get(`/search/people`).then(res => {
+    api.get(`/search/workers`).then(res => {
       this.workers = res.data.allUsers;
     });
   },
   methods: {
     switchComponent() {
       this.active.map = !this.active.map;
+    },
+    filteredArray(test) {
+      this.filteredAr = test;
+    },
+    filterBy(option) {
+      this.filter = option;
     }
   }
 };
@@ -116,7 +145,7 @@ export default {
   flex-wrap: wrap;
   height: 90%;
   justify-content: space-between;
-  min-width: 750px;
+
   overflow: auto;
 }
 </style>

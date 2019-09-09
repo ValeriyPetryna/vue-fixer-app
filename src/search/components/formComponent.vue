@@ -1,6 +1,9 @@
 <template>
-  <div class="form">
-    <form class="search">
+  <form
+    class="form"
+    method="GET"
+  >
+    <div class="search">
       <div class="search-filters">
         <p class="search-filters__text">
           Location
@@ -9,8 +12,13 @@
           class="search-filters__location"
           src="../../assets/Location.svg"
         >
-        <select class="search-filters__dropdown">
-          <option />
+        <select
+          v-model="itemSearch.country"
+          class="search-filters__dropdown"
+        >
+          <option>Uganda</option>
+          <option>USA</option>
+          <option>Ukraine</option>
         </select>
       </div>
       <div class="search-filters">
@@ -18,18 +26,31 @@
           SEARCH
         </p>
         <input
-          v-model="searchHero"
+          ref="nameInput"
+          v-model="itemSearch.name"
           class="search-filters__dropdown"
-          type="text"
-          placeholder="Type..."
+          placeholder="Enter name"
+          name="name"
         >
       </div>
+
       <div class="search-filters">
         <p class="search-filters__text">
           CATEGORY
         </p>
-        <select class="search-filters__dropdown">
-          <option>Subcategory</option>
+        <select
+          v-model="itemSearch.category"
+          class="search-filters__dropdown"
+          name="category"
+          @change="foundItemforSearch()"
+        >
+          <option
+            v-for="category in categories"
+            :key="category.name"
+            :value="category.name"
+          >
+            {{ category.name }}
+          </option>
         </select>
       </div>
       <div class="search-filters">
@@ -46,27 +67,97 @@
         </p>
         <input
           class="search-filters__dropdown"
+          type="date"
           placeholder="11/01/19 - 14/01/19"
         >
       </div>
-      <button class="search-filters__button">
+    </div>
+    <div class="category__radio">
+      <input
+        id="price"
+        v-model="itemSearch.sort"
+        type="radio"
+        name="category"
+        value="by price"
+      >
+      <label for="price">by price</label>
+      <input
+        id="rating"
+        v-model="itemSearch.sort"
+        type="radio"
+        name="category"
+        value="by rating"
+        checked
+      >
+      <label for="rating">by rating</label>
+    </div>
+    <div>
+      <button
+        class="search-filters__button"
+        @click.prevent="searchFunc()"
+      >
         SEARCH
       </button>
-    </form>
-  </div>
+    </div>
+  </form>
 </template>
 
 
 <script>
+import api from '../../shared/services/api.services';
+
 export default {
   name: 'FormComponent',
   data() {
     return {
-      searchHero: '',
+      test: undefined,
+      search: '',
+      itemSearch: {
+        name: '',
+        category: '',
+        country: '',
+        sort: '0'
+      },
+      categories: [{ name: 'Front-end' }, { name: ' Back-end' }],
       active: {
         search: true
-      }
+      },
+      workers: undefined
     };
+  },
+  computed: {
+    filteredList() {
+      return this.workers.filter(worker => {
+        return worker.name.toLowerCase().includes(this.search.toLowerCase());
+      });
+    }
+  },
+
+  mounted() {
+    api.init('http://localhost:3000/');
+    api.get(`/search/workers`).then(res => {
+      this.workers = res.data.allUsers;
+    });
+  },
+  methods: {
+    searchName() {
+      api.init('http://localhost:3000/');
+      api.get(`/search/category`).then(res => {
+        this.test = res.data.categoryUsers;
+      });
+      this.$emit('filteredArray', this.test);
+    },
+    sub(workers) {},
+    foundItemforSearch() {
+      this.$emit('category', this.itemSearch);
+    },
+    searchFunc() {
+      api.init('http://localhost:3000/');
+      api.post('/search/workers', this.itemSearch).then(res => {
+        this.test = res.data.Sorted;
+      });
+      this.$emit('searchForm', this.test);
+    }
   }
 };
 </script>
@@ -263,5 +354,21 @@ input[type='radio'] {
   left: 19px;
   position: absolute;
   top: 27px;
+}
+
+.form {
+  display: flex;
+  width: 29%;
+  margin-top: 40px;
+  margin-left: 45px;
+  flex-wrap: wrap;
+  flex-direction: column;
+  border-right: 1px solid #e7eaf5;
+  box-shadow: 20px 0px 20px -15px rgba(85, 85, 85, 0.25);
+}
+@media (max-width: 1024px) {
+  .form {
+    width: 100%;
+  }
 }
 </style>

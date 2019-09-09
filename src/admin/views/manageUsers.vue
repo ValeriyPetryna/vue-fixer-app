@@ -3,15 +3,11 @@
     <aside-component :active="active" />
     <section class="content">
       <header-component />
-      <main class="page">
-        <div class="page-table">
-          <div class="page-table__search" />
-          <div class="page-table" />
-        </div>
-      </main>
+      <main class="page" />
     </section>
   </div>
 </template>
+
 
 <script>
 import asideComponent from '../../components/asideComponent';
@@ -25,6 +21,7 @@ export default {
       active: {}
     };
   },
+  mounted() {},
   methods: {}
 };
 </script>

@@ -11,6 +11,7 @@ import PersonalInfoComponent from './profile/views/personalInfo.vue';
 import ProfileComponent from './profile/views/profile.vue';
 import ManageUsersComponent from './admin/views/manageUsers.vue';
 import MessengerComponent from './messenger/views/messenger.vue';
+import SearchProfile from './search/views/getProfile.vue';
 
 Vue.use(Router);
 
@@ -22,6 +23,7 @@ export default new Router({
       name: 'signup',
       component: RegistrationComponent
     },
+    { path: '/search/profile/:id', component: SearchProfile },
     {
       path: '/signup2',
       name: 'signup2',

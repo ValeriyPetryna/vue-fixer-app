@@ -4,61 +4,121 @@
     <section class="content">
       <header-component class="navbar" />
       <main class="page">
-        <section class="infopage">
-          <article
-            class="information"
-            :class="{ active: active.personal }"
-          >
-            <p @click="switchComponent">
-              PERSONAL INFORMATION
-            </p>
+        <section class="account">
+          <article class="avatar">
+            <img
+              class="photo"
+              :src="profile.photo"
+            >
+            <div class="changephoto">
+              <input
+                id="file"
+                ref="file"
+                type="file"
+                class="form__input--file"
+              >
+            </div>
           </article>
-          <article
-            class="information"
-            :class="{ active: active.account }"
-          >
-            <p @click="switchComponent">
-              ACCOUNT INFORMATION
-            </p>
+          <article class="infoblock">
+            <div class="item">
+              <p class="title">
+                First name
+              </p>
+              <input
+                id="name"
+                v-model="profile.name"
+                disabled="disabled"
+                type="text"
+                class="holder"
+              >
+            </div>
+            <div class="item">
+              <p class="title">
+                Last name
+              </p>
+              <input
+                id="name"
+                v-model="profile.surname"
+                disabled="disabled"
+                type="text"
+                class="holder"
+              >
+            </div>
+            <div class="item">
+              <p class="title">
+                Email
+              </p>
+              <input
+                id="name"
+                v-model="profile.email"
+                disabled="disabled"
+                type="text"
+                class="holder"
+              >
+            </div>
+            <div class="item">
+              <p class="title">
+                Stack
+              </p>
+              <input
+                id="name"
+                v-model="profile.stack"
+                disabled="disabled"
+                type="text"
+                class="holder"
+              >
+            </div>
+            <div class="item">
+              <p class="title">
+                Phone number
+              </p>
+              <input
+                id="name"
+                v-model="profile.mobile"
+                disabled="disabled"
+                type="text"
+                class="holder"
+              >
+            </div>
           </article>
         </section>
-        <personal-component v-if="active.personal" />
-        <account-component v-if="active.account" />
       </main>
     </section>
   </div>
 </template>
 
+
+
+
+
+
 <script>
 import asideComponent from '../../components/asideComponent';
 import headerComponent from '../../components/headerComponent';
-import accountComponent from '../components/accountComponent';
-import personalComponent from '../components/personalComponent';
 import api from '../../shared/services/api.services';
 
 export default {
-  name: 'Profile',
-  components: { asideComponent, headerComponent, accountComponent, personalComponent },
+  components: {
+    asideComponent,
+    headerComponent
+  },
+  // name: "personal",
   data() {
     return {
       active: {
-        user: true,
-        account: false,
-        personal: true
+        search: true
       },
-      user: JSON.parse(localStorage.getItem('user'))
+      profile: {}
     };
   },
   mounted() {
-    // api.init()
-    // api.setHeader();
-  },
-  methods: {
-    switchComponent() {
-      this.active.account = !this.active.account;
-      this.active.personal = !this.active.personal;
-    }
+    api.init('http://localhost:3000/');
+    api.get(`/search/profile${this.$route.params.id}`).then(res => {
+      this.profile = res.data.profile;
+    });
   }
+  //   methods:{
+  //   }
 };
 </script>
 
@@ -68,7 +128,7 @@ export default {
   width: 100%;
 }
 
-.page {
+.personal-page {
   flex-direction: column;
   width: calc(100% - 400px);
   padding: 40px 40px;
@@ -88,7 +148,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 30%;
+  min-width: 30%;
   height: 50px;
   box-shadow: inset 0 -2px 0 0 #e9e9e9;
   font-size: 16px;
@@ -103,26 +163,34 @@ export default {
     }
   }
   a {
+    white-space: nowrap;
     color: #ccd0dc;
     text-decoration: none;
   }
 }
 
+.account {
+  display: flex;
+  margin-top: 50px;
+  width: 90%;
+  flex-wrap: wrap;
+}
+
 .infoblock {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 .avatar {
   display: flex;
   flex-direction: column;
-  width: 130px;
+  margin: 30px;
+  align-items: center;
 }
 
 .photo {
-  height: 130px;
-  width: 130px;
+  height: 350px;
+  width: auto;
 }
 
 .item {
@@ -187,6 +255,10 @@ export default {
   width: 280px;
   line-height: 40px;
   padding: 0 13px;
+  height: 44px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
 
 .holderchoose {
@@ -218,5 +290,19 @@ body {
 .content {
   width: 100%;
   background: #f8f9fb;
+}
+.form__input--file {
+  display: none;
+}
+@media (max-width: 1024px) {
+  .avatar,
+  .infoblock,
+  .personal-page,
+  .holder {
+    width: 100% !important;
+  }
+  .account {
+    width: calc(100% - 150px) !important;
+  }
 }
 </style>

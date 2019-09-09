@@ -2,17 +2,23 @@
   <main class="personal-page">
     <section class="account">
       <article class="avatar">
-        <img class="photo" :src="userData.photo" />
+        <img
+          class="photo"
+          :src="userData.photo"
+        >
         <div class="changephoto">
-          <img src="../../assets/Pen.svg" />
-          <label for="file" href="#">Change photo</label>
+          <img src="../../assets/Pen.svg">
+          <label
+            for="file"
+            href="#"
+          >Change photo</label>
           <input
             id="file"
             ref="file"
             type="file"
             class="form__input--file"
             @change="updatePhoto($event)"
-          />
+          >
         </div>
       </article>
       <article class="infoblock">
@@ -26,22 +32,55 @@
             type="text"
             class="holder"
             @change="updateData($event)"
-          />
+          >
         </div>
         <div class="item">
           <p class="title">
             Title
           </p>
-          <div class="holder">
-            <select v-model="userData.gender" class="holder input" @change="updateData">
-              <option :selected="userData.gender == 'Mr'">
-                Mr
-              </option>
-              <option :selected="userData.gender == 'Ms'">
-                Ms
-              </option>
-            </select>
-          </div>
+
+          <select
+            v-model="userData.gender"
+            class="holder input"
+            @change="updateData"
+          >
+            <option :selected="userData.gender == 'Mr'">
+              Mr
+            </option>
+            <option :selected="userData.gender == 'Ms'">
+              Ms
+            </option>
+          </select>
+        </div>
+        <div class="item">
+          <p class="title">
+            Stack
+          </p>
+
+          <select
+            v-model="userData.stack"
+            class="holder input"
+            @change="updateData"
+          >
+            <option :selected="userData.stack == 'Front-end'">
+              Front-end
+            </option>
+            <option :selected="userData.stack == 'Back-end'">
+              Back-end
+            </option>
+          </select>
+        </div>
+        <div class="item">
+          <p class="title">
+            DailyRate
+          </p>
+          <input
+            id="dailyRate"
+            v-model="userData.dailyRate"
+            type="number"
+            class="holder"
+            @change="updateData($event)"
+          >
         </div>
         <div class="item">
           <p class="title">
@@ -53,7 +92,7 @@
             type="text"
             class="holder"
             @change="updateData($event)"
-          />
+          >
         </div>
       </article>
       <article class="infoblock">
@@ -68,7 +107,7 @@
               type="text"
               class="holder"
               @change="updateData($event)"
-            />
+            >
           </form>
         </div>
         <div class="item">
@@ -79,9 +118,9 @@
           <div class="number">
             <VuePhoneNumberInput
               id="mobile"
-              type="text"
-              @change="onUpdate($event)"
               v-model="userData.mobile"
+              type="text"
+              @change="updateMobile(onUpdate)"
             />
           </div>
         </div>
@@ -96,7 +135,7 @@
             type="text"
             class="holder"
             @change="updateData($event)"
-          />
+          >
         </div>
       </article>
     </section>
@@ -104,8 +143,8 @@
 </template>
 
 <script>
-import api from '../../shared/services/api.services';
 import VuePhoneNumberInput from 'vue-phone-number-input';
+import api from '../../shared/services/api.services';
 
 export default {
   name: 'PersonalComponent',
@@ -115,7 +154,8 @@ export default {
       active: {
         user: true
       },
-      mobile: '',
+      mobile: {},
+      fullMobile: {},
       userData: {},
       user: JSON.parse(localStorage.getItem('user'))
     };
@@ -128,13 +168,22 @@ export default {
     });
   },
   methods: {
+    updateMobile() {
+      const prefix = document.getElementById('mobile_country_selector').value;
+      const number = document.getElementById('mobile_phone_number').value;
+      this.fullMobile.full = prefix;
+      this.userData.mobile = number;
+      const timer = setTimeout(() => {
+        api.put('/accounts/profile', this.userData.mobile).catch(err => {
+          alert(err);
+        });
+      }, 500);
+    },
     updatePhoto(event) {
-      console.log(this.person);
       const file = event.target.files[0];
       const formData = new FormData();
       formData.set('photo', file);
       api.put('/accounts/photo', formData).then(res => {
-        alert(`You changed the photo to ${res.data.photo}`);
         this.profile.photo = res.data.photo;
       });
     },
@@ -143,6 +192,7 @@ export default {
         api.put('/accounts/profile', this.userData).catch(err => {
           alert(err);
         });
+        localStorage.setItem('userData', JSON.stringify(this.userData));
       }, 1000);
     }
   }
@@ -176,7 +226,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 30%;
+  min-width: 30%;
   height: 50px;
   box-shadow: inset 0 -2px 0 0 #e9e9e9;
   font-size: 16px;
@@ -191,6 +241,7 @@ export default {
     }
   }
   a {
+    white-space: nowrap;
     color: #ccd0dc;
     text-decoration: none;
   }
@@ -201,6 +252,7 @@ export default {
   margin-top: 50px;
   justify-content: space-between;
   width: 90%;
+  flex-wrap: wrap;
 }
 
 .infoblock {
@@ -284,6 +336,10 @@ export default {
   width: 280px;
   line-height: 40px;
   padding: 0 13px;
+  height: 44px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
 
 .holderchoose {
@@ -318,5 +374,16 @@ body {
 }
 .form__input--file {
   display: none;
+}
+@media (max-width: 1024px) {
+  .avatar,
+  .infoblock,
+  .personal-page,
+  .holder {
+    width: 100% !important;
+  }
+  .account {
+    width: calc(100% - 150px) !important;
+  }
 }
 </style>
