@@ -5,10 +5,7 @@
       <header-component />
       <main>
         <div class="page">
-          <form-component
-            :workers="workers"
-            @filteredArray="filteredArray"
-          />
+          <form-component :workers="workers" @filteredArray="filtered" />
           <div class="results">
             <p @click="switchComponent">
               {{ showContent }}
@@ -16,15 +13,8 @@
             <div v-if="active.map">
               <google-map />
             </div>
-            <div
-              v-if="!active.map"
-              class="workers"
-            >
-              <worker-component
-                v-for="worker in workers"
-                :key="worker._id"
-                :worker="worker"
-              />
+            <div v-if="!active.map" class="workers">
+              <worker-component v-for="worker in workers.data" :key="worker._id" :worker="worker" />
             </div>
           </div>
         </div>
@@ -43,23 +33,25 @@ import api from '../../shared/services/api.services';
 
 export default {
   name: 'Search',
+  props: {
+    data: Array,
+  },
   components: {
     asideComponent,
     headerComponent,
     formComponent,
     GoogleMap,
-    workerComponent
+    workerComponent,
   },
   data() {
     return {
       active: {
         search: true,
-        map: false
+        map: false,
       },
       search: '',
-      filteredAr: undefined,
+      filteredAr: [],
       workers: undefined,
-      sortParam: undefined
     };
   },
   computed: {
@@ -67,25 +59,8 @@ export default {
       if (!this.active.map) {
         return 'SHOW MAP';
       }
-      // console.log(test);
       return 'SHOW RESULTS';
     },
-    filteredList() {
-      return this.workers.filter(worker => {
-        return worker.name.toLowerCase().includes(this.search.toLowerCase());
-      });
-    },
-    // reverseArray() {
-    //   return this.workers.sort(function(a, b) {
-    //     if (a.dailyRate < b.dailyRate) {
-    //       return 1;
-    //     }
-    //     if (a.dailyRate > b.dailyRate) {
-    //       return -1;
-    //     }
-    //     return 0;
-    //   });
-    // }
   },
   created() {
     api.init('http://localhost:3000/');
@@ -97,13 +72,10 @@ export default {
     switchComponent() {
       this.active.map = !this.active.map;
     },
-    filteredArray(test) {
-      this.filteredAr = test;
+    filtered(data) {
+      this.workers = data;
     },
-    filterBy(option) {
-      this.filter = option;
-    }
-  }
+  },
 };
 </script>
 
@@ -111,6 +83,7 @@ export default {
 .views {
   display: flex;
   margin: 0;
+  height: 100%;
 }
 .results {
   display: flex;

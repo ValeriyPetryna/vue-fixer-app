@@ -1,22 +1,13 @@
 <template>
-  <form
-    class="form"
-    method="GET"
-  >
+  <form class="form" method="GET">
     <div class="search">
       <div class="search-filters">
         <p class="search-filters__text">
           Location
         </p>
-        <img
-          class="search-filters__location"
-          src="../../assets/Location.svg"
-        >
-        <select
-          v-model="itemSearch.country"
-          class="search-filters__dropdown"
-        >
-          <option>Uganda</option>
+        <img class="search-filters__location" src="../../assets/Location.svg" />
+        <select v-model="itemSearch.country" class="search-filters__dropdown">
+          <option selected="selected">Uganda</option>
           <option>USA</option>
           <option>Ukraine</option>
         </select>
@@ -25,31 +16,16 @@
         <p class="search-filters__text">
           SEARCH
         </p>
-        <input
-          ref="nameInput"
-          v-model="itemSearch.name"
-          class="search-filters__dropdown"
-          placeholder="Enter name"
-          name="name"
-        >
+        <input ref="nameInput" v-model="itemSearch.name" class="search-filters__dropdown" placeholder="Enter name" name="name" />
       </div>
 
       <div class="search-filters">
         <p class="search-filters__text">
           CATEGORY
         </p>
-        <select
-          v-model="itemSearch.category"
-          class="search-filters__dropdown"
-          name="category"
-          @change="foundItemforSearch()"
-        >
-          <option
-            v-for="category in categories"
-            :key="category.name"
-            :value="category.name"
-          >
-            {{ category.name }}
+        <select v-model="itemSearch.stack" class="search-filters__dropdown" name="category">
+          <option v-for="stack in categories" :key="stack.name" :value="stack.name">
+            {{ stack.name }}
           </option>
         </select>
       </div>
@@ -58,44 +34,24 @@
           SERVICE
         </p>
         <select class="search-filters__dropdown">
-          <option>3 services</option>
+          <option selected="selected">3 services </option>
         </select>
       </div>
       <div class="search-filters">
         <p class="search-filters__text">
           PERIOD
         </p>
-        <input
-          class="search-filters__dropdown"
-          type="date"
-          placeholder="11/01/19 - 14/01/19"
-        >
+        <input class="search-filters__dropdown" type="date" placeholder="11/01/19 - 14/01/19" />
       </div>
     </div>
     <div class="category__radio">
-      <input
-        id="price"
-        v-model="itemSearch.sort"
-        type="radio"
-        name="category"
-        value="by price"
-      >
+      <input id="price" v-model="itemSearch.sort" type="radio" name="category" value="dailyRate" />
       <label for="price">by price</label>
-      <input
-        id="rating"
-        v-model="itemSearch.sort"
-        type="radio"
-        name="category"
-        value="by rating"
-        checked
-      >
+      <input id="rating" v-model="itemSearch.sort" type="radio" name="category" value="rating" checked />
       <label for="rating">by rating</label>
     </div>
     <div>
-      <button
-        class="search-filters__button"
-        @click.prevent="searchFunc()"
-      >
+      <button class="search-filters__button" @click.prevent="searchFunc()">
         SEARCH
       </button>
     </div>
@@ -110,19 +66,19 @@ export default {
   name: 'FormComponent',
   data() {
     return {
-      test: undefined,
+      test: [],
       search: '',
       itemSearch: {
         name: '',
-        category: '',
+        stack: '',
         country: '',
-        sort: '0'
+        sort: '',
       },
-      categories: [{ name: 'Front-end' }, { name: ' Back-end' }],
+      categories: [{ name: 'Front-end' }, { name: 'Back-end' }],
       active: {
-        search: true
+        search: true,
       },
-      workers: undefined
+      data: [],
     };
   },
   computed: {
@@ -130,35 +86,26 @@ export default {
       return this.workers.filter(worker => {
         return worker.name.toLowerCase().includes(this.search.toLowerCase());
       });
-    }
+    },
   },
 
   mounted() {
     api.init('http://localhost:3000/');
-    api.get(`/search/workers`).then(res => {
-      this.workers = res.data.allUsers;
-    });
+    // api.get(`/search/workers`).then(res => {
+    //   this.workers = res.data.allUsers;
+    // });
   },
   methods: {
-    searchName() {
-      api.init('http://localhost:3000/');
-      api.get(`/search/category`).then(res => {
-        this.test = res.data.categoryUsers;
-      });
-      this.$emit('filteredArray', this.test);
-    },
-    sub(workers) {},
-    foundItemforSearch() {
-      this.$emit('category', this.itemSearch);
-    },
     searchFunc() {
       api.init('http://localhost:3000/');
       api.post('/search/workers', this.itemSearch).then(res => {
-        this.test = res.data.Sorted;
+        this.test = res.data.sortedArray;
       });
-      this.$emit('searchForm', this.test);
-    }
-  }
+      this.$emit('filteredArray', {
+        data: this.test,
+      });
+    },
+  },
 };
 </script>
 

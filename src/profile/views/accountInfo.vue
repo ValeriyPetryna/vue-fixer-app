@@ -23,11 +23,7 @@
                 Username
               </p>
               <form action>
-                <input
-                  class="holder"
-                  type="text"
-                  placeholder="sarahbarnez"
-                >
+                <input class="holder" type="text" placeholder="sarahbarnez" />
               </form>
             </div>
           </article>
@@ -37,11 +33,7 @@
                 E-mail
               </p>
               <form action>
-                <input
-                  class="holder"
-                  type="text"
-                  placeholder="sarah228@gmail.com"
-                >
+                <input class="holder" type="text" placeholder="sarah228@gmail.com" />
               </form>
             </div>
             <div class="item-left">
@@ -68,11 +60,11 @@ export default {
   data() {
     return {
       active: {
-        user: true
-      }
+        user: true,
+      },
     };
   },
-  methods: {}
+  methods: {},
 };
 </script>
 

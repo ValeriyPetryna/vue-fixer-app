@@ -6,17 +6,9 @@
       <main class="page">
         <section class="account">
           <article class="avatar">
-            <img
-              class="photo"
-              :src="profile.photo"
-            >
+            <img class="photo" :src="profile.photo" />
             <div class="changephoto">
-              <input
-                id="file"
-                ref="file"
-                type="file"
-                class="form__input--file"
-              >
+              <input id="file" ref="file" type="file" class="form__input--file" />
             </div>
           </article>
           <article class="infoblock">
@@ -24,61 +16,31 @@
               <p class="title">
                 First name
               </p>
-              <input
-                id="name"
-                v-model="profile.name"
-                disabled="disabled"
-                type="text"
-                class="holder"
-              >
+              <input id="name" v-model="profile.name" disabled="disabled" type="text" class="holder" />
             </div>
             <div class="item">
               <p class="title">
                 Last name
               </p>
-              <input
-                id="name"
-                v-model="profile.surname"
-                disabled="disabled"
-                type="text"
-                class="holder"
-              >
+              <input id="name" v-model="profile.surname" disabled="disabled" type="text" class="holder" />
             </div>
             <div class="item">
               <p class="title">
                 Email
               </p>
-              <input
-                id="name"
-                v-model="profile.email"
-                disabled="disabled"
-                type="text"
-                class="holder"
-              >
+              <input id="name" v-model="profile.email" disabled="disabled" type="text" class="holder" />
             </div>
             <div class="item">
               <p class="title">
                 Stack
               </p>
-              <input
-                id="name"
-                v-model="profile.stack"
-                disabled="disabled"
-                type="text"
-                class="holder"
-              >
+              <input id="name" v-model="profile.stack" disabled="disabled" type="text" class="holder" />
             </div>
             <div class="item">
               <p class="title">
                 Phone number
               </p>
-              <input
-                id="name"
-                v-model="profile.mobile"
-                disabled="disabled"
-                type="text"
-                class="holder"
-              >
+              <input id="name" v-model="profile.mobile" disabled="disabled" type="text" class="holder" />
             </div>
           </article>
         </section>
@@ -86,11 +48,6 @@
     </section>
   </div>
 </template>
-
-
-
-
-
 
 <script>
 import asideComponent from '../../components/asideComponent';
@@ -100,15 +57,14 @@ import api from '../../shared/services/api.services';
 export default {
   components: {
     asideComponent,
-    headerComponent
+    headerComponent,
   },
-  // name: "personal",
   data() {
     return {
       active: {
-        search: true
+        search: true,
       },
-      profile: {}
+      profile: {},
     };
   },
   mounted() {
@@ -116,9 +72,7 @@ export default {
     api.get(`/search/profile${this.$route.params.id}`).then(res => {
       this.profile = res.data.profile;
     });
-  }
-  //   methods:{
-  //   }
+  },
 };
 </script>
 
@@ -126,6 +80,7 @@ export default {
 .profile-page {
   display: flex;
   width: 100%;
+  height: 100%;
 }
 
 .personal-page {

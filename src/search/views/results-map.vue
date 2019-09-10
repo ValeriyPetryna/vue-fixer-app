@@ -22,16 +22,16 @@ export default {
   components: {
     asideComponent,
     headerComponent,
-    GoogleMap
+    GoogleMap,
   },
   data() {
     return {
       active: {
-        search: true
-      }
+        search: true,
+      },
     };
   },
-  methods: {}
+  methods: {},
 };
 </script>
 

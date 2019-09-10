@@ -12,8 +12,8 @@ export default {
     logout() {
       localStorage.removeItem('user');
       this.$router.push('/login');
-    }
-  }
+    },
+  },
   // mounted: function () {
   //   api.init('https')
   // api key: AIzaSyBNSRoMIfBJuZnYuCui18cCjKtKc0K-2rQ
@@ -63,5 +63,7 @@ body {
 .views {
   display: flex;
   overflow: hidden !important;
+
+  margin: 0;
 }
 </style>

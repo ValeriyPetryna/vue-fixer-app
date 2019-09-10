@@ -1,22 +1,19 @@
 <template>
-  <div class="views">
+  <div class="messenger-page" >
     <aside-component />
     <section class="content">
-      <header-component />
+      <header-component class="navbar" />
       <section class="chats">
         <div class="chats__list">
           <div class="chats__list__dialogs favorites">
             <div class="chats__list__dialog">
-              <div class="chats__list__dialog--date">
-                9:32
-              </div>
+              <div class="chats__list__dialog--date"> 9:32 </div>
               <div class="chats__row">
                 <div class="chats__list__dialog--avatar">
                   <img src="@/assets/miranda.svg">
                 </div>
                 <div class="chats__list__dialog__details">
-                  <div class="chats__list__dialog__details--name">
-                    Miranda Hops<span class="user_status" />
+                  <div class="chats__list__dialog__details--name"> Miranda Hops <span class="user_status" />
                     <div class="user__silent">
                       <img src="@/assets/silentmode.svg">
                     </div>
@@ -28,9 +25,7 @@
               </div>
             </div>
             <div class="chats__list__dialog">
-              <div class="chats__list__dialog--date">
-                9:36
-              </div>
+              <div class="chats__list__dialog--date"> 9:36 </div>
               <div class="chats__row">
                 <div class="chats__list__dialog--avatar">
                   <img src="@/assets/barry.svg">
@@ -48,9 +43,7 @@
           </div>
           <div class="chats__list__dialogs">
             <div class="chats__list__dialog">
-              <div class="chats__list__dialog--date">
-                9:37
-              </div>
+              <div class="chats__list__dialog--date"> 9:37 </div>
               <div class="chats__row">
                 <div class="chats__list__dialog--avatar">
                   <img src="@/assets/stacey.svg">
@@ -66,9 +59,7 @@
               </div>
             </div>
             <div class="chats__list__dialog">
-              <div class="chats__list__dialog--date">
-                9:38
-              </div>
+              <div class="chats__list__dialog--date"> 9:38 </div>
               <div class="chats__row">
                 <div class="chats__list__dialog--avatar">
                   <img src="@/assets/johny.svg">
@@ -84,9 +75,7 @@
               </div>
             </div>
             <div class="chats__list__dialog">
-              <div class="chats__list__dialog--date">
-                9:42
-              </div>
+              <div class="chats__list__dialog--date"> 9:42 </div>
               <div class="chats__row">
                 <div class="chats__list__dialog--avatar">
                   <img src="@/assets/johny.svg">
@@ -101,120 +90,25 @@
                 </div>
               </div>
             </div>
-            <div class="chats__list__dialog">
-              <div class="chats__list__dialog--date">
-                10:52
-              </div>
-              <div class="chats__row">
-                <div class="chats__list__dialog--avatar">
-                  <img src="@/assets/staceyjosh.svg">
-                </div>
-                <div class="chats__list__dialog__details">
-                  <div class="chats__list__dialog__details--name">
-                    Stacey Dosh
-                  </div>
-                  <div class="chats__list__dialog__details--message">
-                    Ut enim ad minima veniam&mldr;
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
         <div class="chat">
           <div class="chat__search-form">
-            <input
-              class="chat__search-form__input"
-              type="text"
-              placeholder="Search message..."
-            >
+            <input class="chat__search-form__input" type="text" placeholder="Search message..." />
           </div>
           <div class="chat__messages">
             <time>
-              <div class="chat__messages__date">Today, 20.06.2019</div>
+              <div class="chat__messages__date">Today, 10.09.2019</div>
             </time>
-            <div class="message-box">
-              <div class="chat-message">
-                <div class="chat-message__avatar">
-                  <img src="@/assets/barry.svg">
-                </div>
-                <div class="chats__row">
-                  <div class="chat-message__text">
-                    On the other hand....
-                  </div>
-                  <time class="chat-message__time">01:14</time>
-                </div>
-              </div>
-            </div>
-            <div class="message-box">
-              <div class="chat-message">
-                <div class="chat-message__avatar">
-                  <img src="@/assets/barry.svg">
-                </div>
-                <div class="chats__row">
-                  <div class="chat-message__text">
-                    On the other hand, we denounce with....
-                  </div>
-                  <time class="chat-message__time">01:14</time>
-                </div>
-              </div>
-            </div>
-            <div class="message-box">
-              <div class="chat-message">
-                <div class="chat-message__avatar">
-                  <img src="@/assets/barry.svg">
-                </div>
-                <div class="chats__row">
-                  <div class="chat-message__text">
-                    On the other hand, we denounce with righteous indignation!
-                  </div>
-                  <time class="chat-message__time">01:14</time>
-                </div>
-              </div>
-            </div>
-            <div class="message-box">
+            <div class="message-box" v-for="(m, index) of messages" :key="index">
               <div class="chat-message right">
-                <div class="chats__row">
-                  <div class="chat-message__text">
-                    Which is the same as saying??????? On the other hand, we
-                    denounce with righteous indignation!
-                  </div>
-                  <time class="chat-message__time">01:46</time>
-                </div>
-              </div>
-            </div>
-            <div class="message-box">
-              <div class="chat-message right">
-                <div class="chats__row">
-                  <div class="chat-message__text">
-                    Ut enim ad minima veniam&mldr;??? To take a trivial example&mldr;
-                  </div>
-                  <time class="chat-message__time">01:46</time>
-                </div>
-              </div>
-            </div>
-            <div class="message-box">
-              <div class="chat-message">
                 <div class="chat-message__avatar">
-                  <img src="@/assets/barry.svg">
+                  <img :src="userData.user.photo" />
                 </div>
                 <div class="chats__row">
                   <div class="chat-message__text">
-                    But in certain circumstances and owing to the claims of
-                    duty or the obligations of business it will frequently
-                    occur that pleasures
+                    {{ m.text }}
                   </div>
-                  <time class="chat-message__time">01:47</time>
-                </div>
-              </div>
-            </div>
-            <div class="message-box">
-              <div class="chat-message right">
-                <div class="chats__row">
-                  <div class="chat-message__text">
-                    To take a trivial example, which of us ever undertakes)
-                  </div>
-                  <time class="chat-message__time">01:48</time>
                 </div>
               </div>
             </div>
@@ -223,19 +117,15 @@
             <input
               class="chat__send-form__input"
               type="text"
+              id="textMessage"
+              v-model="message"
               placeholder="Write a message..."
-            >
+              v-on:keyup.enter="sendMessage" />
             <div class="chat__send-form__tools">
-              <a
-                class="chat__send-form__emoji"
-                href="#"
-              ><img src="@/assets/smile.svg"></a><a
-                class="chat__send-form__file"
-                href="#"
-              ><img src="@/assets/sendfile.svg"></a><a
-                class="chat__send-form__send-button"
-                href="#"
-              ><img src="@/assets/send.svg"></a>
+              <a class="chat__send-form__emoji" href="#"><img src="@/assets/smile.svg"/></a>
+              <a class="chat__send-form__file" href="#"><img src="@/assets/sendfile.svg"/></a>
+              <a class="chat__send-form__send-button"  @click="sendMessage">
+              <img src="@/assets/send.svg"/></a>
             </div>
           </div>
         </div>
@@ -247,22 +137,49 @@
 <script>
 import asideComponent from '@/messenger/components/aside';
 import headerComponent from '@/components/headerComponent';
+import io from 'socket.io-client';
 
 export default {
   name: 'Messenger',
   components: { asideComponent, headerComponent },
   data() {
-    return {};
+    return {
+      socket: null,
+      active: {},
+      message: '',
+      messages: [],
+      userData: JSON.parse(localStorage.getItem('user')),
+    };
   },
-  methods: {}
+  mounted() {
+    let socket = io('http://localhost:3000/');
+    this.socket = socket;
+    socket.on('message', this.onMessage);
+  },
+  methods: {
+    onMessage(msg) {
+      this.messages.push({ text: msg, user: this.userData.user.name });
+    },
+    sendMessage() {
+      if (this.message) {
+        this.socket.emit('message', this.message, this.userData.user.name);
+        this.message = '';
+      }
+    },
+  },
 };
 </script>
 
 <style scoped lang="css">
+.messenger-page {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
 .chats {
-  width: 92%;
+  width: 85%;
   height: 660px;
-  margin: 70px 22px 0 70px;
+  margin: 70px 24px 0 150px;
   display: flex;
   flex-direction: row;
   background: #ffffff;
@@ -358,8 +275,6 @@ export default {
   line-height: 18px;
   letter-spacing: 0.5px;
   color: #252f48;
-  opacity: 0.2;
-  width: 100%;
 }
 
 .chat__send-form__file {
@@ -385,7 +300,6 @@ export default {
   line-height: 18px;
   letter-spacing: 0.5px;
   color: #252f48;
-  opacity: 0.2;
   width: 90%;
   height: 61px;
   padding-left: 31px;
@@ -448,10 +362,13 @@ export default {
 }
 .chat-message .chats__row {
   margin-top: 0;
-  width: 300px;
+  max-width: 300px;
   background: #f7f9fc;
   border-radius: 5px;
   margin-left: 45px;
+  position: relative;
+  display: block;
+  word-wrap: break-word;
 }
 
 .chat-message__avatar > img {
@@ -459,6 +376,7 @@ export default {
   bottom: 0;
   height: 36px;
   width: 36px;
+  border-radius: 50%;
 }
 
 .chat-message__text {
@@ -496,17 +414,5 @@ export default {
 .chat__messages::-webkit-scrollbar-thumb {
   background: #cac9c9;
   border-radius: 10px;
-}
-
-body {
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
-  width: 100%;
-  display: flex;
-}
-
-.content {
-  width: 100%;
-  background: #f8f9fb;
 }
 </style>

@@ -5,13 +5,7 @@
         <p class="title">
           Username
         </p>
-        <input
-          id="username"
-          v-model="userData.username"
-          type="text"
-          class="holder"
-          @change="updateData($event)"
-        >
+        <input id="username" v-model="userData.username" type="text" class="holder" @change="updateData($event)" />
       </div>
     </article>
     <article class="infoblock">
@@ -19,13 +13,7 @@
         <p class="title">
           E-mail
         </p>
-        <input
-          id="email"
-          v-model="userData.email"
-          type="text"
-          class="holder"
-          @change="updateData($event)"
-        >
+        <input id="email" v-model="userData.email" type="text" class="holder" @change="updateData($event)" />
       </div>
       <div class="item-left">
         <article class="change">
@@ -46,10 +34,10 @@ export default {
   data() {
     return {
       active: {
-        user: true
+        user: true,
       },
       userData: {},
-      user: JSON.parse(localStorage.getItem('user'))
+      user: JSON.parse(localStorage.getItem('user')),
     };
   },
   mounted() {
@@ -66,8 +54,8 @@ export default {
           alert(err);
         });
       }, 1000);
-    }
-  }
+    },
+  },
 };
 </script>
 

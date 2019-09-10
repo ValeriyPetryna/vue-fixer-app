@@ -18,12 +18,9 @@
         </section>
         <section class="account">
           <article class="avatar">
-            <img
-              class="photo"
-              src="../../assets/faruh.svg"
-            >
+            <img class="photo" src="../../assets/faruh.svg" />
             <div class="changephoto">
-              <img src="../../assets/Pen.svg">
+              <img src="../../assets/Pen.svg" />
               <a>Change photo</a>
             </div>
           </article>
@@ -33,27 +30,15 @@
                 First Name
               </p>
               <form action>
-                <input
-                  class="holder"
-                  type="text"
-                  placeholder="Faruh"
-                >
+                <input class="holder" type="text" placeholder="Faruh" />
               </form>
             </div>
             <div class="item">
               <p class="title">
                 Title
               </p>
-              <form
-                action="select"
-                method="POST"
-              >
-                <input
-                  class="holder"
-                  type="text"
-                  list="title"
-                  placeholder="Boss"
-                >
+              <form action="select" method="POST">
+                <input class="holder" type="text" list="title" placeholder="Boss" />
                 <datalist id="title">
                   <option>Mr</option>
                   <option>Mrs</option>
@@ -65,16 +50,8 @@
               <p class="title">
                 Country
               </p>
-              <form
-                action="select"
-                method="POST"
-              >
-                <input
-                  class="holder holderchoose"
-                  type="text"
-                  list="country"
-                  placeholder="USA"
-                >
+              <form action="select" method="POST">
+                <input class="holder holderchoose" type="text" list="country" placeholder="USA" />
                 <datalist id="country">
                   <option>Ukraine</option>
                   <option>France</option>
@@ -89,11 +66,7 @@
                 Last Name
               </p>
               <form action>
-                <input
-                  class="holder"
-                  type="text"
-                  placeholder="Bernandez"
-                >
+                <input class="holder" type="text" placeholder="Bernandez" />
               </form>
             </div>
             <div class="item">
@@ -102,20 +75,11 @@
               </p>
               <div class="mobile-prefix">
                 <div class="country">
-                  <img src="../../assets/Flag.svg">
-                  <img src="../../assets/shape.svg">
+                  <img src="../../assets/Flag.svg" />
+                  <img src="../../assets/shape.svg" />
                 </div>
-                <form
-                  action="select"
-                  method="POST"
-                >
-                  <input
-                    id="right"
-                    class="holder"
-                    type="text"
-                    list="mobile"
-                    placeholder="+65"
-                  >
+                <form action="select" method="POST">
+                  <input id="right" class="holder" type="text" list="mobile" placeholder="+65" />
                   <datalist id="mobile">
                     <option>+65</option>
                     <option>+380</option>
@@ -128,16 +92,8 @@
               <p class="title">
                 Company
               </p>
-              <form
-                action="select"
-                method="POST"
-              >
-                <input
-                  class="holder"
-                  type="text"
-                  list="company"
-                  placeholder="Amazon"
-                >
+              <form action="select" method="POST">
+                <input class="holder" type="text" list="company" placeholder="Amazon" />
                 <datalist id="company">
                   <option>Amazon</option>
                   <option>Google</option>
@@ -162,11 +118,11 @@ export default {
   data() {
     return {
       active: {
-        user: true
-      }
+        user: true,
+      },
     };
   },
-  methods: {}
+  methods: {},
 };
 </script>
 

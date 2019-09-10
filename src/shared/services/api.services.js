@@ -47,7 +47,7 @@ const ApiService = {
    * */
   customRequest(data) {
     return axios(data);
-  }
+  },
 };
 
 export default ApiService;

@@ -14,12 +14,12 @@ Vue.use(VeeValidate);
 Vue.use(VueGoogleMaps, {
   load: {
     key: 'AIzaSyBNSRoMIfBJuZnYuCui18cCjKtKc0K-2rQ',
-    libraries: 'places'
-  }
+    libraries: 'places',
+  },
 });
 
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: h => h(App),
 }).$mount('#app');

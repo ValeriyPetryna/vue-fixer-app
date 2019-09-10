@@ -1,12 +1,7 @@
 <template>
   <div class="breadcrumb">
     <ul>
-      <li
-        v-for="(breadcrumb, idx) in breadcrumbList"
-        :key="idx"
-        :class="{ linked: !!breadcrumb.link }"
-        @click="routeTo(idx)"
-      >
+      <li v-for="(breadcrumb, idx) in breadcrumbList" :key="idx" :class="{ linked: !!breadcrumb.link }" @click="routeTo(idx)">
         {{ breadcrumb.name }}
       </li>
     </ul>
@@ -18,13 +13,13 @@ export default {
   name: 'Breadcrumb',
   data() {
     return {
-      breadcrumbList: []
+      breadcrumbList: [],
     };
   },
   watch: {
     $route() {
       this.updateList();
-    }
+    },
   },
   mounted() {
     this.updateList();
@@ -35,8 +30,8 @@ export default {
     },
     updateList() {
       this.breadcrumbList = this.$route.meta.breadcrumb;
-    }
-  }
+    },
+  },
 };
 </script>
 

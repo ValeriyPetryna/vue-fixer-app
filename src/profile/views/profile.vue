@@ -5,18 +5,12 @@
       <header-component class="navbar" />
       <main class="page">
         <section class="infopage">
-          <article
-            class="information"
-            :class="{ active: active.personal }"
-          >
+          <article class="information" :class="{ active: active.personal }">
             <p @click="switchComponent">
               PERSONAL INFORMATION
             </p>
           </article>
-          <article
-            class="information"
-            :class="{ active: active.account }"
-          >
+          <article class="information" :class="{ active: active.account }">
             <p @click="switchComponent">
               ACCOUNT INFORMATION
             </p>
@@ -44,9 +38,9 @@ export default {
       active: {
         user: true,
         account: false,
-        personal: true
+        personal: true,
       },
-      user: JSON.parse(localStorage.getItem('user'))
+      user: JSON.parse(localStorage.getItem('user')),
     };
   },
   mounted() {
@@ -57,8 +51,8 @@ export default {
     switchComponent() {
       this.active.account = !this.active.account;
       this.active.personal = !this.active.personal;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -66,6 +60,7 @@ export default {
 .profile-page {
   display: flex;
   width: 100%;
+  height: 100% !important;
 }
 
 .page {

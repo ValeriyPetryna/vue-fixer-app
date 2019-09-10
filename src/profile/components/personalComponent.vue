@@ -2,23 +2,11 @@
   <main class="personal-page">
     <section class="account">
       <article class="avatar">
-        <img
-          class="photo"
-          :src="userData.photo"
-        >
+        <img class="photo" :src="userData.photo" />
         <div class="changephoto">
-          <img src="../../assets/Pen.svg">
-          <label
-            for="file"
-            href="#"
-          >Change photo</label>
-          <input
-            id="file"
-            ref="file"
-            type="file"
-            class="form__input--file"
-            @change="updatePhoto($event)"
-          >
+          <img src="../../assets/Pen.svg" />
+          <label for="file" href="#">Change photo</label>
+          <input id="file" ref="file" type="file" class="form__input--file" @change="updatePhoto($event)" />
         </div>
       </article>
       <article class="infoblock">
@@ -26,24 +14,14 @@
           <p class="title">
             First name
           </p>
-          <input
-            id="name"
-            v-model="userData.name"
-            type="text"
-            class="holder"
-            @change="updateData($event)"
-          >
+          <input id="name" v-model="userData.name" type="text" class="holder" @change="updateData($event)" />
         </div>
         <div class="item">
           <p class="title">
             Title
           </p>
 
-          <select
-            v-model="userData.gender"
-            class="holder input"
-            @change="updateData"
-          >
+          <select v-model="userData.gender" class="holder input" @change="updateData">
             <option :selected="userData.gender == 'Mr'">
               Mr
             </option>
@@ -57,11 +35,7 @@
             Stack
           </p>
 
-          <select
-            v-model="userData.stack"
-            class="holder input"
-            @change="updateData"
-          >
+          <select v-model="userData.stack" class="holder input" @change="updateData">
             <option :selected="userData.stack == 'Front-end'">
               Front-end
             </option>
@@ -74,25 +48,13 @@
           <p class="title">
             DailyRate
           </p>
-          <input
-            id="dailyRate"
-            v-model="userData.dailyRate"
-            type="number"
-            class="holder"
-            @change="updateData($event)"
-          >
+          <input id="dailyRate" v-model="userData.dailyRate" type="number" class="holder" @change="updateData($event)" />
         </div>
         <div class="item">
           <p class="title">
             Country
           </p>
-          <input
-            id="country"
-            v-model="userData.country"
-            type="text"
-            class="holder"
-            @change="updateData($event)"
-          >
+          <input id="country" v-model="userData.country" type="text" class="holder" @change="updateData($event)" />
         </div>
       </article>
       <article class="infoblock">
@@ -101,13 +63,7 @@
             Last name
           </p>
           <form action>
-            <input
-              id="surname"
-              v-model="userData.surname"
-              type="text"
-              class="holder"
-              @change="updateData($event)"
-            >
+            <input id="surname" v-model="userData.surname" type="text" class="holder" @change="updateData($event)" />
           </form>
         </div>
         <div class="item">
@@ -116,12 +72,7 @@
           </p>
 
           <div class="number">
-            <VuePhoneNumberInput
-              id="mobile"
-              v-model="userData.mobile"
-              type="text"
-              @change="updateMobile(onUpdate)"
-            />
+            <VuePhoneNumberInput id="mobile" v-model="userData.mobile" type="text" @change="updateMobile(onUpdate)" />
           </div>
         </div>
 
@@ -129,13 +80,7 @@
           <p class="title">
             Company
           </p>
-          <input
-            id="company"
-            v-model="userData.company"
-            type="text"
-            class="holder"
-            @change="updateData($event)"
-          >
+          <input id="company" v-model="userData.company" type="text" class="holder" @change="updateData($event)" />
         </div>
       </article>
     </section>
@@ -152,12 +97,12 @@ export default {
   data() {
     return {
       active: {
-        user: true
+        user: true,
       },
       mobile: {},
       fullMobile: {},
       userData: {},
-      user: JSON.parse(localStorage.getItem('user'))
+      user: JSON.parse(localStorage.getItem('user')),
     };
   },
   mounted() {
@@ -194,8 +139,8 @@ export default {
         });
         localStorage.setItem('userData', JSON.stringify(this.userData));
       }, 1000);
-    }
-  }
+    },
+  },
 };
 </script>
 
