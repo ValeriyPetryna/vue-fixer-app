@@ -106,7 +106,7 @@ export default {
     };
   },
   mounted() {
-    api.init('http://localhost:3000/');
+    //api.init('3.13.50.233/');
     api.setHeader();
     api.get('/accounts/profile').then(res => {
       this.userData = res.data.user;
@@ -146,51 +146,6 @@ export default {
 
 <style scoped lang="scss">
 @import './vue-phone-number-input.css';
-.profile-page {
-  display: flex;
-  width: 100%;
-}
-
-.personal-page {
-  flex-direction: column;
-  width: calc(100% - 400px);
-  padding: 40px 40px;
-  background-color: #fff;
-  border-radius: 4px;
-  box-shadow: 0 0 30px rgba(153, 163, 174, 0.06);
-  box-sizing: content-box;
-}
-
-.infopage {
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.information {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-width: 30%;
-  height: 50px;
-  box-shadow: inset 0 -2px 0 0 #e9e9e9;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 19px;
-  text-transform: uppercase;
-  &.active {
-    box-shadow: inset 0 -2px 0 0 #2a74db;
-    a {
-      color: #01134e;
-      text-decoration: none;
-    }
-  }
-  a {
-    white-space: nowrap;
-    color: #ccd0dc;
-    text-decoration: none;
-  }
-}
 
 .account {
   display: flex;
@@ -306,17 +261,6 @@ export default {
   margin-left: 20px;
 }
 
-body {
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
-  width: 100%;
-  display: flex;
-}
-
-.content {
-  width: 100%;
-  background: #f8f9fb;
-}
 .form__input--file {
   display: none;
 }

@@ -57,7 +57,7 @@ export default {
     };
   },
   mounted() {
-    let socket = io('http://localhost:3000/');
+    let socket = io('http://3.13.50.233/');
     this.socket = socket;
     socket.on('message', this.onMessage);
   },
@@ -73,10 +73,6 @@ export default {
 </script>
 
 <style scoped lang="css">
-.views {
-  margin: 0;
-  display: flex;
-}
 
 .page {
   display: flex;
@@ -87,17 +83,7 @@ export default {
   height: 72vh;
   padding: 41px 61px 0px 44px;
 }
-.page::-webkit-scrollbar {
-  width: 6px;
-  background: #f5f7fa;
-  mix-blend-mode: normal;
-  border-radius: 4px;
-  margin: 6px;
-}
-.page::-webkit-scrollbar-thumb {
-  background-color: #e0e6f0;
-  border-radius: 4px;
-}
+
 
 ::-webkit-scrollbar-button {
   background-image: url('');

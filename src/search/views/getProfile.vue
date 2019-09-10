@@ -68,7 +68,6 @@ export default {
     };
   },
   mounted() {
-    api.init('http://localhost:3000/');
     api.get(`/search/profile${this.$route.params.id}`).then(res => {
       this.profile = res.data.profile;
     });
@@ -77,21 +76,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.profile-page {
-  display: flex;
-  width: 100%;
-  height: 100%;
-}
-
-.personal-page {
-  flex-direction: column;
-  width: calc(100% - 400px);
-  padding: 40px 40px;
-  background-color: #fff;
-  border-radius: 4px;
-  box-shadow: 0 0 30px rgba(153, 163, 174, 0.06);
-  box-sizing: content-box;
-}
 
 .infopage {
   width: 100%;

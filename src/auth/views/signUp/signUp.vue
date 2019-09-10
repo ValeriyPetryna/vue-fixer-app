@@ -4,10 +4,7 @@
       <main class="wrapper">
         <nav class="navbar">
           <div class="logo-container">
-            <img
-              class="logo-container__image"
-              src="../../../assets/myfixerlogo.svg"
-            >
+            <img class="logo-container__image" src="../../../assets/myfixerlogo.svg" />
           </div>
           <div class="auth">
             <p class="auth__text">
@@ -19,59 +16,32 @@
           </div>
         </nav>
         <div class="container">
-          <form
-            class="login-form"
-            @submit.prevent="FirstStage"
-          >
+          <form class="login-form" @submit.prevent="FirstStage">
             <h1 class="login-form__title">
               Sign up
             </h1>
             <div class="fullname">
-              <input
-                v-model="user.name"
-                v-validate="'required'"
-                class="login-form__input"
-                type="text"
-                placeholder="First name"
-                name="name"
-              >
+              <input v-model="user.name" v-validate="'required'" class="login-form__input" type="text" placeholder="First name" name="name" />
               <span class="validation">{{ errors.first('name') }}</span>
-              <input
-                v-model="user.surname"
-                v-validate="'required'"
-                class="login-form__input right"
-                type="text"
-                placeholder="Last name"
-                name="surname"
-              >
+              <input v-model="user.surname" v-validate="'required'" class="login-form__input right" type="text" placeholder="Last name" name="surname" />
               <span class="validation">{{ errors.first('surname') }}</span>
             </div>
 
-            <input
-              v-model="user.username"
-              v-validate="'required'"
-              class="login-form__input"
-              type="text"
-              placeholder="Username"
-              name="username"
-            >
+            <input v-model="user.username" v-validate="'required'" class="login-form__input" type="text" placeholder="Username" name="username" />
             <span class="validation">{{ errors.first('username') }}</span>
             <input
               v-model="user.email"
               v-validate="{
                 required: true,
-                regex: /^(\S+)@([a-z0-9-]+)(\.)([a-z]{2,4})(\.?)([a-z]{0,4})+$/
+                regex: /^(\S+)@([a-z0-9-]+)(\.)([a-z]{2,4})(\.?)([a-z]{0,4})+$/,
               }"
               class="login-form__input"
               type="text"
               placeholder="E-mail"
               name="email"
-            >
+            />
             <span class="validation">{{ errors.first('email') }}</span>
-            <button
-              class="login-form__submit"
-              type="submit"
-            >
+            <button class="login-form__submit" type="submit">
               Get started
             </button>
           </form>
@@ -91,12 +61,12 @@ export default {
         name: '',
         surname: '',
         username: '',
-        email: ''
-      }
+        email: '',
+      },
     };
   },
   mounted() {
-    api.init('http://localhost:3000/');
+    //api.init('3.13.50.233/');
   },
   methods: {
     FirstStage() {
@@ -124,8 +94,8 @@ export default {
       localStorage.setItem('user', JSON.stringify(user));
       api.setHeader();
       this.$router.push('/search');
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -44,8 +44,7 @@ export default {
     };
   },
   mounted() {
-    // api.init()
-    // api.setHeader();
+    
   },
   methods: {
     switchComponent() {
@@ -57,11 +56,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.profile-page {
-  display: flex;
-  width: 100%;
-  height: 100% !important;
-}
 
 .page {
   flex-direction: column;
@@ -103,115 +97,4 @@ export default {
   }
 }
 
-.infoblock {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.avatar {
-  display: flex;
-  flex-direction: column;
-  width: 130px;
-}
-
-.photo {
-  height: 130px;
-  width: 130px;
-}
-
-.item {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.item-left {
-  margin-left: 80px;
-}
-
-.changephoto {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.title {
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 14px;
-  text-transform: uppercase;
-  color: #546087;
-  margin-bottom: 0;
-}
-
-.mobile-prefix {
-  margin-top: 4px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.country {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 20%;
-  height: 40px;
-  border: 2px solid #f2f2f2;
-  border-radius: 4px;
-  background-color: #fcfcfc;
-  padding: 0 13px;
-  margin-top: 4px;
-  input {
-    display: flex;
-    align-items: center;
-    width: 180px;
-    padding: 0 13px;
-    border: 2px solid #f2f2f2;
-    border-radius: 4px;
-    background-color: #fcfcfc;
-  }
-}
-
-.holder {
-  border: 2px solid #f2f2f2;
-  border-radius: 4px;
-  background-color: #fcfcfc;
-  margin-top: 4px;
-  width: 280px;
-  line-height: 40px;
-  padding: 0 13px;
-}
-
-.holderchoose {
-  background-image: url('../../assets/Location.svg');
-  background-position: 10px 10px;
-  background-position: 10px 10px;
-  background-repeat: no-repeat;
-  padding: 40px;
-  margin-top: 4px;
-  line-height: 40px;
-  padding: 0 13px;
-  border: 2px solid #f2f2f2;
-  border-radius: 4px;
-  text-indent: 1.5em;
-}
-
-#right {
-  width: 77%;
-  margin-left: 20px;
-}
-
-body {
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
-  width: 100%;
-  display: flex;
-}
-
-.content {
-  width: 100%;
-  background: #f8f9fb;
-}
 </style>

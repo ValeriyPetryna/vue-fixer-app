@@ -107,7 +107,6 @@ export default {
     };
   },
   mounted() {
-    api.init('http://localhost:3000');
   },
   methods: {
     Second() {

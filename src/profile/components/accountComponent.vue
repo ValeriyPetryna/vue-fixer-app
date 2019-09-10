@@ -41,7 +41,7 @@ export default {
     };
   },
   mounted() {
-    api.init('http://localhost:3000/');
+    //api.init('3.13.50.233/');
     api.setHeader();
     api.get('/accounts/profile').then(res => {
       this.userData = res.data.user;

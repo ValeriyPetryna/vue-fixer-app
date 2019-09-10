@@ -14,10 +14,9 @@ export default {
       this.$router.push('/login');
     },
   },
-  // mounted: function () {
-  //   api.init('https')
-  // api key: AIzaSyBNSRoMIfBJuZnYuCui18cCjKtKc0K-2rQ
-  // }
+  beforeCreate() {
+    api.init('http://3.13.50.233');
+  },
 };
 </script>
 <style lang="scss">
@@ -43,6 +42,20 @@ body {
 .content {
   width: 100%;
   background: #f8f9fb;
+}
+.profile-page {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.personal-page {
+  flex-direction: column;
+  width: calc(100% - 400px);
+  padding: 40px 40px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 0 30px rgba(153, 163, 174, 0.06);
+  box-sizing: content-box;
 }
 
 #app {

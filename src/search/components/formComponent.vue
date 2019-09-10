@@ -45,9 +45,9 @@
       </div>
     </div>
     <div class="category__radio">
-      <input id="price" v-model="itemSearch.sort" type="radio" name="category" value="dailyRate" />
+      <input id="price" v-model="itemSearch.sort" type="radio"  value="dailyRate" />
       <label for="price">by price</label>
-      <input id="rating" v-model="itemSearch.sort" type="radio" name="category" value="rating" checked />
+      <input id="rating" v-model="itemSearch.sort" type="radio"  value="rating" checked />
       <label for="rating">by rating</label>
     </div>
     <div>
@@ -88,21 +88,13 @@ export default {
       });
     },
   },
-
-  mounted() {
-    api.init('http://localhost:3000/');
-    // api.get(`/search/workers`).then(res => {
-    //   this.workers = res.data.allUsers;
-    // });
-  },
   methods: {
     searchFunc() {
-      api.init('http://localhost:3000/');
       api.post('/search/workers', this.itemSearch).then(res => {
         this.test = res.data.sortedArray;
-      });
-      this.$emit('filteredArray', {
-        data: this.test,
+        this.$emit('filteredArray', {
+          data: this.test,
+        });
       });
     },
   },
@@ -112,6 +104,21 @@ export default {
 
 
 <style scoped lang="scss">
+.form {
+  display: flex;
+  width: 29%;
+  margin-top: 40px;
+  margin-left: 45px;
+  flex-wrap: wrap;
+  flex-direction: column;
+  border-right: 1px solid #e7eaf5;
+  box-shadow: 20px 0px 20px -15px rgba(85, 85, 85, 0.25);
+}
+@media (max-width: 1024px) {
+  .form {
+    width: 100%;
+  }
+}
 .search {
   display: flex;
   flex-direction: column;
@@ -170,152 +177,9 @@ export default {
   cursor: pointer;
 }
 
-.results {
-  display: flex;
-  flex-direction: column;
-  width: 74%;
-  margin-left: 3.5%;
-  height: 100%;
-  margin: 0 5%;
-}
-
-.category {
-  align-items: center;
-  display: flex;
-  height: 28px;
-  justify-content: space-between;
-}
-
-.category__text {
-  color: #01134e;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  letter-spacing: 0.28px;
-  line-height: 14px;
-  text-transform: uppercase;
-}
-
-.category__button {
-  align-items: center;
-  display: flex;
-  justify-content: space-around;
-  width: 200px;
-  label {
-    color: #000;
-    font-family: Roboto;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 300;
-    letter-spacing: -0.046704px;
-    line-height: 28px;
-  }
-}
-
-::-webkit-scrollbar-button {
-  background-image: url('');
-  background-repeat: no-repeat;
-  height: 0;
-  width: 5px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: #ecedee;
-}
-
-::-webkit-scrollbar-thumb {
-  -webkit-border-radius: 0;
-  background-color: #dadada;
-  border-radius: 0;
-  &:hover {
-    background-color: #dadada;
-  }
-}
-
-::-webkit-resizer {
-  background-image: url('');
-  background-repeat: no-repeat;
-  height: 0;
-  width: 4px;
-}
-
-::-webkit-scrollbar {
-  width: 4px;
-}
-
-.category__button input[type='radio'] {
-  &:checked,
-  &:not(:checked) {
-    position: absolute;
-    visibility: hidden;
-  }
-  &:checked + label,
-  &:not(:checked) + label {
-    cursor: pointer;
-    display: inline-block;
-    line-height: 20px;
-    padding-left: 1.725rem;
-    position: relative;
-  }
-  &:checked + label:before,
-  &:not(:checked) + label:before {
-    background: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 100%;
-    content: '';
-    height: 18px;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 18px;
-  }
-  &:checked + label:after,
-  &:not(:checked) + label:after {
-    -webkit-transition: all 0.2s ease;
-    background: #0ad69c;
-    border-radius: 100%;
-    content: '';
-    height: 12px;
-    left: 4px;
-    position: absolute;
-    top: 4px;
-    transition: all 0.2s ease;
-    width: 12px;
-  }
-}
-
-input[type='radio'] {
-  &:not(:checked) + label:after {
-    -webkit-transform: scale(0);
-    opacity: 0;
-    transform: scale(0);
-  }
-  &:checked + label:after {
-    -webkit-transform: scale(1);
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
 .img-date {
   left: 19px;
   position: absolute;
   top: 27px;
-}
-
-.form {
-  display: flex;
-  width: 29%;
-  margin-top: 40px;
-  margin-left: 45px;
-  flex-wrap: wrap;
-  flex-direction: column;
-  border-right: 1px solid #e7eaf5;
-  box-shadow: 20px 0px 20px -15px rgba(85, 85, 85, 0.25);
-}
-@media (max-width: 1024px) {
-  .form {
-    width: 100%;
-  }
 }
 </style>

@@ -101,9 +101,9 @@
               <div class="chat__messages__date">Today, 10.09.2019</div>
             </time>
             <div class="message-box" v-for="(m, index) of messages" :key="index">
-              <div class="chat-message right">
-                <div class="chat-message__avatar">
-                  <img :src="userData.user.photo" />
+              <div class="chat-message" :class="{ right:(m.user === userData.name) }">
+                <div v-if="m.user != userData.name" class="chat-message__avatar">
+                  <img :src="userData.photo" />
                 </div>
                 <div class="chats__row">
                   <div class="chat-message__text">
@@ -122,8 +122,8 @@
               placeholder="Write a message..."
               v-on:keyup.enter="sendMessage" />
             <div class="chat__send-form__tools">
-              <a class="chat__send-form__emoji" href="#"><img src="@/assets/smile.svg"/></a>
-              <a class="chat__send-form__file" href="#"><img src="@/assets/sendfile.svg"/></a>
+              <a class="chat__send-form__emoji"><img src="@/assets/smile.svg"/></a>
+              <a class="chat__send-form__file"><img src="@/assets/sendfile.svg"/></a>
               <a class="chat__send-form__send-button"  @click="sendMessage">
               <img src="@/assets/send.svg"/></a>
             </div>
@@ -137,6 +137,7 @@
 <script>
 import asideComponent from '@/messenger/components/aside';
 import headerComponent from '@/components/headerComponent';
+import api from '../../shared/services/api.services';
 import io from 'socket.io-client';
 
 export default {
@@ -146,23 +147,28 @@ export default {
     return {
       socket: null,
       active: {},
+      right:false,
       message: '',
-      messages: [],
-      userData: JSON.parse(localStorage.getItem('user')),
+      messages: [{"text":"Hello","user":"Antonio"},{"text":"Hi","user":"Sergo-Antonio"},{"text":"Hello","user":"Hi"},{"text":"HU","user":"Sergo-Antonio"}],
+      userData: {},
     };
   },
   mounted() {
-    let socket = io('http://localhost:3000/');
+    api.setHeader();
+    api.get('/accounts/profile').then(res => {
+      this.userData = res.data.user;
+    });
+    let socket = io('http://3.13.50.233/');
     this.socket = socket;
     socket.on('message', this.onMessage);
   },
   methods: {
     onMessage(msg) {
-      this.messages.push({ text: msg, user: this.userData.user.name });
+      this.messages.push({ text: msg, user: this.userData.name });
     },
     sendMessage() {
       if (this.message) {
-        this.socket.emit('message', this.message, this.userData.user.name);
+        this.socket.emit('message', this.message, this.userData.name);
         this.message = '';
       }
     },
@@ -353,6 +359,8 @@ export default {
 .chat__messages {
   height: 550px;
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
 }
 
 .chat-message {
@@ -363,8 +371,8 @@ export default {
 .chat-message .chats__row {
   margin-top: 0;
   max-width: 300px;
-  background: #f7f9fc;
-  border-radius: 5px;
+  background: #d4f5e1;
+  border-radius: 10%;
   margin-left: 45px;
   position: relative;
   display: block;
@@ -383,13 +391,6 @@ export default {
   margin: 13px 16px 13px 8px;
 }
 
-.chat-message__time {
-  position: absolute;
-  font-size: 12px;
-  color: #9ba0ad;
-  bottom: 5px;
-  right: 5px;
-}
 
 .message-box {
   width: 100%;

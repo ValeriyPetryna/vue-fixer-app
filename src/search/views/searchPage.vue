@@ -14,7 +14,7 @@
               <google-map />
             </div>
             <div v-if="!active.map" class="workers">
-              <worker-component v-for="worker in workers.data" :key="worker._id" :worker="worker" />
+              <worker-component v-for="worker in workers" :key="worker._id" :worker="worker" />
             </div>
           </div>
         </div>
@@ -33,9 +33,9 @@ import api from '../../shared/services/api.services';
 
 export default {
   name: 'Search',
-  props: {
-    data: Array,
-  },
+  // props: {
+  //   data: Array,
+  // },
   components: {
     asideComponent,
     headerComponent,
@@ -52,6 +52,7 @@ export default {
       search: '',
       filteredAr: [],
       workers: undefined,
+      data:[],
     };
   },
   computed: {
@@ -62,8 +63,7 @@ export default {
       return 'SHOW RESULTS';
     },
   },
-  created() {
-    api.init('http://localhost:3000/');
+  mounted() {
     api.get(`/search/workers`).then(res => {
       this.workers = res.data.allUsers;
     });
@@ -73,18 +73,14 @@ export default {
       this.active.map = !this.active.map;
     },
     filtered(data) {
-      this.workers = data;
+      this.workers = data.data;
     },
   },
 };
 </script>
 
 <style scoped lang="scss">
-.views {
-  display: flex;
-  margin: 0;
-  height: 100%;
-}
+
 .results {
   display: flex;
   flex-direction: column;
