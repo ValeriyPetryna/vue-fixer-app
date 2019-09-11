@@ -4,10 +4,7 @@
       <main class="wrapper">
         <nav class="navbar">
           <div class="logo-container">
-            <img
-              class="logo-container__image"
-              src="../../../assets/myfixerlogo.svg"
-            >
+            <img class="logo-container__image" src="../../../assets/myfixerlogo.svg" />
           </div>
           <div class="auth">
             <p class="auth__text">
@@ -19,10 +16,7 @@
           </div>
         </nav>
         <div class="container">
-          <form
-            class="login-form"
-            @submit.prevent="Second"
-          >
+          <form class="login-form" @submit.prevent="Second">
             <h1 class="login-form__title">
               Complete your account
             </h1>
@@ -35,56 +29,27 @@
               type="password"
               placeholder="Create a password"
               name="password"
-            >
-            <password
-              v-model="password"
-              :strength-meter-only="true"
             />
-            <span class="validation">{{ errors.first('password') }}</span>
-            <input
-              v-validate="'required|confirmed:password'"
-              class="login-form__input"
-              type="password"
-              placeholder="Confirm password"
-              name="confirmPassword"
-            >
+            <password v-model="password" :strength-meter-only="true" />
+            <a class="validation">{{ errors.first('password') }}</a>
+            <input v-validate="'required|confirmed:password'" class="login-form__input" type="password" placeholder="Confirm password" name="confirmPassword" />
             <span class="validation">{{ errors.first('confirmPassword') }}</span>
             <label class="checkbox">
               <div class="checkbox-text">
                 <p class="auth__text">I agree to the myFixer.com</p>
                 <a class="auth__link">Terms of Service </a>
               </div>
-              <input
-                id="checkTerms"
-                ref="checkTerms"
-                type="checkbox"
-                checked="checked"
-              ><span
-                class="checkmark"
-              />
+              <input id="checkTerms" ref="checkTerms" type="checkbox" checked="checked" /><span class="checkmark" />
             </label>
             <label class="checkbox">
               <div class="checkbox-text">
                 <p class="auth__text">I agree to the myFixer.com</p>
                 <a class="auth__link">Privacy Policy</a>
               </div>
-              <input
-                id="checkPolicy"
-                ref="checkPolicy"
-                type="checkbox"
-                checked=""
-              ><span
-                class="checkmark"
-              />
+              <input id="checkPolicy" ref="checkPolicy" type="checkbox" checked="" /><span class="checkmark" />
             </label>
-            <img
-              class="recaptcha"
-              src="@/assets/recaptcha.svg"
-            >
-            <button
-              class="login-form__submit"
-              type="submit"
-            >
+            <img class="recaptcha" src="@/assets/recaptcha.svg" />
+            <button class="login-form__submit" type="submit">
               Done!
             </button>
           </form>
@@ -103,11 +68,10 @@ export default {
   components: { Password },
   data() {
     return {
-      password: ''
+      password: '',
     };
   },
-  mounted() {
-  },
+  mounted() {},
   methods: {
     Second() {
       this.$validator.validate().then(valid => {
@@ -128,18 +92,12 @@ export default {
           console.log('err');
         }
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped lang="scss">
-body {
-  padding: 0;
-  margin: 0;
-  font-family: 'Roboto';
-}
-
 .wrapper {
   height: 100vh;
   background: #f9fafc;
@@ -158,7 +116,6 @@ body {
 
 .validation {
   color: red;
-  margin: 5px;
 }
 
 .auth {
@@ -166,18 +123,16 @@ body {
   display: inherit;
   position: absolute;
   right: 137px;
-}
-
-.auth__text {
-  margin: 0;
-  padding: 0;
-}
-
-.auth__link {
-  font-weight: bold;
-  padding-left: 10px;
-  color: #002396;
-  cursor: pointer;
+  &__text {
+    margin: 0;
+    padding: 0;
+  }
+  &__link {
+    font-weight: bold;
+    padding-left: 10px;
+    color: #002396;
+    cursor: pointer;
+  }
 }
 
 .container {
@@ -191,79 +146,57 @@ body {
 .login-form {
   padding: 80px 116px;
   margin-top: 100px;
-}
-
-.login-form__title {
-  font-weight: 600;
-  font-size: 28px;
-  line-height: 34px;
-  letter-spacing: 0.4px;
-  color: #002396;
-}
-
-.login-form__input {
-  width: 100%;
-  margin-bottom: 25px;
-  padding: 12px 14px;
-  border: 2px solid #f2f2f2;
-  border-radius: 2px;
-  transition: 0.2s;
-  box-sizing: border-box;
-  outline: none;
-}
-.login-form__input:hover {
-  border-left: 2px solid #2a74db;
-}
-
-.login-form__submit {
-  margin-left: auto;
-  margin-right: 0;
-  display: block;
-  background: #0ad69c;
-  border-radius: 2px;
-  border: none;
-  outline: none;
-  padding: 12px 44px;
-  color: #fff;
-  font-weight: 600;
-  font-size: 16px;
-}
-
-.login-form__link {
-  text-align: right;
-  display: block;
-  margin-bottom: 15px;
-}
-
-body {
-  overflow: hidden;
-}
-
-.login-form__input {
-  width: 99.5%;
-  margin-bottom: 25px;
-  padding: 12px 14px;
-  border: 2px solid #f2f2f2;
-  border-radius: 2px;
-  transition: 0.2s;
-  box-sizing: border-box;
-  outline: none;
-}
-.login-form__input--name {
-  width: 49%;
-  border: 2px solid #f2f2f2;
-  border-radius: 2px;
-  transition: 0.2s;
-  box-sizing: border-box;
-  outline: none;
-  margin-bottom: 25px;
-  padding: 12px 14px;
-}
-.login-form__input--name:hover {
-  border-left: 2px solid #2a74db;
-}
-.login-form__input:hover {
-  border-left: 2px solid #2a74db;
+  &__title {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 34px;
+    letter-spacing: 0.4px;
+    color: #002396;
+  }
+  &__input {
+    width: 100%;
+    margin-bottom: 25px;
+    padding: 12px 14px;
+    border: 2px solid #f2f2f2;
+    border-radius: 2px;
+    transition: 0.2s;
+    box-sizing: border-box;
+    outline: none;
+    &--name {
+      width: 49%;
+      border: 2px solid #f2f2f2;
+      border-radius: 2px;
+      transition: 0.2s;
+      box-sizing: border-box;
+      outline: none;
+      margin-bottom: 25px;
+      padding: 12px 14px;
+      &:hover {
+        border-left: 2px solid #2a74db;
+      }
+    }
+    &:hover {
+      border-left: 2px solid #2a74db;
+    }
+  }
+  &__submit {
+    margin-left: auto;
+    margin-right: 0;
+    display: block;
+    background: #0ad69c;
+    border-radius: 2px;
+    border: none;
+    outline: none;
+    padding: 12px 44px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+  }
+  &__link {
+    text-align: right;
+    display: block;
+    margin-bottom: 15px;
+  }
 }
 
 .checkbox {
@@ -273,6 +206,10 @@ body {
   margin-bottom: 24px;
   cursor: pointer;
   font-size: 14px;
+  &-text {
+    display: flex;
+    margin-top: 6px;
+  }
 }
 .checkbox input {
   position: absolute;
@@ -280,10 +217,6 @@ body {
   cursor: pointer;
   height: 0;
   width: 0;
-}
-.checkbox-text {
-  display: flex;
-  margin-top: 6px;
 }
 
 .checkmark {
@@ -328,54 +261,6 @@ body {
   transform: rotate(45deg);
 }
 
-.form-group__steps {
-  display: flex;
-  justify-content: space-between;
-  margin: -20px 2px 25px 0;
-}
-.form-group__steps--item {
-  height: 5px;
-  width: 30%;
-  background: #ebeff3;
-  border-radius: 2px;
-}
-.form-group__steps--item.red {
-  background: #ff6359;
-  border-radius: 2px;
-}
-.form-group__steps--item.orange {
-  background: #ffb966;
-  border-radius: 2px;
-}
-.form-group__steps--item.green {
-  background: #38ecac;
-  border-radius: 2px;
-}
-
-.container-circle {
-  position: fixed;
-  left: 25%;
-  width: 50%;
-}
-.container-circle__text {
-  top: 60%;
-  position: fixed;
-  width: 100%;
-  text-align: center;
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 29px;
-}
-.container-circle__text--title {
-  font-family: Exo 2;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 50px;
-  line-height: 60px;
-  text-align: center;
-  letter-spacing: 0.4px;
-  color: #2a74db;
-}
 .Password__strength-meter {
   height: 30px;
 }

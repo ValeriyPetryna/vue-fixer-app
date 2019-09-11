@@ -66,7 +66,7 @@
             <input id="surname" v-model="userData.surname" type="text" class="holder" @change="updateData($event)" />
           </form>
         </div>
-        <div class="item">
+        <div class="item mobile">
           <p class="title">
             Mobile Phone
           </p>
@@ -145,7 +145,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import './vue-phone-number-input.css';
+@import './../../shared/styles/vue-phone-number-input.css';
 
 .account {
   display: flex;
@@ -269,10 +269,53 @@ export default {
   .infoblock,
   .personal-page,
   .holder {
-    width: 100% !important;
+    width: 100%;
   }
   .account {
     width: calc(100% - 150px) !important;
   }
+}
+@media (max-width: 1024px) {
+  .account {
+    margin-left: 5px;
+  }
+  .infoblock {
+    width: 50%;
+    justify-content: end;
+  }
+  .item-left {
+    margin-left: 0;
+  }
+  .change {
+    justify-content: start;
+  }
+  .infopage {
+    overflow-x: auto;
+  }
+}
+@media (max-width: 724px) {
+  .account {
+    margin-left: 5px;
+  }
+  .infoblock {
+    width: 40%;
+    justify-content: end;
+  }
+  .item-left {
+    margin-left: 0;
+  }
+  .change {
+    justify-content: start;
+  
+  }
+  .infopage {
+    overflow-x: auto;
+  }
+  .mobile {
+    display: none;
+  }
+}
+.mobile {
+  width:90%;
 }
 </style>

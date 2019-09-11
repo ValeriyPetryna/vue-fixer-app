@@ -98,16 +98,17 @@
           </div>
           <div class="chat__messages">
             <time>
-              <div class="chat__messages__date">Today, 10.09.2019</div>
+              <div class="chat__messages__date">Today, 11.09.2019</div>
             </time>
             <div class="message-box" v-for="(m, index) of messages" :key="index">
-              <div class="chat-message" :class="{ right:(m.user === userData.name) }">
-                <div v-if="m.user != userData.name" class="chat-message__avatar">
+              <div class="chat-message" :class="{ right:(m.user === userData._id) }">
+                <div v-if="m.user != userData._id" class="chat-message__avatar">
                   <img :src="userData.photo" />
                 </div>
                 <div class="chats__row">
                   <div class="chat-message__text">
                     {{ m.text }}
+                    <div class="chat-message__time">{{m.time}}</div>
                   </div>
                 </div>
               </div>
@@ -147,9 +148,15 @@ export default {
     return {
       socket: null,
       active: {},
-      right:false,
+      right: false,
       message: '',
-      messages: [{"text":"Hello","user":"Antonio"},{"text":"Hi","user":"Sergo-Antonio"},{"text":"Hello","user":"Hi"},{"text":"HU","user":"Sergo-Antonio"}],
+      messages: [
+        { text: 'Hello!', user: '5d6e989e89c2s3624aa', time: '11:21:10' },
+        { text: 'Hi', user: '5d6e989e89c2a51d563624aa', time: '11:21:19' },
+        { text: 'How are you?!', user: '5d6e989e89sd563624aa', time: '11:21:19' },
+        { text: '.....', user: '5d6e989e89c2a51d5s4aa', time: '11:21:25' },
+        { text: ':D', user: '5d6e989e89c2a51d563624aa', time: '11:31:19' },
+      ],
       userData: {},
     };
   },
@@ -164,11 +171,13 @@ export default {
   },
   methods: {
     onMessage(msg) {
-      this.messages.push({ text: msg, user: this.userData.name });
+      const currentdate = new Date();
+      const datetime = '' + currentdate.getHours() + ':' + currentdate.getMinutes() + ':' + currentdate.getSeconds();
+      this.messages.push({ text: msg, user: this.userData._id, time: datetime });
     },
     sendMessage() {
       if (this.message) {
-        this.socket.emit('message', this.message, this.userData.name);
+        this.socket.emit('message', this.message, this.userData._id);
         this.message = '';
       }
     },
@@ -388,9 +397,18 @@ export default {
 }
 
 .chat-message__text {
-  margin: 13px 16px 13px 8px;
+  margin: 0px 0px 6px 16px;
+  padding-top: 10px;
+  min-width: 150px;
+  min-height: 50px;
 }
-
+.chat-message__time {
+  position: absolute;
+  font-size: 10px;
+  color: #9ba0ad;
+  bottom: 5px;
+  right: 5px;
+}
 
 .message-box {
   width: 100%;

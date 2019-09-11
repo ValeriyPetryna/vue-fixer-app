@@ -7,9 +7,11 @@
         </p>
         <img class="search-filters__location" src="../../assets/Location.svg" />
         <select v-model="itemSearch.country" class="search-filters__dropdown">
-          <option selected="selected">Uganda</option>
+          <option>Uganda</option>
           <option>USA</option>
           <option>Ukraine</option>
+          <option>France</option>
+          <option>Monaco</option>
         </select>
       </div>
       <div class="search-filters">
@@ -34,7 +36,7 @@
           SERVICE
         </p>
         <select class="search-filters__dropdown">
-          <option selected="selected">3 services </option>
+          <option>3 services </option>
         </select>
       </div>
       <div class="search-filters">
@@ -45,9 +47,9 @@
       </div>
     </div>
     <div class="category__radio">
-      <input id="price" v-model="itemSearch.sort" type="radio"  value="dailyRate" />
+      <input id="price" v-model="itemSearch.sort" type="radio" value="dailyRate" />
       <label for="price">by price</label>
-      <input id="rating" v-model="itemSearch.sort" type="radio"  value="rating" checked />
+      <input id="rating" v-model="itemSearch.sort" type="radio" value="rating" checked />
       <label for="rating">by rating</label>
     </div>
     <div>
@@ -57,8 +59,7 @@
     </div>
   </form>
 </template>
-
-
+<script src="https://unpkg.com/@trevoreyre/autocomplete-vue"></script>
 <script>
 import api from '../../shared/services/api.services';
 
@@ -81,6 +82,7 @@ export default {
       data: [],
     };
   },
+  mounted() {},
   computed: {
     filteredList() {
       return this.workers.filter(worker => {
@@ -95,6 +97,14 @@ export default {
         this.$emit('filteredArray', {
           data: this.test,
         });
+      });
+    },
+    Search(input) {
+      if (input.length < 1) {
+        return [];
+      }
+      return countries.filter(country => {
+        return country.toLowerCase().startsWith(input.toLowerCase());
       });
     },
   },

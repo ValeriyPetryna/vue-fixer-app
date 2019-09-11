@@ -9,8 +9,10 @@
 </template>
 
 <script>
+import api from './../../shared/services/api.services';
 export default {
   name: 'GoogleMap',
+  props: {workers: Array},
 
   data() {
     return {
@@ -18,9 +20,11 @@ export default {
         lat: 47.376332,
         lng: 8.547511,
       },
+      user: undefined,
       infoWindowPos: null,
       infoWinOpen: false,
       currentMidx: null,
+      user: undefined,
       infoOptions: {
         content: '',
         // optional: offset infowindow so it visually sits nicely on top of our marker
@@ -53,6 +57,12 @@ export default {
         },
       ],
     };
+  },
+  async mounted() {
+    api.setHeader();
+    api.get('/accounts/profile').then(res => {
+      this.user = res.data.user;
+    });
   },
 
   methods: {
@@ -87,7 +97,7 @@ export default {
     },
     toggleInfoWindow(marker, idx) {
       this.infoWindowPos = marker.position;
-      this.infoOptions.content = marker.infoText;
+      this.infoOptions.content = '<strong>' + this.user.name + ' ' + this.user.surname + '<br> Stack: </strong> ' + this.user.stack ;
       // check if its the same marker that was selected if yes toggle
       if (this.currentMidx === idx) {
         this.infoWinOpen = !this.infoWinOpen;

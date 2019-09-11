@@ -117,4 +117,35 @@ export default {
 
   overflow: auto;
 }
+::-webkit-scrollbar-button {
+  background-image: url('');
+  background-repeat: no-repeat;
+  height: 0;
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ecedee;
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 0;
+  background-color: #dadada;
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #86f508;
+}
+
+::-webkit-resizer {
+  background-image: url('');
+  background-repeat: no-repeat;
+  height: 0;
+  width: 4px;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
 </style>

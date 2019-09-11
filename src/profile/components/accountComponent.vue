@@ -17,8 +17,8 @@
       </div>
       <div class="item-left">
         <article class="change">
-          <div class="change-password">
-            <a href="#">CHANGE PASSWORD ></a>
+          <div class="delete">
+            <button @click="deleteAccount" class="delete-account"><span>DELETE ACCOUNT </span></button>
           </div>
         </article>
       </div>
@@ -41,7 +41,6 @@ export default {
     };
   },
   mounted() {
-    //api.init('3.13.50.233/');
     api.setHeader();
     api.get('/accounts/profile').then(res => {
       this.userData = res.data.user;
@@ -55,6 +54,14 @@ export default {
         });
       }, 1000);
     },
+    deleteAccount() {
+      api.delete('/accounts/destroy').catch(err => {
+        alert(err)
+      });
+      localStorage.removeItem('user');
+      localStorage.removeItem('userData');
+      this.$router.push('/signup')
+    }
   },
 };
 </script>
@@ -113,6 +120,45 @@ export default {
   width: 280px;
   line-height: 40px;
   padding: 0 13px;
+}
+.delete-account {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 15px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.delete-account span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.delete-account span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -10px;
+  transition: 0.5s;
+}
+
+.delete-account:hover span {
+  padding-right: 20px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
 }
 
 #right {

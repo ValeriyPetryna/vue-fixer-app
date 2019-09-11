@@ -1,13 +1,13 @@
 <template>
   <div class="worker">
     <img :src="worker.photo" class="worker__avatar" />
-    <div class="info">
-      <span class="info__name">
+    <div class="worker-information">
+      <span class="worker-information__name">
         {{ worker.name + ' ' + worker.surname }}
-        <img class="img__star" src="../../assets/gold.svg" />
+        <rating-component class="worker-information__rating" v-bind:rating="worker.rating" />
         <!-- raiting -->
       </span>
-      <div class="info__location">
+      <div class="worker-information__location">
         <svg width="12" height="15" viewBox="0 0 7 10" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M3.49985 0C1.57013 0 3.63724e-08 1.57013 3.63724e-08 3.50005C3.63724e-08 4.00345 0.103034 4.48408 0.306086 4.92871C1.18115 6.84355 2.85888 8.86522 3.35236 9.43916C3.38933 9.48207 3.44323 9.50678 3.49995 9.50678C3.55667 9.50678 3.61057 9.48207 3.64755 9.43916C4.14083 8.86532 5.81856 6.84375 6.69391 4.92871C6.89706 4.48408 7 4.00345 7 3.50005C6.99981 1.57013 5.42968 0 3.49985 0ZM3.49985 5.31799C2.49744 5.31799 1.68182 4.50237 1.68182 3.49995C1.68182 2.49744 2.49744 1.68182 3.49985 1.68182C4.50227 1.68182 5.31789 2.49744 5.31789 3.49995C5.31798 4.50237 4.50237 5.31799 3.49985 5.31799Z"
@@ -16,8 +16,8 @@
         </svg>
         <p>{{ worker.country }}</p>
       </div>
-      <div class="info__stack">
-        <p class="inf">
+      <div class="worker-information__stack">
+        <p class="strong">
           Stack:
         </p>
         <p>{{ worker.stack }}</p>
@@ -25,8 +25,8 @@
           More
         </router-link>
       </div>
-      <div class="info__price">
-        <p class="inf">
+      <div class="worker-information__price">
+        <p class="strong">
           Base Daily Rate:
         </p>
         <p>{{ worker.dailyRate }}</p>
@@ -36,9 +36,14 @@
 </template>
 
 <script>
+import ratingComponent from './ratingComponent';
+
 export default {
   props: {
     worker: Object,
+  },
+  components: {
+    ratingComponent,
   },
 };
 </script>
@@ -51,39 +56,6 @@ export default {
   margin-left: 3.5%;
   height: 100%;
   margin: 0 5%;
-}
-
-.category {
-  align-items: center;
-  display: flex;
-  height: 28px;
-  justify-content: space-between;
-}
-
-.category__text {
-  color: #01134e;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  letter-spacing: 0.28px;
-  line-height: 14px;
-  text-transform: uppercase;
-}
-
-.category__button {
-  align-items: center;
-  display: flex;
-  justify-content: space-around;
-  width: 200px;
-  label {
-    color: #000;
-    font-family: Roboto;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 300;
-    letter-spacing: -0.046704px;
-    line-height: 28px;
-  }
 }
 
 .workers {
@@ -105,78 +77,49 @@ export default {
   justify-content: space-around;
   margin: 18px 18px 18px 0;
   width: 330px;
-}
-
-.worker__avatar {
-  height: 76px;
-  width: 76px;
-  margin-top: 33px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.info {
-  width: 57%;
-  p {
+  &__avatar {
+    height: 76px;
+    width: 76px;
+    margin-top: 33px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  &-information {
+    width: 57%;
+    margin-top: 15px;
     color: #000;
     font-size: 12px;
     font-style: normal;
     font-weight: 300;
     letter-spacing: -0.046704px;
     line-height: 12px;
+    &__name {
+      font-weight: 450;
+      font-size: 16px;
+    }
+    &__rating {
+      vertical-align: middle;
+      display: table-caption;
+    }
+    &__location {
+      display: flex;
+      align-items: center;
+      img {
+        width: 14px;
+        height: 21px;
+        margin-right: 5px;
+      }
+    }
+    &__stack {
+      display: flex;
+    }
+    &__price {
+      display: flex;
+    }
   }
 }
 
-.info__location {
-  display: flex;
-  align-items: center;
-  img {
-    width: 14px;
-    height: 21px;
-    margin-right: 5px;
-  }
-}
 
-.info__stack,
-.info__price {
-  display: flex;
-}
-
-.inf {
-  color: #01134e;
-  font-weight: 400 !important;
-}
-
-::-webkit-scrollbar-button {
-  background-image: url('');
-  background-repeat: no-repeat;
-  height: 0;
-  width: 5px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: #ecedee;
-}
-
-::-webkit-scrollbar-thumb {
-  -webkit-border-radius: 0;
-  background-color: #dadada;
-  border-radius: 0;
-  &:hover {
-    background-color: #dadada;
-  }
-}
-
-::-webkit-resizer {
-  background-image: url('');
-  background-repeat: no-repeat;
-  height: 0;
-  width: 4px;
-}
-
-::-webkit-scrollbar {
-  width: 4px;
-}
 
 .category__button input[type='radio'] {
   &:checked,
@@ -231,12 +174,12 @@ input[type='radio'] {
     transform: scale(1);
   }
 }
-
-.img-date {
-  left: 19px;
-  position: absolute;
-  top: 27px;
+.strong {
+  font-size: 12px;
+  font-weight: 600;
+  margin-right: 5px;
 }
+
 .more-link {
   color: #2a74db;
   font-size: inherit;
@@ -244,10 +187,9 @@ input[type='radio'] {
   margin-right: 0;
   margin-left: auto;
   cursor: pointer;
+  font-size: 16px;
 }
-.img__star {
-  vertical-align: middle;
-}
+
 @media (max-width: 1024px) {
   .workers,
   .results,

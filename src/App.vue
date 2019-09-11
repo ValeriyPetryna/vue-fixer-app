@@ -7,7 +7,6 @@
 import api from './shared/services/api.services';
 
 export default {
-  computed: {},
   methods: {
     logout() {
       localStorage.removeItem('user');
@@ -16,6 +15,7 @@ export default {
   },
   beforeCreate() {
     api.init('http://3.13.50.233');
+    //api.init('http://localhost:3000');
   },
 };
 </script>
@@ -76,7 +76,7 @@ body {
 .views {
   display: flex;
   overflow: hidden !important;
-
+  height: 100%;
   margin: 0;
 }
 </style>

@@ -85,7 +85,7 @@ export default {
 };
 </script>
 
-<style scoped lang="css">
+<style scoped lang="scss">
 
 .wrapper {
   height: 100vh;
@@ -108,18 +108,16 @@ export default {
   display: inherit;
   position: absolute;
   right: 137px;
-}
-
-.auth__text {
-  margin: 0;
-  padding: 0;
-}
-
-.auth__link {
-  font-weight: bold;
-  padding-left: 10px;
-  color: #002396;
-  cursor: pointer;
+  &__text {
+    margin: 0;
+    padding: 0;
+  }
+  &__link {
+    font-weight: bold;
+    padding-left: 10px;
+    color: #002396;
+    cursor: pointer;
+  }
 }
 
 .container {
@@ -133,49 +131,57 @@ export default {
 .login-form {
   padding: 80px 116px;
   margin-top: 100px;
-}
-
-.login-form__title {
-  font-weight: 600;
-  font-size: 28px;
-  line-height: 34px;
-  letter-spacing: 0.4px;
-  color: #002396;
-}
-
-.login-form__input {
-  width: 100%;
-  margin-bottom: 25px;
-  padding: 12px 14px;
-  border: 2px solid #f2f2f2;
-  border-radius: 2px;
-  transition: 0.2s;
-  box-sizing: border-box;
-  outline: none;
-}
-.login-form__input:hover {
-  border-left: 2px solid #2a74db;
-}
-
-.login-form__submit {
-  margin-left: auto;
-  margin-right: 0;
-  display: block;
-  background: #0ad69c;
-  border-radius: 2px;
-  border: none;
-  outline: none;
-  padding: 12px 44px;
-  color: #fff;
-  font-weight: 600;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.login-form__link {
-  text-align: right;
-  display: block;
-  margin-bottom: 15px;
+  &__title {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 34px;
+    letter-spacing: 0.4px;
+    color: #002396;
+  }
+  &__input {
+    width: 100%;
+    margin-bottom: 25px;
+    padding: 12px 14px;
+    border: 2px solid #f2f2f2;
+    border-radius: 2px;
+    transition: 0.2s;
+    box-sizing: border-box;
+    outline: none;
+    &--name {
+      width: 49%;
+      border: 2px solid #f2f2f2;
+      border-radius: 2px;
+      transition: 0.2s;
+      box-sizing: border-box;
+      outline: none;
+      margin-bottom: 25px;
+      padding: 12px 14px;
+      &:hover {
+        border-left: 2px solid #2a74db;
+      }
+    }
+    &:hover {
+      border-left: 2px solid #2a74db;
+    }
+  }
+  &__submit {
+    margin-left: auto;
+    margin-right: 0;
+    display: block;
+    background: #0ad69c;
+    border-radius: 2px;
+    border: none;
+    outline: none;
+    padding: 12px 44px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+  }
+  &__link {
+    text-align: right;
+    display: block;
+    margin-bottom: 15px;
+  }
 }
 .validation {
   color: red;

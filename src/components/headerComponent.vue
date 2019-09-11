@@ -119,6 +119,19 @@ $col2: #dc3545;
       margin-left: 20px;
     }
   }
+  @media (max-width: 724px) {
+    .navbar {
+      margin-left: 5px;
+    }
+    .navbar-user__avatar {
+      > img {
+        display: none;
+      }
+    }
+    .navbar-menu {
+      display: none;
+    }
+  }
   &-menu {
     display: inline-flex;
     align-items: center;
