@@ -14,8 +14,8 @@ export default {
     },
   },
   beforeCreate() {
-    api.init('http://3.13.50.233');
-    //api.init('http://localhost:3000');
+    // api.init('http://3.13.50.233');
+    api.init('http://localhost:3000');
   },
 };
 </script>
@@ -61,7 +61,6 @@ body {
 #app {
   width: 100%;
   height: 100vh;
-  overflow: hidden;
 }
 @media (max-width: 1024px) {
   .page {

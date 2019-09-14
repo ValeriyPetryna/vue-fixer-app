@@ -98,6 +98,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import './../../../shared/styles/responsive.scss';
+
 .wrapper {
   height: 100vh;
   background: #f9fafc;
@@ -109,23 +111,22 @@ export default {
   display: flex;
 }
 
-.logo-container__image {
-  width: 138px;
-  margin-left: 140px;
-}
-
-.validation {
-  color: red;
+.logo-container {
+  margin-left: 7%;
 }
 
 .auth {
   margin-top: 10px;
-  display: inherit;
   position: absolute;
-  right: 137px;
+  right: 7%;
+  display: flex;
+
   &__text {
     margin: 0;
     padding: 0;
+    @include max('phone') {
+      display: none;
+    }
   }
   &__link {
     font-weight: bold;
@@ -136,22 +137,42 @@ export default {
 }
 
 .container {
-  max-width: 632px;
+  width: 632px;
   background: #fff;
   margin: 50px auto;
   box-shadow: 0px 5px 40px rgba(0, 45, 113, 0.06);
   border-radius: 10px;
+  @include max('tablet') {
+    width: 100%;
+    margin: 0 auto;
+  }
 }
 
 .login-form {
   padding: 80px 116px;
   margin-top: 100px;
+  @include max('tablet') {
+    padding: 15% 15%;
+    margin-top: 50px;
+  }
+  @include max('phone') {
+    padding: 25% 5%;
+    margin-top: 25px;
+  }
+  @include max('phone') {
+    padding: 10% 5%;
+    margin-top: 20px;
+  }
   &__title {
     font-weight: 600;
     font-size: 28px;
     line-height: 34px;
     letter-spacing: 0.4px;
     color: #002396;
+     @include max('phone') {
+      font-size: 24px;
+      text-align: center;
+    }
   }
   &__input {
     width: 100%;
@@ -196,6 +217,24 @@ export default {
     text-align: right;
     display: block;
     margin-bottom: 15px;
+  }
+}
+.validation {
+  color: red;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.right {
+  margin-left: 25px;
+}
+.fullname {
+  display: flex;
+  @include max('phone') {
+    flex-direction: column;
+    .right {
+      margin: 0 0 25px 0;
+    }
   }
 }
 
