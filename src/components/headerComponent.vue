@@ -79,6 +79,8 @@ export default {
 
 
 <style scoped lang="scss">
+@import './../shared/styles/responsive.scss';
+
 *,
 ::before,
 ::after {
@@ -93,49 +95,27 @@ $white: #ffffff;
 $col1: #9f1414;
 $col2: #dc3545;
 
-.user__menu {
-  width: 100px;
-  height: 20px;
-  opacity: 0;
-  background-color: $background_color_1;
-  transition: opacity 0.5s;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  &--active {
-    opacity: 1;
-    transition: opacity 0.5s;
-  }
-}
-
 .navbar {
   display: flex;
   width: 100%;
   height: 60.94px;
   border-bottom: 1px solid #dae4f2;
   margin-left: 80px;
-  @media (max-width: 1024px) {
-    .navbar {
-      margin-left: 20px;
-    }
+
+  @include max('tablet-wide') {
+    margin-left: 20px;
   }
-  @media (max-width: 724px) {
-    .navbar {
-      margin-left: 5px;
-    }
-    .navbar-user__avatar {
-      > img {
-        display: none;
-      }
-    }
-    .navbar-menu {
-      display: none;
-    }
+  @include max('tablet') {
+    margin-left: 5px;
   }
+
   &-menu {
     display: inline-flex;
     align-items: center;
     padding-left: 40px;
+    @include max('tablet') {
+      display: none;
+    }
   }
   &-user {
     display: flex;
@@ -143,6 +123,13 @@ $col2: #dc3545;
     line-height: 62px;
     margin-right: 100px;
     align-items: center;
+    @include max('tablet') {
+      margin-right: 50px;
+    }
+    @include max('phone') {
+      margin-right: 10px;
+    }
+
     &__avatar {
       display: flex;
       padding: 10px;
@@ -151,12 +138,18 @@ $col2: #dc3545;
         border-radius: 50%;
         height: 45px;
         object-fit: cover;
+        @include max('tablet') {
+          display: none;
+        }
       }
     }
     &__name {
       padding-right: 15px;
       text-decoration: none;
       color: $color_1;
+      @include max('phone') {
+          padding-right: 0;
+        }
     }
   }
 }

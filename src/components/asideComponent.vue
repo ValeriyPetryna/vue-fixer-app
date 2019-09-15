@@ -43,11 +43,22 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+@import './../shared/styles/responsive.scss';
+
 .sidebar {
   height: 100vh;
   background: #01134e;
   width: 80px;
   position: absolute;
+  @include max('tablet-wide') {
+    width: 70px;
+  }
+  @include max('tablet') {
+    width: 65px;
+  }
+  @include max('phone') {
+    width: 55px;
+  }
 }
 
 .sidebar-logo {

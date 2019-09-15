@@ -74,7 +74,6 @@ body {
 }
 .views {
   display: flex;
-  overflow: hidden !important;
   height: 100%;
   margin: 0;
 }
