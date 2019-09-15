@@ -1,6 +1,6 @@
 <template>
   <div class="googlemap">
-    <gmap-map :center="center" :zoom="15" style="width: 100%; height: 500px">
+    <gmap-map class="googlemap" :center="center" :zoom="15" style="width: 100%; height: 95%">
       <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" @closeclick="infoWinOpen = false" />
 
       <gmap-marker v-for="(m, i) in markers" :key="i" :position="m.position" :clickable="true" @click="toggleInfoWindow(m, i)" />
@@ -12,7 +12,7 @@
 import api from './../../shared/services/api.services';
 export default {
   name: 'GoogleMap',
-  props: {workers: Array},
+  props: { workers: Array },
 
   data() {
     return {
@@ -97,7 +97,7 @@ export default {
     },
     toggleInfoWindow(marker, idx) {
       this.infoWindowPos = marker.position;
-      this.infoOptions.content = '<strong>' + this.user.name + ' ' + this.user.surname + '<br> Stack: </strong> ' + this.user.stack ;
+      this.infoOptions.content = '<strong>' + this.user.name + ' ' + this.user.surname + '<br> Stack: </strong> ' + this.user.stack;
       // check if its the same marker that was selected if yes toggle
       if (this.currentMidx === idx) {
         this.infoWinOpen = !this.infoWinOpen;
@@ -115,10 +115,13 @@ export default {
 <style scoped lang="scss">
 @import './../../shared/styles/responsive.scss';
 .googlemap {
+  height: 600px;
   @include max('desktop') {
-      margin-bottom: 20px;
-      margin-right: 20px;
-    }
+    margin-bottom: 5px;
+    margin-right: 5px;
+  }
+  @include max('tablet') {
+    height: 95vh;
+  }
 }
-
 </style>

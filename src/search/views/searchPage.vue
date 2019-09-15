@@ -85,13 +85,21 @@ export default {
 .views {
   overflow-x: hidden !important;
 }
+.content {
+  overflow-x: hidden !important;
+  overflow-y: scroll;
+}
 .results {
   display: flex;
   flex-direction: column;
-  width: 74%;
+  width: 75%;
   margin-left: 3.5%;
   height: 100%;
   margin: 0 5%;
+   @include max('phone') {
+  margin: 0 !important;
+  width: 85%;
+  }
 }
 .page {
   display: flex;
@@ -101,6 +109,9 @@ export default {
   margin: 62px 124px 0px 142px;
   height: 72vh;
   padding: 41px 61px 0px 44px;
+  @include max('phone') {
+  margin: 0 !important;
+  }
   &::-webkit-scrollbar {
     width: 6px;
     background: #f5f7fa;

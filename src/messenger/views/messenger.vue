@@ -106,7 +106,7 @@
                   <img :src="userData.photo" />
                 </div>
                 <div class="chats__row">
-                  <div class="chat-message__text">
+                  <div class="chat-message__text" >
                     {{ m.text }}
                     <div class="chat-message__time">{{m.time}}</div>
                   </div>
@@ -185,7 +185,9 @@ export default {
 };
 </script>
 
-<style scoped lang="css">
+<style scoped lang="scss">
+@import './../../shared/styles/responsive.scss';
+
 .messenger-page {
   display: flex;
   width: 100%;
@@ -200,16 +202,28 @@ export default {
   background: #ffffff;
   box-shadow: 0px 0px 30px rgba(153, 163, 174, 0.06);
   border-radius: 4px;
+
+  @include max('tablet-wide') {
+    margin: 45px 24px 0 80px;
+  }
+  @include max('tablet') {
+    margin: 25px 0 0 75px;
+  }
+  @include max('phone') {
+    margin: 25px 0 0 65px;
+  }
 }
 
 .chats__row {
-  margin-top: 6px;
   display: flex;
 }
 
 .chats__list {
   width: 300px;
   border-right: 1px solid #edf0f4;
+  @include max('tablet') {
+    width: 18%;
+  }
 }
 
 .chats__list__dialogs {
@@ -235,10 +249,16 @@ export default {
   line-height: 25px;
   color: #9ba0ad;
   margin-left: -10px;
+  @include max('tablet') {
+    display: none;
+  }
 }
 
 .chats__list__dialog__details {
   margin-left: 14px;
+  @include max('tablet') {
+    display: none;
+  }
 }
 
 .chats__list__dialog--avatar {
@@ -386,6 +406,9 @@ export default {
   position: relative;
   display: block;
   word-wrap: break-word;
+  @include max('phone') {
+    width:70%;
+  }
 }
 
 .chat-message__avatar > img {
@@ -401,6 +424,17 @@ export default {
   padding-top: 10px;
   min-width: 150px;
   min-height: 50px;
+ @include max('tablet') {
+    margin: 0px 0px 0px 10px;
+    padding-top: 10px;
+    min-width: 120px;
+    min-height: 40px;
+    width:50%;
+  }
+
+  @include max('phone') {
+    width:50%;
+  }
 }
 .chat-message__time {
   position: absolute;

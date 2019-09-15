@@ -61,6 +61,9 @@ export default {
     width: 100%;
     min-width: 100% !important;
   }
+  @include max('phone') {
+    margin: 0;
+  }
 }
 
 .workers {

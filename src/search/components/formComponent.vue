@@ -130,7 +130,7 @@ export default {
     width: 75%;
   }
   @include max('phone') {
-    width: 60%;
+    width: 65%;
   }
 }
 .search {
