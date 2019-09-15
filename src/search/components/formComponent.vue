@@ -5,8 +5,7 @@
         <p class="search-filters__text">
           Location
         </p>
-        <img class="search-filters__location" src="../../assets/Location.svg" />
-        <select v-model="itemSearch.country" class="search-filters__dropdown">
+        <select v-model="itemSearch.country" class="search-filters__dropdown location ">
           <option>Uganda</option>
           <option>USA</option>
           <option>Ukraine</option>
@@ -47,9 +46,9 @@
       </div>
     </div>
     <div class="category__radio">
-      <input id="price" v-model="itemSearch.sort" type="radio" value="dailyRate" />
+      <input id="price" class="category__radio--price" v-model="itemSearch.sort" type="radio" value="dailyRate" />
       <label for="price">by price</label>
-      <input id="rating" v-model="itemSearch.sort" type="radio" value="rating" checked />
+      <input id="rating" class="category__rating" v-model="itemSearch.sort" type="radio" value="rating" checked />
       <label for="rating">by rating</label>
     </div>
     <div>
@@ -59,7 +58,7 @@
     </div>
   </form>
 </template>
-<script src="https://unpkg.com/@trevoreyre/autocomplete-vue"></script>
+
 <script>
 import api from '../../shared/services/api.services';
 
@@ -114,6 +113,7 @@ export default {
 
 
 <style scoped lang="scss">
+@import './../../shared/styles/responsive.scss';
 .form {
   display: flex;
   width: 29%;
@@ -123,10 +123,14 @@ export default {
   flex-direction: column;
   border-right: 1px solid #e7eaf5;
   box-shadow: 20px 0px 20px -15px rgba(85, 85, 85, 0.25);
-}
-@media (max-width: 1024px) {
-  .form {
-    width: 100%;
+  @include max('tablet-wide') {
+    width: 82%;
+  }
+  @include max('tablet') {
+    width: 75%;
+  }
+  @include max('phone') {
+    width: 60%;
   }
 }
 .search {
@@ -152,9 +156,10 @@ export default {
 }
 
 .search-filters__location {
-  position: absolute;
-  margin-top: 11px;
-  margin-left: 5px;
+  background-image: url('./../../assets/Location.svg');
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
 }
 
 .search-filters__dropdown {
@@ -176,7 +181,7 @@ export default {
 }
 
 .search-filters__button {
-  width: 100%;
+  width: 95%;
   height: 42px;
   background: #0ad69c;
   border-radius: 2px;
@@ -191,5 +196,60 @@ export default {
   left: 19px;
   position: absolute;
   top: 27px;
+}
+.category__radio {
+  margin: 5px;
+  margin: 5px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.category__radio input[type='radio']:checked,
+.category__radio input[type='radio']:not(:checked) {
+  position: absolute;
+  visibility: hidden;
+  & + label {
+    cursor: pointer;
+    display: inline-block;
+    line-height: 20px;
+    padding-left: 1.725rem;
+    position: relative;
+    &:before {
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      border-radius: 100%;
+      content: '';
+      height: 18px;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 18px;
+    }
+
+    &:after {
+      -webkit-transition: all 0.2s ease;
+      background: #0ad69c;
+      border-radius: 100%;
+      content: '';
+      height: 12px;
+      left: 4px;
+      position: absolute;
+      top: 4px;
+      transition: all 0.2s ease;
+      width: 12px;
+    }
+  }
+}
+
+input[type='radio']:not(:checked) + label:after {
+  -webkit-transform: scale(0);
+  opacity: 0;
+  transform: scale(0);
+}
+
+input[type='radio']:checked + label:after {
+  -webkit-transform: scale(1);
+  opacity: 1;
+  transform: scale(1);
 }
 </style>

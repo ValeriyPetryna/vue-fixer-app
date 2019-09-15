@@ -49,6 +49,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import './../../shared/styles/responsive.scss';
 .results {
   display: flex;
   flex-direction: column;
@@ -56,6 +57,10 @@ export default {
   margin-left: 3.5%;
   height: 100%;
   margin: 0 5%;
+  @include max('tablet-wide') {
+    width: 100%;
+    min-width: 100% !important;
+  }
 }
 
 .workers {
@@ -65,6 +70,9 @@ export default {
   justify-content: space-between;
   min-width: 750px;
   overflow: auto;
+  @include max('tablet-wide') {
+    width: 100%;
+  }
 }
 
 .worker {
@@ -77,6 +85,10 @@ export default {
   justify-content: space-around;
   margin: 18px 18px 18px 0;
   width: 330px;
+  @include max('tablet-wide') {
+    width: 100%;
+    min-width: 100% !important;
+  }
   &__avatar {
     height: 76px;
     width: 76px;
@@ -118,8 +130,6 @@ export default {
     }
   }
 }
-
-
 
 .category__button input[type='radio'] {
   &:checked,
@@ -188,15 +198,6 @@ input[type='radio'] {
   margin-left: auto;
   cursor: pointer;
   font-size: 16px;
-}
-
-@media (max-width: 1024px) {
-  .workers,
-  .results,
-  .worker {
-    width: 100%;
-    min-width: 100% !important;
-  }
 }
 </style>
 

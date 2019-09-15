@@ -52,7 +52,7 @@ export default {
       search: '',
       filteredAr: [],
       workers: undefined,
-      data:[],
+      data: [],
     };
   },
   computed: {
@@ -80,7 +80,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import './../../shared/styles/responsive.scss';
 
+.views {
+  overflow-x: hidden !important;
+}
 .results {
   display: flex;
   flex-direction: column;
@@ -114,7 +118,6 @@ export default {
   flex-wrap: wrap;
   height: 90%;
   justify-content: space-between;
-
   overflow: auto;
 }
 ::-webkit-scrollbar-button {

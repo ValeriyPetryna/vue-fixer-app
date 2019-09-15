@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="googlemap">
     <gmap-map :center="center" :zoom="15" style="width: 100%; height: 500px">
       <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" @closeclick="infoWinOpen = false" />
 
@@ -111,3 +111,14 @@ export default {
   },
 };
 </script>
+
+<style scoped lang="scss">
+@import './../../shared/styles/responsive.scss';
+.googlemap {
+  @include max('desktop') {
+      margin-bottom: 20px;
+      margin-right: 20px;
+    }
+}
+
+</style>
