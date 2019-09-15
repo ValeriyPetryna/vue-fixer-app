@@ -56,21 +56,37 @@ export default {
     },
     deleteAccount() {
       api.delete('/accounts/destroy').catch(err => {
-        alert(err)
+        alert(err);
       });
       localStorage.removeItem('user');
       localStorage.removeItem('userData');
-      this.$router.push('/signup')
-    }
+      this.$router.push('/signup');
+    },
   },
 };
 </script>
 
 <style scoped lang="scss">
+@import './../../shared/styles/responsive.scss';
+
 .account {
   display: flex;
-  flex-wrap: wrap;
   margin-top: 50px;
+  justify-content: end;
+  width: 90%;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  @include max('tablet-wide') {
+    margin-left: 5px;
+    margin-top: 40px;
+  }
+  @include max('tablet') {
+    margin-left: 5px;
+    margin-top: 35px;
+  }
+  @include max('phone') {
+    margin-top: 30px;
+  }
 }
 
 .infoblock {
@@ -88,6 +104,9 @@ export default {
 .item-left {
   margin-left: 80px;
   width: 100%;
+  @include max('tablet') {
+    margin-left: 0;
+  }
 }
 
 .change {
@@ -120,13 +139,17 @@ export default {
   width: 280px;
   line-height: 40px;
   padding: 0 13px;
+  height: 44px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
 .delete-account {
   display: inline-block;
   border-radius: 4px;
   background-color: #f4511e;
   border: none;
-  color: #FFFFFF;
+  color: #ffffff;
   text-align: center;
   font-size: 15px;
   padding: 20px;
@@ -166,20 +189,8 @@ export default {
   margin-left: 20px;
 }
 @media (max-width: 1024px) {
-  .account {
-    margin-left: 20px;
-  }
-  .infoblock {
-    width: 100%;
-  }
-  .item-left {
-    margin-left: 0;
-  }
   .change {
     justify-content: start;
-  }
-  .infopage {
-    overflow-x: auto;
   }
 }
 </style>

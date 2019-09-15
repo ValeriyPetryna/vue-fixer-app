@@ -20,7 +20,6 @@
           <p class="title">
             Title
           </p>
-
           <select v-model="userData.gender" class="holder input" @change="updateData">
             <option :selected="userData.gender == 'Mr'">
               Mr
@@ -34,7 +33,6 @@
           <p class="title">
             Stack
           </p>
-
           <select v-model="userData.stack" class="holder input" @change="updateData">
             <option :selected="userData.stack == 'Front-end'">
               Front-end
@@ -43,12 +41,6 @@
               Back-end
             </option>
           </select>
-        </div>
-        <div class="item">
-          <p class="title">
-            DailyRate
-          </p>
-          <input id="dailyRate" v-model="userData.dailyRate" type="number" class="holder" @change="updateData($event)" />
         </div>
         <div class="item">
           <p class="title">
@@ -75,7 +67,12 @@
             <VuePhoneNumberInput id="mobile" v-model="userData.mobile" type="text" @change="updateMobile(onUpdate)" />
           </div>
         </div>
-
+        <div class="item">
+          <p class="title">
+            DailyRate
+          </p>
+          <input id="dailyRate" v-model="userData.dailyRate" type="number" class="holder" @change="updateData($event)" />
+        </div>
         <div class="item">
           <p class="title">
             Company
@@ -146,6 +143,7 @@ export default {
 
 <style scoped lang="scss">
 @import './../../shared/styles/vue-phone-number-input.css';
+@import './../../shared/styles/responsive.scss';
 
 .account {
   display: flex;
@@ -153,12 +151,36 @@ export default {
   justify-content: space-between;
   width: 90%;
   flex-wrap: wrap;
+  margin-bottom: 20px;
+  @include max('tablet-wide') {
+    width: calc(100% - 150px) !important;
+    margin-left: 5px;
+    margin-top: 40px;
+  }
+  @include max('tablet') {
+    margin-left: 5px;
+    margin-top: 0;
+  }
+  @include max('phone') {
+    margin-top: 0;
+  }
 }
 
 .infoblock {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  @include max('tablet-wide') {
+    width: 45%;
+    justify-content: end;
+  }
+  @include max('tablet') {
+    width: 40%;
+    justify-content: end;
+  }
+  @include max('tablet-wide') {
+    width: 100%;
+  }
 }
 
 .avatar {
@@ -166,6 +188,9 @@ export default {
   flex-direction: column;
   margin: 30px;
   align-items: center;
+  @include max('tablet-wide') {
+    width: 100%;
+  }
 }
 
 .photo {
@@ -182,6 +207,9 @@ export default {
 
 .item-left {
   margin-left: 80px;
+  @include max('tablet') {
+    margin-left: 0;
+  }
 }
 
 .changephoto {
@@ -240,6 +268,9 @@ export default {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
+  @include max('tablet-wide') {
+    width: 100%;
+  }
 }
 
 .holderchoose {
@@ -264,58 +295,11 @@ export default {
 .form__input--file {
   display: none;
 }
-@media (max-width: 1024px) {
-  .avatar,
-  .infoblock,
-  .personal-page,
-  .holder {
+
+.mobile {
+  width: 90%;
+  @include max('tablet') {
     width: 100%;
   }
-  .account {
-    width: calc(100% - 150px) !important;
-  }
-}
-@media (max-width: 1024px) {
-  .account {
-    margin-left: 5px;
-  }
-  .infoblock {
-    width: 50%;
-    justify-content: end;
-  }
-  .item-left {
-    margin-left: 0;
-  }
-  .change {
-    justify-content: start;
-  }
-  .infopage {
-    overflow-x: auto;
-  }
-}
-@media (max-width: 724px) {
-  .account {
-    margin-left: 5px;
-  }
-  .infoblock {
-    width: 40%;
-    justify-content: end;
-  }
-  .item-left {
-    margin-left: 0;
-  }
-  .change {
-    justify-content: start;
-  
-  }
-  .infopage {
-    overflow-x: auto;
-  }
-  .mobile {
-    display: none;
-  }
-}
-.mobile {
-  width:90%;
 }
 </style>

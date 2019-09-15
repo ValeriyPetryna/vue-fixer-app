@@ -43,9 +43,7 @@ export default {
       user: JSON.parse(localStorage.getItem('user')),
     };
   },
-  mounted() {
-    
-  },
+  mounted() {},
   methods: {
     switchComponent() {
       this.active.account = !this.active.account;
@@ -56,6 +54,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import './../../shared/styles/responsive.scss';
 
 .page {
   flex-direction: column;
@@ -65,6 +64,21 @@ export default {
   border-radius: 4px;
   box-shadow: 0 0 30px rgba(153, 163, 174, 0.06);
   box-sizing: content-box;
+  @include max('desktop-wide') {
+    width: calc(100% - 350px);
+  }
+  @include max('desktop') {
+    width: calc(100% - 250px);
+  }
+  @include max('tablet-wide') {
+    width: calc(100% - 200px);
+  }
+  @include max('tablet') {
+    width: calc(100% - 150px);
+  }
+  @include max('phone') {
+    width: 100%;
+  }
 }
 
 .infopage {
@@ -96,5 +110,7 @@ export default {
     text-decoration: none;
   }
 }
-
+.sidebar {
+  position: fixed;
+}
 </style>

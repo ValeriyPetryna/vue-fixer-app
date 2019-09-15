@@ -21,6 +21,7 @@ export default {
 </script>
 <style lang="scss">
 @import url(https://fonts.googleapis.com/css?family=Roboto&display=swap);
+
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
@@ -42,25 +43,14 @@ body {
 .content {
   width: 100%;
   background: #f8f9fb;
+  overflow: hidden;
 }
-.profile-page {
-  display: flex;
-  width: 100%;
-  height: 100%;
-}
-.personal-page {
-  flex-direction: column;
-  width: calc(100% - 400px);
-  padding: 40px 40px;
-  background-color: #fff;
-  border-radius: 4px;
-  box-shadow: 0 0 30px rgba(153, 163, 174, 0.06);
-  box-sizing: content-box;
-}
+
 
 #app {
   width: 100%;
   height: 100vh;
+  background: #f8f9fb;
 }
 @media (max-width: 1024px) {
   .page {
