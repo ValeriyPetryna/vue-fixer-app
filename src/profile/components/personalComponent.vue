@@ -1,5 +1,6 @@
 <template>
   <main class="personal-page">
+    <notifications group="update" :duration="3000" position="top center" />
     <section class="account">
       <article class="avatar">
         <img class="photo" :src="userData.photo" />
@@ -86,6 +87,7 @@
 
 <script>
 import VuePhoneNumberInput from 'vue-phone-number-input';
+import Notifications from 'vue-notification';
 import api from '../../shared/services/api.services';
 
 export default {
@@ -103,7 +105,6 @@ export default {
     };
   },
   mounted() {
-    //api.init('3.13.50.233/');
     api.setHeader();
     api.get('/accounts/profile').then(res => {
       this.userData = res.data.user;
@@ -117,25 +118,44 @@ export default {
       this.userData.mobile = number;
       const timer = setTimeout(() => {
         api.put('/accounts/profile', this.userData.mobile).catch(err => {
-          alert(err);
+          this.show('update', 'error', 'Failed. Check your network connection!');
+          console.log(err);
         });
       }, 500);
+      this.show('update', 'success', 'Your mobile was successfully updated!');
     },
     updatePhoto(event) {
       const file = event.target.files[0];
       const formData = new FormData();
       formData.set('photo', file);
-      api.put('/accounts/photo', formData).then(res => {
+      api.put('/accounts/photo', formData).catch(err =>{
+        this.show('update', 'error', 'Failed. Check your network connection!');
+        console.log(err);
+      }).then(res => {
         this.profile.photo = res.data.photo;
       });
+      this.show('update', 'success', 'Your profile photo was successfully updated!');
     },
     updateData(event) {
       const timer = setTimeout(() => {
         api.put('/accounts/profile', this.userData).catch(err => {
-          alert(err);
+          this.show('update', 'error', 'Failed. Check your network connection!');
+          console.log(err);
         });
         localStorage.setItem('userData', JSON.stringify(this.userData));
+        this.show('update', 'success', 'Your profile information was successfully updated!');
       }, 1000);
+    },
+    show(group, type = '', text) {
+      this.$notify({
+        group,
+        title: `This is ${type} notification: `,
+        text,
+        type,
+      });
+    },
+    clean(group) {
+      this.$notify({ group, clean: true });
     },
   },
 };

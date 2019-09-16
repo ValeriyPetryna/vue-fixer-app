@@ -8,6 +8,7 @@ import SearchComponent from './search/views/searchPage.vue';
 import ProfileComponent from './profile/views/profile.vue';
 import MessengerComponent from './messenger/views/messenger.vue';
 import SearchProfile from './search/views/getProfile.vue';
+import Test from './views/test.vue';
 
 Vue.use(Router);
 
@@ -15,6 +16,7 @@ export default new Router({
   mode: 'history',
   routes: [
     { path: '/', redirect: '/login' },
+    { path: '/test', name: 'test', component: Test },
     { path: '/signup', name: 'signup', component: RegistrationComponent },
     { path: '/signup2', name: 'signup2', component: SignUp2Component },
     { path: '/signup3', name: 'signup3', component: SignUp3Component },

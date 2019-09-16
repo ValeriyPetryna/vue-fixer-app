@@ -58,6 +58,7 @@ export default {
       api.delete('/accounts/destroy').catch(err => {
         alert(err);
       });
+
       localStorage.removeItem('user');
       localStorage.removeItem('userData');
       this.$router.push('/signup');
