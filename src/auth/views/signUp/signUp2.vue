@@ -1,5 +1,6 @@
 <template>
   <div>
+    <notifications group="auth" :duration="5000" position="top center" />
     <form>
       <main class="wrapper">
         <nav class="navbar">
@@ -16,7 +17,7 @@
           </div>
         </nav>
         <div class="container">
-          <form class="login-form" @submit.prevent="Second">
+          <form class="login-form" @submit.prevent="secondStep">
             <h1 class="login-form__title">
               Complete your account
             </h1>
@@ -61,6 +62,7 @@
 
 <script>
 import Password from 'vue-password-strength-meter';
+import Notifications from 'vue-notification';
 import api from '@/shared/services/api.services';
 
 export default {
@@ -73,7 +75,7 @@ export default {
   },
   mounted() {},
   methods: {
-    Second() {
+    secondStep() {
       this.$validator.validate().then(valid => {
         if (valid && this.$refs.checkTerms.checked && this.$refs.checkPolicy.checked) {
           const user = JSON.parse(localStorage.getItem('registration'));
@@ -89,9 +91,21 @@ export default {
               alert(err);
             });
         } else {
+          this.show('auth', 'error', 'Check Terms of Service or Privacy policy! ');
           console.log('err');
         }
       });
+    },
+    show(group, type = '', text) {
+      this.$notify({
+        group,
+        title: `This form is not valid! `,
+        text,
+        type,
+      });
+    },
+    clean(group) {
+      this.$notify({ group, clean: true });
     },
   },
 };
@@ -169,7 +183,7 @@ export default {
     line-height: 34px;
     letter-spacing: 0.4px;
     color: #002396;
-     @include max('phone') {
+    @include max('phone') {
       font-size: 24px;
       text-align: center;
     }

@@ -7,14 +7,9 @@
 import api from './shared/services/api.services';
 
 export default {
-  methods: {
-    logout() {
-      localStorage.removeItem('user');
-      this.$router.push('/login');
-    },
-  },
+  methods: {},
   beforeCreate() {
-    api.init('http://3.13.50.233');
+    api.init('http://3.13.50.233:80/');
     // api.init('http://localhost:3000');
   },
 };
@@ -45,7 +40,6 @@ body {
   background: #f8f9fb;
   overflow: hidden;
 }
-
 
 #app {
   width: 100%;

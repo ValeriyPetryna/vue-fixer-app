@@ -1,5 +1,6 @@
 <template>
   <main class="wrapper">
+    <notifications group="auth" :duration="3000" position="top center" />
     <nav class="navbar">
       <div class="logo-container">
         <img src="@/assets/myfixerlogo.svg" />
@@ -27,6 +28,7 @@
 
 <script>
 import api from '@/shared/services/api.services';
+import Notifications from 'vue-notification';
 
 export default {
   name: 'SignUp3',
@@ -41,9 +43,24 @@ export default {
     };
   },
   created() {
-    setTimeout(() => this.$router.push({ path: '/login' }), 1000);
+    setTimeout(() => this.$router.push({ path: '/login' }), 2000);
   },
-  methods: {},
+  mounted() {
+    this.show('auth', 'success', 'Check your e-mail!');
+  },
+  methods: {
+    show(group, type = '', text) {
+      this.$notify({
+        group,
+        title: `Account created successfully!`,
+        text,
+        type,
+      });
+    },
+    clean(group) {
+      this.$notify({ group, clean: true });
+    },
+  },
 };
 </script>
 

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <notifications group="auth" :duration="5000" position="top center" />
     <main class="wrapper">
       <nav class="navbar">
         <div class="logo-container">
@@ -41,6 +42,7 @@
 
 <script>
 import api from '../../../shared/services/api.services';
+import Notifications from 'vue-notification';
 
 export default {
   name: 'App',
@@ -58,6 +60,16 @@ export default {
       this.$validator.validate().then(valid => {
         if (valid) {
           api
+            .post('/accounts/check-email', this.user)
+            .then(res => {
+              if (res.data.people.length === 0) {
+                this.show('auth', 'error', 'This user does not exist!');
+              }
+            })
+            .catch(err => {
+              alert(err);
+            });
+          api
             .post('/accounts/sign-in', this.user)
             .then(res => {
               if (!res.data.error) {
@@ -66,13 +78,15 @@ export default {
                   token: data.token,
                   user: data.user,
                 });
+              } else {
+                this.show('auth', 'warn', 'Check your login / password again! ');
               }
             })
             .catch(err => {
               alert(`Login error + ${err}`);
             });
         } else {
-          console.log('err');
+          alert(err);
         }
       });
     },
@@ -80,6 +94,17 @@ export default {
       localStorage.setItem('user', JSON.stringify(user));
       api.setHeader();
       this.$router.push('/search');
+    },
+    show(group, type = '', text) {
+      this.$notify({
+        group,
+        title: `This is ${type} notification: `,
+        text,
+        type,
+      });
+    },
+    clean(group) {
+      this.$notify({ group, clean: true });
     },
   },
 };
@@ -100,20 +125,20 @@ export default {
 }
 
 .logo-container {
-margin-left: 7%;
+  margin-left: 7%;
 }
 
 .auth {
-    margin-top: 10px;
-    position: absolute;
-    right: 7%;
-    display: flex;
-    
+  margin-top: 10px;
+  position: absolute;
+  right: 7%;
+  display: flex;
+
   &__text {
     margin: 0;
     padding: 0;
     @include max('phone') {
-        display:none;
+      display: none;
     }
   }
   &__link {
@@ -131,25 +156,25 @@ margin-left: 7%;
   box-shadow: 0px 5px 40px rgba(0, 45, 113, 0.06);
   border-radius: 10px;
   @include max('tablet') {
-        width: 100%;
-        margin: 0 auto;
-    }
-    @include max('phone') {
-       height: 100%;
-    }
+    width: 100%;
+    margin: 0 auto;
+  }
+  @include max('phone') {
+    height: 100%;
+  }
 }
 
 .login-form {
   padding: 80px 116px;
   margin-top: 100px;
   @include max('tablet') {
-      padding: 15% 15%;
-      margin-top: 50px;
-    }
+    padding: 15% 15%;
+    margin-top: 50px;
+  }
   @include max('phone') {
-       padding: 25% 5%;
-       margin-top: 25px;
-    }
+    padding: 25% 5%;
+    margin-top: 25px;
+  }
   &__title {
     font-weight: 600;
     font-size: 28px;

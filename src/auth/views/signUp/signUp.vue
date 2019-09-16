@@ -1,5 +1,6 @@
 <template>
   <div>
+    <notifications group="auth" :duration="5000" position="top center" />
     <form>
       <main class="wrapper">
         <nav class="navbar">
@@ -53,6 +54,7 @@
 
 <script>
 import api from '@/shared/services/api.services';
+import Notifications from 'vue-notification';
 
 export default {
   data() {
@@ -65,14 +67,12 @@ export default {
       },
     };
   },
-  mounted() {
-    //api.init('3.13.50.233/');
-  },
+  mounted() {},
   methods: {
     FirstStage() {
       this.$validator.validate().then(valid => {
         if (!valid) {
-          console.log('not valid');
+          this.show('auth', 'warn', 'Form is not valid! Fix it, please! ');
         } else {
           api
             .post('/accounts/check-email', this.user)
@@ -81,7 +81,7 @@ export default {
                 localStorage.setItem('registration', JSON.stringify(this.user));
                 this.$router.push('/signup2');
               } else {
-                alert('This mail is busy');
+                this.show('auth', 'error', 'This mail is busy! Please, choose another one! ');
               }
             })
             .catch(err => {
@@ -94,6 +94,17 @@ export default {
       localStorage.setItem('user', JSON.stringify(user));
       api.setHeader();
       this.$router.push('/search');
+    },
+    show(group, type = '', text) {
+      this.$notify({
+        group,
+        title: `This is ${type} notification: `,
+        text,
+        type,
+      });
+    },
+    clean(group) {
+      this.$notify({ group, clean: true });
     },
   },
 };
