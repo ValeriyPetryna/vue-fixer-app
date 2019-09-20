@@ -233,3 +233,63 @@ export default {
   margin-bottom: 10px;
 }
 </style>
+
+<style lang="css">
+.notifications {
+  display: block;
+  position: fixed;
+  z-index: 5000;
+}
+.notification-wrapper {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.notification-title {
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+  font-style: italic;
+  border-bottom: 1px solid rgb(104, 25, 25);
+}
+.vue-notification-template {
+  background: #fff;
+}
+.vue-notification,
+.vue-notification-template {
+  display: block;
+  box-sizing: border-box;
+  text-align: left;
+}
+.vue-notification {
+  font-size: 12px;
+  padding: 8px;
+  margin: 0 5px 5px;
+  color: #fff;
+  background: #44a4fc;
+  border-left: 5px solid #187fe7;
+}
+.vue-notification.warn {
+  background:  #1e1bc9;
+  border-left-color: #270d86;
+}
+.vue-notification.error {
+  background: #9c3535;
+  border-left-color: #b82e24;
+}
+.vue-notification.success {
+  background: rgb(2, 189, 12);
+  border-left-color: #42a85f;
+}
+.vn-fade-enter-active,
+.vn-fade-leave-active,
+.vn-fade-move {
+  transition: all 0.5s;
+}
+.vn-fade-enter,
+.vn-fade-leave-to {
+  opacity: 0;
+}
+</style>

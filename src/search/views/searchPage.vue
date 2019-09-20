@@ -70,10 +70,10 @@ export default {
   },
   methods: {
     switchComponent() {
-      this.active.map = !this.active.map;
+      this.active.map = !this.active.map; 
     },
     filtered(data) {
-      this.workers = data.data;
+      this.workers = data.data; // TODO: add lazy load, add loading
     },
   },
 };

@@ -144,6 +144,10 @@ export default {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
+  @include max('phone') {
+    width: 200px;
+  }
+  
 }
 .delete-account {
   display: inline-block;

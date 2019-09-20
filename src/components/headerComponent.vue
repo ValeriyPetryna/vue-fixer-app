@@ -141,6 +141,9 @@ $col2: #dc3545;
         @include max('tablet') {
           display: none;
         }
+        @include max('phone-min') {
+          display: block;
+        }
       }
     }
     &__name {
@@ -148,8 +151,11 @@ $col2: #dc3545;
       text-decoration: none;
       color: $color_1;
       @include max('phone') {
-          padding-right: 0;
-        }
+        padding-right: 0;
+      }
+      @include max('phone-min') {
+        display:none;
+      }
     }
   }
 }

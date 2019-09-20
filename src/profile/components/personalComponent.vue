@@ -128,12 +128,15 @@ export default {
       const file = event.target.files[0];
       const formData = new FormData();
       formData.set('photo', file);
-      api.put('/accounts/photo', formData).catch(err =>{
-        this.show('update', 'error', 'Failed. Check your network connection!');
-        console.log(err);
-      }).then(res => {
-        this.profile.photo = res.data.photo;
-      });
+      api
+        .put('/accounts/photo', formData)
+        .catch(err => {
+          this.show('update', 'error', 'Failed. Check your network connection!');
+          console.log(err);
+        })
+        .then(res => {
+          this.profile.photo = res.data.photo;
+        });
       this.show('update', 'success', 'Your profile photo was successfully updated!');
     },
     updateData(event) {
@@ -162,7 +165,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import './../../shared/styles/vue-phone-number-input.css';
 @import './../../shared/styles/responsive.scss';
 
 .account {
@@ -320,6 +322,15 @@ export default {
   width: 90%;
   @include max('tablet') {
     width: 100%;
+  }
+}
+</style>
+<style lang="scss">
+@import './../../shared/styles/vue-phone-number-input.css';
+@import './../../shared/styles/responsive.scss';
+.field.vue-input-ui.has-value .field-label {
+  @include max('tablet') {
+    display: none;
   }
 }
 </style>

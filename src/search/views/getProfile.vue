@@ -76,7 +76,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+// TODO: add responsive
 .infopage {
   width: 100%;
   display: flex;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <notifications group="auth" :duration="5000" position="top center" />
+    <notifications group="auth" :duration="50000" position="top center" />
     <form>
       <main class="wrapper">
         <nav class="navbar">
