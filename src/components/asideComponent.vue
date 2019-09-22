@@ -34,7 +34,7 @@ export default {
   computed: {},
   methods: {
     logout() {
-      localStorage.removeItem('user');
+      localStorage.removeItem('userData');
       this.$router.push('/login');
     },
   },

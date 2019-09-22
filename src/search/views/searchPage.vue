@@ -64,8 +64,8 @@ export default {
     },
   },
   mounted() {
-    api.get(`/search/workers`).then(res => {
-      this.workers = res.data.allUsers;
+    api.get(`/users`).then(res => {
+      this.workers = res.data.users;
     });
   },
   methods: {

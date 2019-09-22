@@ -40,7 +40,7 @@ export default {
         account: false,
         personal: true,
       },
-      user: JSON.parse(localStorage.getItem('user')),
+      user: JSON.parse(localStorage.getItem('userData')),
     };
   },
   mounted() {},

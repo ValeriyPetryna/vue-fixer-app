@@ -60,26 +60,17 @@ export default {
       this.$validator.validate().then(valid => {
         if (valid) {
           api
-            .post('/accounts/check-email', this.user)
-            .then(res => {
-              if (res.data.people.length === 0) {
-                this.show('auth', 'error', 'This user does not exist!');
-              }
-            })
-            .catch(err => {
-              alert(err);
-            });
-          api
-            .post('/accounts/sign-in', this.user)
+            .post('/login', this.user)
             .then(res => {
               if (!res.data.error) {
                 const { data } = res;
+                this.show('auth', 'success', '', `Hello,  ${data.user.gender}  ${data.user.name}`);
                 this.saveUser({
                   token: data.token,
-                  user: data.user,
+                  user: { _id: data.user.id, name: data.user.name, surname: data.user.surname, photo:data.user.photo, gender: data.user.gender},
                 });
               } else {
-                this.show('auth', 'warn', 'Check your login / password again! ');
+                this.show('auth', 'warn', 'Check your login / password again! ', `This is warning notification: `);
               }
             })
             .catch(err => {
@@ -91,14 +82,14 @@ export default {
       });
     },
     saveUser(user) {
-      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('userData', JSON.stringify(user));
       api.setHeader();
-      this.$router.push('/search');
+      setTimeout(() => this.$router.push({ path: '/search' }), 2000);
     },
-    show(group, type = '', text) {
+    show(group, type = '', text, title) {
       this.$notify({
         group,
-        title: `This is ${type} notification: `,
+        title,
         text,
         type,
       });
@@ -272,7 +263,7 @@ export default {
   border-left: 5px solid #187fe7;
 }
 .vue-notification.warn {
-  background:  #1e1bc9;
+  background: #1e1bc9;
   border-left-color: #270d86;
 }
 .vue-notification.error {

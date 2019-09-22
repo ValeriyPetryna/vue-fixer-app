@@ -9,8 +9,8 @@ import api from './shared/services/api.services';
 export default {
   methods: {},
   beforeCreate() {
-    api.init('http://3.13.50.233:80/');
-    // api.init('http://localhost:3000');
+    // api.init('http://3.13.50.233:80/');
+    api.init('http://localhost:3000');
   },
 };
 </script>

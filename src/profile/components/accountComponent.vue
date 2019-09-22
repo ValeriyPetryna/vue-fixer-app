@@ -1,11 +1,12 @@
 <template>
   <section class="account">
+    <notifications group="update" :duration="3000" position="top center" />
     <article class="infoblock">
       <div class="item">
         <p class="title">
           Username
         </p>
-        <input id="username" v-model="userData.username" type="text" class="holder" @change="updateData($event)" />
+        <input id="username" v-model="user.username" type="text" class="holder" @change="updateData($event)" />
       </div>
     </article>
     <article class="infoblock">
@@ -13,7 +14,7 @@
         <p class="title">
           E-mail
         </p>
-        <input id="email" v-model="userData.email" type="text" class="holder" @change="updateData($event)" />
+        <input id="email" v-model="user.email" type="text" class="holder" @change="updateData($event)" />
       </div>
       <div class="item-left">
         <article class="change">
@@ -28,6 +29,7 @@
 
 <script>
 import api from '../../shared/services/api.services';
+import Notifications from 'vue-notification';
 
 export default {
   name: 'AccountInfo',
@@ -36,32 +38,61 @@ export default {
       active: {
         user: true,
       },
-      userData: {},
-      user: JSON.parse(localStorage.getItem('user')),
+      userData: JSON.parse(localStorage.getItem('userData')),
+      user: {},
     };
   },
   mounted() {
-    api.setHeader();
-    api.get('/accounts/profile').then(res => {
-      this.userData = res.data.user;
+    api.get(`/users/${this.userData.user._id}`).then(res => {
+      this.user = res.data.user;
     });
   },
   methods: {
     updateData(event) {
       const timer = setTimeout(() => {
-        api.put('/accounts/profile', this.userData).catch(err => {
-          alert(err);
-        });
+        api
+          .patch(`/users/${this.user._id}`, this.user)
+          .then(res => {
+            if (!res.data.error) {
+              this.show('update', 'success', 'Your profile information was successfully updated!');
+            } else {
+              this.show('update', 'error', 'This email is busy!');
+            }
+          })
+          .catch(err => {
+            if (err) {
+              console.log(err);
+            }
+          });
       }, 1000);
     },
     deleteAccount() {
-      api.delete('/accounts/destroy').catch(err => {
-        alert(err);
+      api
+        .delete(`/users/${this.user._id}`)
+        .then(res => {
+          if (!res.data.error) {
+            this.show('update', 'success', 'Your profile was successfully deleted! See you soon!');
+            const timer = setTimeout(() => {
+              localStorage.clear();
+              this.$router.push('/signup');
+            }, 1500);
+          }
+        })
+        .catch(err => {
+          this.show('update', 'error', 'Catch some error, check your console!!');
+          console.log(err);
+        });
+    },
+    show(group, type = '', text) {
+      this.$notify({
+        group,
+        title: `This is ${type} notification: `,
+        text,
+        type,
       });
-
-      localStorage.removeItem('user');
-      localStorage.removeItem('userData');
-      this.$router.push('/signup');
+    },
+    clean(group) {
+      this.$notify({ group, clean: true });
     },
   },
 };
@@ -147,7 +178,6 @@ export default {
   @include max('phone') {
     width: 200px;
   }
-  
 }
 .delete-account {
   display: inline-block;

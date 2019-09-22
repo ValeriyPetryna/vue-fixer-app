@@ -17,7 +17,7 @@
         <p class="search-filters__text">
           SEARCH
         </p>
-        <input ref="nameInput" v-model="itemSearch.name" class="search-filters__dropdown" placeholder="Enter name" name="name" />
+        <input ref="nameInput" v-model="itemSearch.fullname" class="search-filters__dropdown" placeholder="Enter name" name="name" />
       </div>
 
       <div class="search-filters">
@@ -66,10 +66,10 @@ export default {
   name: 'FormComponent',
   data() {
     return {
-      test: [],
+      users: [],
       search: '',
       itemSearch: {
-        name: '',
+        fullname: '',
         stack: '',
         country: '',
         sort: '',
@@ -91,19 +91,16 @@ export default {
   },
   methods: {
     searchFunc() {
-      api.post('/search/workers', this.itemSearch).then(res => {
-        this.test = res.data.sortedArray;
+      let params = this.itemSearch;
+      Object.keys(params).forEach(key => params[key] == null || (params[key].length < 1 && delete params[key]));
+      const queryString = Object.keys(params)
+        .map(key => key + '=' + params[key])
+        .join('&');
+      api.get(`/users?${queryString}`).then(res => {
+        this.users = res.data.users;
         this.$emit('filteredArray', {
-          data: this.test,
+          data: this.users,
         });
-      });
-    },
-    Search(input) {
-      if (input.length < 1) {
-        return [];
-      }
-      return countries.filter(country => {
-        return country.toLowerCase().startsWith(input.toLowerCase());
       });
     },
   },

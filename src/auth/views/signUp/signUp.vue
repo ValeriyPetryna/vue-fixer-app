@@ -1,6 +1,6 @@
 <template>
   <div>
-    <notifications group="auth" :duration="50000" position="top center" />
+    <notifications group="auth" :duration="5000" position="top center" />
     <form>
       <main class="wrapper">
         <nav class="navbar">
@@ -64,6 +64,7 @@ export default {
         surname: '',
         username: '',
         email: '',
+        fullname: '',
       },
     };
   },
@@ -74,10 +75,11 @@ export default {
         if (!valid) {
           this.show('auth', 'warn', 'Form is not valid! Fix it, please! ');
         } else {
+          this.user.fullname = '' + `${this.user.name} ${this.user.surname}`;
           api
-            .post('/accounts/check-email', this.user)
+            .get(`/users?email=${this.user.email}`)
             .then(res => {
-              if (res.data.people.length === 0) {
+              if (res.data.users.length == 0) {
                 localStorage.setItem('registration', JSON.stringify(this.user));
                 this.$router.push('/signup2');
               } else {
@@ -91,7 +93,7 @@ export default {
       });
     },
     saveUser(user) {
-      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('userData', JSON.stringify(user));
       api.setHeader();
       this.$router.push('/search');
     },

@@ -68,8 +68,8 @@ export default {
     };
   },
   mounted() {
-    api.get(`/search/profile${this.$route.params.id}`).then(res => {
-      this.profile = res.data.profile;
+    api.get(`/users/${this.$route.params.id}`).then(res => {
+      this.profile = res.data.user;
     });
   },
 };

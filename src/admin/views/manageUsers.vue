@@ -53,7 +53,7 @@ export default {
       active: {},
       message: '',
       messages: [],
-      userData: JSON.parse(localStorage.getItem('user')),
+      userData: JSON.parse(localStorage.getItem('userData')),
     };
   },
   mounted() {

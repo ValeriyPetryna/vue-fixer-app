@@ -81,8 +81,9 @@ export default {
           const user = JSON.parse(localStorage.getItem('registration'));
 
           user.password = this.password;
+          console.log(this.user)
           api
-            .post('/accounts/sign-up', user)
+            .post('/users', user)
             .then(() => {
               localStorage.removeItem('registration');
               this.$router.push('/signup3');
@@ -92,7 +93,6 @@ export default {
             });
         } else {
           this.show('auth', 'error', 'Check Terms of Service or Privacy policy! ');
-          console.log('err');
         }
       });
     },

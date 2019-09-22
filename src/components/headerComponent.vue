@@ -5,11 +5,11 @@
     </section>
     <section class="navbar-user">
       <span class="navbar-user__avatar">
-        <img :src="userData.user.photo" />
+        <img :src="userData.photo" />
       </span>
       <div class="navbar-user__name">
         <router-link class="navbar-user__name" to="/profile">
-          {{ userData.user.name + ' ' + userData.user.surname }}
+          {{ userData.name + ' ' + userData.surname }}
         </router-link>
       </div>
       <div>
@@ -55,7 +55,7 @@ export default {
     return {
       isOpen: false,
       active: false,
-      userData: JSON.parse(localStorage.getItem('user')),
+      userData: JSON.parse(localStorage.getItem('userData')).user,
       navList: [
         {
           name: '',
@@ -69,14 +69,14 @@ export default {
     };
   },
   methods: {
+    // TODO: fix header info
     logout() {
-      localStorage.removeItem('user');
+      localStorage.removeItem('userData');
       this.$router.push('/login');
     },
   },
 };
 </script>
-
 
 <style scoped lang="scss">
 @import './../shared/styles/responsive.scss';
@@ -154,7 +154,7 @@ $col2: #dc3545;
         padding-right: 0;
       }
       @include max('phone-min') {
-        display:none;
+        display: none;
       }
     }
   }

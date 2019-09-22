@@ -31,7 +31,7 @@ export default new Router({
         breadcrumb: [{ name: 'Home', link: '/profile' }, { name: 'Search', link: '/search' }, { name: 'Results', link: '/search' }],
       },
       beforeEnter(to, from, next) {
-        if (localStorage.getItem('user')) {
+        if (localStorage.getItem('userData')) {
           next();
         } else {
           next({
@@ -48,7 +48,7 @@ export default new Router({
         breadcrumb: [{ name: 'Home' }, { name: 'My profile', link: '/profile' }],
       },
       beforeEnter(to, from, next) {
-        if (localStorage.getItem('user')) {
+        if (localStorage.getItem('userData')) {
           next();
         } else {
           next({

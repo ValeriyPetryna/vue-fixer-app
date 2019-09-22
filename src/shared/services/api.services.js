@@ -7,7 +7,7 @@ const ApiService = {
     axios.defaults.baseURL = baseURL;
   },
   getToken() {
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(localStorage.getItem('userData'));
     return user.token;
   },
   setHeader() {
@@ -28,6 +28,10 @@ const ApiService = {
 
   put(resource, data) {
     return axios.put(resource, data);
+  },
+
+  patch(resource, data) {
+    return axios.patch(resource, data);
   },
 
   delete(resource) {

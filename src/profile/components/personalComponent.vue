@@ -3,7 +3,7 @@
     <notifications group="update" :duration="3000" position="top center" />
     <section class="account">
       <article class="avatar">
-        <img class="photo" :src="userData.photo" />
+        <img class="photo" :src="user.photo" />
         <div class="changephoto">
           <img src="../../assets/Pen.svg" />
           <label for="file" href="#">Change photo</label>
@@ -15,17 +15,17 @@
           <p class="title">
             First name
           </p>
-          <input id="name" v-model="userData.name" type="text" class="holder" @change="updateData($event)" />
+          <input id="name" v-model="user.name" type="text" class="holder" @change="updateData($event)" />
         </div>
         <div class="item">
           <p class="title">
             Title
           </p>
-          <select v-model="userData.gender" class="holder input" @change="updateData">
-            <option :selected="userData.gender == 'Mr'">
+          <select v-model="user.gender" class="holder input" @change="updateData">
+            <option :selected="user.gender == 'Mr'">
               Mr
             </option>
-            <option :selected="userData.gender == 'Ms'">
+            <option :selected="user.gender == 'Ms'">
               Ms
             </option>
           </select>
@@ -34,11 +34,11 @@
           <p class="title">
             Stack
           </p>
-          <select v-model="userData.stack" class="holder input" @change="updateData">
-            <option :selected="userData.stack == 'Front-end'">
+          <select v-model="user.stack" class="holder input" @change="updateData">
+            <option :selected="user.stack == 'Front-end'">
               Front-end
             </option>
-            <option :selected="userData.stack == 'Back-end'">
+            <option :selected="user.stack == 'Back-end'">
               Back-end
             </option>
           </select>
@@ -47,7 +47,7 @@
           <p class="title">
             Country
           </p>
-          <input id="country" v-model="userData.country" type="text" class="holder" @change="updateData($event)" />
+          <input id="country" v-model="user.country" type="text" class="holder" @change="updateData($event)" />
         </div>
       </article>
       <article class="infoblock">
@@ -56,7 +56,7 @@
             Last name
           </p>
           <form action>
-            <input id="surname" v-model="userData.surname" type="text" class="holder" @change="updateData($event)" />
+            <input id="surname" v-model="user.surname" type="text" class="holder" @change="updateData($event)" />
           </form>
         </div>
         <div class="item mobile">
@@ -65,20 +65,20 @@
           </p>
 
           <div class="number">
-            <VuePhoneNumberInput id="mobile" v-model="userData.mobile" type="text" @change="updateMobile(onUpdate)" />
+            <VuePhoneNumberInput id="mobile" v-model="user.mobile" type="text" @change="updateMobile(onUpdate)" />
           </div>
         </div>
         <div class="item">
           <p class="title">
             DailyRate
           </p>
-          <input id="dailyRate" v-model="userData.dailyRate" type="number" class="holder" @change="updateData($event)" />
+          <input id="dailyRate" v-model="user.dailyRate" type="number" class="holder" @change="updateData($event)" />
         </div>
         <div class="item">
           <p class="title">
             Company
           </p>
-          <input id="company" v-model="userData.company" type="text" class="holder" @change="updateData($event)" />
+          <input id="company" v-model="user.company" type="text" class="holder" @change="updateData($event)" />
         </div>
       </article>
     </section>
@@ -100,52 +100,51 @@ export default {
       },
       mobile: {},
       fullMobile: {},
-      userData: {},
-      user: JSON.parse(localStorage.getItem('user')),
+      userData: JSON.parse(localStorage.getItem('userData')),
+      user: {},
     };
   },
-  mounted() {
-    api.setHeader();
-    api.get('/accounts/profile').then(res => {
-      this.userData = res.data.user;
+  created() {
+    api.get(`/users/${this.userData.user._id}`).then(res => {
+      this.user = res.data.user;
     });
   },
   methods: {
-    updateMobile() {
-      const prefix = document.getElementById('mobile_country_selector').value;
-      const number = document.getElementById('mobile_phone_number').value;
-      this.fullMobile.full = prefix;
-      this.userData.mobile = number;
-      const timer = setTimeout(() => {
-        api.put('/accounts/profile', this.userData.mobile).catch(err => {
-          this.show('update', 'error', 'Failed. Check your network connection!');
-          console.log(err);
-        });
-      }, 500);
-      this.show('update', 'success', 'Your mobile was successfully updated!');
-    },
-    updatePhoto(event) {
-      const file = event.target.files[0];
-      const formData = new FormData();
-      formData.set('photo', file);
-      api
-        .put('/accounts/photo', formData)
-        .catch(err => {
-          this.show('update', 'error', 'Failed. Check your network connection!');
-          console.log(err);
-        })
-        .then(res => {
-          this.profile.photo = res.data.photo;
-        });
-      this.show('update', 'success', 'Your profile photo was successfully updated!');
-    },
+    // updateMobile() {
+    //   const prefix = document.getElementById('mobile_country_selector').value;
+    //   const number = document.getElementById('mobile_phone_number').value;
+    //   this.fullMobile.full = prefix;
+    //   this.userData.mobile = number;
+    //   const timer = setTimeout(() => {
+    //     api.put('/accounts/profile', this.userData.mobile).catch(err => {
+    //       this.show('update', 'error', 'Failed. Check your network connection!');
+    //       console.log(err);
+    //     });
+    //   }, 500);
+    //   this.show('update', 'success', 'Your mobile was successfully updated!');
+    // },
+    // updatePhoto(event) {
+    //   const file = event.target.files[0];
+    //   const formData = new FormData();
+    //   formData.set('photo', file);
+    //   api
+    //     .put('/accounts/photo', formData)
+    //     .catch(err => {
+    //       this.show('update', 'error', 'Failed. Check your network connection!');
+    //       console.log(err);
+    //     })
+    //     .then(res => {
+    //       this.userData.photo = res.data.photo;
+    //     });
+    //   this.show('update', 'success', 'Your profile photo was successfully updated!');
+    // },
     updateData(event) {
       const timer = setTimeout(() => {
-        api.put('/accounts/profile', this.userData).catch(err => {
+        api.patch(`/users/${this.user._id}`, this.user).catch(err => {
           this.show('update', 'error', 'Failed. Check your network connection!');
           console.log(err);
         });
-        localStorage.setItem('userData', JSON.stringify(this.userData));
+        // localStorage.setItem('userData', JSON.stringify(this.user));
         this.show('update', 'success', 'Your profile information was successfully updated!');
       }, 1000);
     },
